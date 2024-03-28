@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement index
+{% endblock %}
+
+{% block body %}
+	<h1>Paiement </h1>
+
+	<div class="card  " style="width: 18rem;margin-left:20px">
+		<div class="card-body">
+			<h5 class="card-title">Cb</h5>
+
+			<form action="" method="post">
+				<label for="name">Nom sur la carte :</label>
+				<input type="text" id="name" name="cardname" required>
+
+				<label for="cardnumber">Numéro de carte :</label>
+				<input type="text" id="cardnumber" name="cardnumber" required>
+
+				<label for="expmonth">Mois d'expiration :</label>
+				<input type="text" id="expmonth" name="expmonth" required>
+
+				<label for="expyear">Année d'expiration :</label>
+				<input type="text" id="expyear" name="expyear" required>
+
+				<label for="cvc">CVC code  :</label>
+				<input type="text" id="cvc" name="cvc" required>
+
+				<button class="btn btn-primary" type="submit">Soumettre le paiement</button>
+			</form>
+
+		</div>
+	</div>
+
+	{# <table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>BankName</th>
+				<th>CardName</th>
+				<th>CardNumber</th>
+				<th>CardNetwork</th>
+				<th>CardHoldername</th>
+				<th>ExpirationDate</th>
+				<th>CVCCode</th>
+				<th>SecurityCard</th>
+				<th>Currency</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for paiement in paiements %}
+				<tr>
+					<td>{{ paiement.id }}</td>
+					<td>{{ paiement.bankName }}</td>
+					<td>{{ paiement.cardName }}</td>
+					<td>{{ paiement.cardNumber }}</td>
+					<td>{{ paiement.cardNetwork }}</td>
+					<td>{{ paiement.cardHoldername }}</td>
+					<td>{{ paiement.expirationDate ? paiement.expirationDate|date('Y-m-d') : '' }}</td>
+					<td>{{ paiement.CVCCode }}</td>
+					<td>{{ paiement.securityCard }}</td>
+					<td>{{ paiement.currency }}</td>
+					<td>
+						<a href="{{ path('app_paiement_show', {'id': paiement.id}) }}">show</a>
+						<a href="{{ path('app_paiement_edit', {'id': paiement.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="11">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a href="{{ path('app_paiement_new') }}">Create new</a> #}
+{% endblock %}

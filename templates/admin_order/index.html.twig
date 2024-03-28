@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Order index
+{% endblock %}
+
+{% block body %}
+
+	{% block navBar %}
+		{{ parent() }}
+	{% endblock %}
+	{% block content %}
+		<h1>Order index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>OrderDate</th>
+					<th>Paid</th>
+					<th>Status</th>
+					<th>Delivered</th>
+					<th>DeliveryDate</th>
+					<th>DeliveryInfo</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for order in orders %}
+					<tr>
+						<td>{{ order.id }}</td>
+						<td>{{ order.orderDate ? order.orderDate|date('Y-m-d') : '' }}</td>
+						<td>{{ order.paid ? 'Yes' : 'No' }}</td>
+						<td>{{ order.status }}</td>
+						<td>{{ order.delivered ? 'Yes' : 'No' }}</td>
+						<td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : '' }}</td>
+						<td>{{ order.deliveryInfo }}</td>
+						<td>
+							<a href="{{ path('app_admin_order_show', {'id': order.id}) }}">show</a>
+							<a href="{{ path('app_admin_order_edit', {'id': order.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="8">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_admin_order_new') }}">Create new</a>
+	{% endblock %}
+
+	{% block footer %}
+		{{ parent() }}
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Category index
+{% endblock %}
+
+{% block body %}
+
+	{% block navBar %}
+		{{ parent() }}
+	{% endblock %}
+
+
+	<h1>Category Maternité</h1>
+
+	<div class="card mb-3 " style="max-width: 540px;">
+		<div class="row g-0">
+			<div class="col-md-4">
+				<img src="{{asset('media/exercise-ball.jpg')}}" class="img-fluid rounded-start" alt=" image d'une medecine ball">
+			</div>
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">Medecine Ball</h5>
+					<a class="btn btn-primary" href="{{ path('app_products_index')}}" role="button">Découvrir</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{# <table class="table">
+	        <thead>
+	            <tr>
+	                <th>Id</th>
+	                <th>NameCategory</th>
+	                <th>CategoryImages</th>
+	                <th>actions</th>
+	            </tr>
+	        </thead>
+	        <tbody>
+	        {% for category in categories %}
+	            <tr>
+	                <td>{{ category.id }}</td>
+	                <td>{{ category.nameCategory }}</td>
+	                <td>{{ category.CategoryImages }}</td>
+	                <td>
+	                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
+	                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
+	                </td>
+	            </tr>
+	        {% else %}
+	            <tr>
+	                <td colspan="4">no records found</td>
+	            </tr>
+	        {% endfor %}
+	        </tbody>
+	    </table>
+	
+	    <a href="{{ path('app_category_new') }}">Create new</a> #}
+
+	{% block footer %}
+		{{ parent() }}
+
+	{% endblock %}
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DashboardController!
+{% endblock %}
+
+{% block body %}
+
+	{% block navBar %}
+		{{ parent() }}
+	{% endblock %}
+
+	{% block content %}
+
+		<div class="section6 colcenter">
+			<div class="card " style="width: 18rem;">
+				<div class="card-body">
+					<ul class="list-group">
+						<li class="list-group-item">
+							<a href="{{path('app_admin_article_blog_index')}}" class="card-link">Admin Article Blog</a>
+						</li>
+						<li class="list-group-item">
+							<a href="{{path('app_admin_cart_index')}}" class="card-link">Admin Cart</a>
+						</li>
+						<li class="list-group-item">
+							<a href="{{path('app_admin_categories_blog_index')}}" class="card-link">Admin Categories Blog</a>
+						</li>
+						<li class="list-group-item">
+							<a href="{{path('app_admin_category_index')}}" class="card-link">Admin category</a>
+						</li>
+						<li class="list-group-item">
+							<a href="{{path('app_admin_comments_blog_index')}}">Admin Comments Blog</a>
+						</li>
+						<li class="list-group-item">
+							<a href="{{path('app_admin_order_index')}}" class="card-link">Admin Order</a>
+						</li>
+						<li class="list-group-item">
+							<a href="{{path('app_admin_paiement_index')}}" class="card-link">Admin Paiement</a>
+						</li>
+						<li class="list-group-item">
+							<a href="{{path('app_admin_products_index')}}" class="card-link">Admin Products</a>
+						</li>
+						<li class="list-group-item">
+							<a href="{{path('app_admin_user_index')}}" class="card-link">Admin User</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+
+		</div>
+
+	{% endblock %}
+
+	{% block footer %}
+		{{ parent() }}
+	{% endblock %}
+
+
+{% endblock %}

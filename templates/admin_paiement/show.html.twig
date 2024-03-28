@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Paiement{% endblock %}
+
+{% block body %}
+    <h1>Paiement</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ paiement.id }}</td>
+            </tr>
+            <tr>
+                <th>BankName</th>
+                <td>{{ paiement.bankName }}</td>
+            </tr>
+            <tr>
+                <th>CardName</th>
+                <td>{{ paiement.cardName }}</td>
+            </tr>
+            <tr>
+                <th>CardNumber</th>
+                <td>{{ paiement.cardNumber }}</td>
+            </tr>
+            <tr>
+                <th>CardNetwork</th>
+                <td>{{ paiement.cardNetwork }}</td>
+            </tr>
+            <tr>
+                <th>CardHoldername</th>
+                <td>{{ paiement.cardHoldername }}</td>
+            </tr>
+            <tr>
+                <th>ExpirationDate</th>
+                <td>{{ paiement.expirationDate ? paiement.expirationDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>CVCCode</th>
+                <td>{{ paiement.CVCCode }}</td>
+            </tr>
+            <tr>
+                <th>SecurityCard</th>
+                <td>{{ paiement.securityCard }}</td>
+            </tr>
+            <tr>
+                <th>Currency</th>
+                <td>{{ paiement.currency }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_paiement_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_paiement_edit', {'id': paiement.id}) }}">edit</a>
+
+    {{ include('admin_paiement/_delete_form.html.twig') }}
+{% endblock %}

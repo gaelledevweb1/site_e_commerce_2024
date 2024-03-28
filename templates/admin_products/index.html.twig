@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Products index
+{% endblock %}
+
+{% block body %}
+
+	{% block navBar %}
+		{{ parent() }}
+	{% endblock %}
+	{% block content %}
+		<h1>Products index</h1>
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>ArticleRef</th>
+					<th>ArticleName</th>
+					<th>ArticleImages</th>
+					<th>ArticleThumbnails</th>
+					<th>ArticleStockQuantity</th>
+					<th>ArticleDescription</th>
+					<th>BoughtPrice</th>
+					<th>SellPriceHT</th>
+					<th>SellPriceTTC</th>
+					<th>TVA</th>
+					<th>Details</th>
+					<th>actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in products %}
+					<tr>
+						<td>{{ product.id }}</td>
+						<td>{{ product.articleRef }}</td>
+						<td>{{ product.articleName }}</td>
+						<td><img src="{{ asset(product.articleImages ) }}" alt="image de {{ product.articleName }}"></td>
+						<td> <img src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}  "></td>
+						<td>{{ product.articleStockQuantity }}</td>
+						<td>{{ product.articleDescription }}</td>
+						<td>{{ product.boughtPrice }}</td>
+						<td>{{ product.sellPriceHT }}</td>
+						
+						<td>{{  product.getSellPriceTTC|number_format(2, '.', ',')  }}</td>
+						<td>{{ product.TVA }}</td>
+						<td>{{ product.details }}</td>
+						<td>
+							<a href="{{ path('app_admin_products_show', {'id': product.id}) }}">show</a>
+							<a href="{{ path('app_admin_products_edit', {'id': product.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="13">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		<a href="{{ path('app_admin_products_new') }}">Create new</a>
+	{% endblock %}
+
+	{% block footer %}
+		{{ parent() }}
+	{% endblock %}
+{% endblock %}
+
+

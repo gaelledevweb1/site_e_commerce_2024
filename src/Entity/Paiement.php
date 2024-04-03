@@ -2,9 +2,11 @@
 
 namespace App\Entity;
 
+
 use App\Repository\PaiementRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+
 
 #[ORM\Entity(repositoryClass: PaiementRepository::class)]
 class Paiement
@@ -40,6 +42,8 @@ class Paiement
 
     #[ORM\Column(length: 255)]
     private ?string $currency = null;
+
+    
 
     public function getId(): ?int
     {
@@ -153,7 +157,11 @@ class Paiement
 
         return $this;
     }
+
+   
 }
+
+?>
 
 
 

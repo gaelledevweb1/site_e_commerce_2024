@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Cart;
 use App\Entity\CategoriesBlog;
 use App\Entity\Category;
 use App\Entity\Products;
@@ -34,6 +35,9 @@ class ProductsType extends AbstractType
                 'class' => Category::class,
 'choice_label' => 'id',
             ])
+
+            
+               
         ;
     }
 

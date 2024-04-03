@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Paiement;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,8 +24,14 @@ class PaiementType extends AbstractType
             ])
             ->add('CVCCode')
             ->add('securityCard')
-            ->add('currency')
-        ;
+            ->add('currency');
+
+            // ->add('paiement', EntityType::class, [
+            //     'class' => Paiement::class,
+            //     'choice_label' => 'id',
+            // ]);
+
+        
     }
 
     public function configureOptions(OptionsResolver $resolver): void

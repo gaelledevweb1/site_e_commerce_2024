@@ -26,17 +26,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      #[ORM\Column(length: 255)]
      private ?string $lastName = null;
 
-     #[ORM\Column(length: 255)]
-     private ?string $address = null;
+    //  #[ORM\Column(length: 255)]
+    //  private ?string $address = null;
 
-     #[ORM\Column(length: 255)]
-     private ?string $city = null;
+    //  #[ORM\Column(length: 255)]
+    //  private ?string $city = null;
 
-     #[ORM\Column]
-     private ?int $zip = null;
+    //  #[ORM\Column]
+    //  private ?int $zip = null;
 
-     #[ORM\Column(length: 255)]
-     private ?string $country = null;
+    //  #[ORM\Column(length: 255)]
+    //  private ?string $country = null;
 
      #[ORM\Column]
      private ?string $phone = null;
@@ -56,9 +56,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToOne(inversedBy: 'user', targetEntity: Cart::class,cascade: ['persist', 'remove'])]
     private ?Cart $cart = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Paiement $paiement = null;
+    
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
     private Collection $orders;
@@ -75,11 +73,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Adress::class)]
+    private Collection $user;
+
+    
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
         $this->article = new ArrayCollection();
         $this->commentsBlog = new ArrayCollection();
+        $this->user = new ArrayCollection();
     }
 
 
@@ -113,53 +117,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
          return $this;
      }
 
-     public function getAddress(): ?string
-     {
-         return $this->address;
-     }
+    //  public function getAddress(): ?string
+    //  {
+    //      return $this->address;
+    //  }
 
-     public function setAddress(string $address): static
-     {
-         $this->address = $address;
+    //  public function setAddress(string $address): static
+    //  {
+    //      $this->address = $address;
 
-         return $this;
-     }
+    //      return $this;
+    //  }
 
-     public function getCity(): ?string
-     {
-         return $this->city;
-     }
+    //  public function getCity(): ?string
+    //  {
+    //      return $this->city;
+    //  }
 
-     public function setCity(string $city): static
-     {
-         $this->city = $city;
+    //  public function setCity(string $city): static
+    //  {
+    //      $this->city = $city;
 
-         return $this;
-     }
+    //      return $this;
+    //  }
 
-     public function getZip(): ?int
-     {
-         return $this->zip;
-     }
+    //  public function getZip(): ?int
+    //  {
+    //      return $this->zip;
+    //  }
 
-     public function setZip(int $zip): static
-     {
-         $this->zip = $zip;
+    //  public function setZip(int $zip): static
+    //  {
+    //      $this->zip = $zip;
 
-         return $this;
-     }
+    //      return $this;
+    //  }
 
-     public function getCountry(): ?string
-     {
-         return $this->country;
-     }
+    //  public function getCountry(): ?string
+    //  {
+    //      return $this->country;
+    //  }
 
-     public function setCountry(string $country): static
-     {
-         $this->country = $country;
+    //  public function setCountry(string $country): static
+    //  {
+    //      $this->country = $country;
 
-         return $this;
-     }
+    //      return $this;
+    //  }
 
      public function getPhone(): ?string
      {
@@ -236,17 +240,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPaiement(): ?Paiement
-    {
-        return $this->paiement;
-    }
-
-    public function setPaiement(Paiement $paiement): static
-    {
-        $this->paiement = $paiement;
-
-        return $this;
-    }
+    
 
     /**
      * @return Collection<int, Order>
@@ -395,6 +389,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Adress>
+     */
+    public function getUser(): Collection
+    {
+        return $this->user;
+    }
+
+    public function addUser(Adress $user): static
+    {
+        if (!$this->user->contains($user)) {
+            $this->user->add($user);
+            $user->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(Adress $user): static
+    {
+        if ($this->user->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getUser() === $this) {
+                $user->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 
     
 }

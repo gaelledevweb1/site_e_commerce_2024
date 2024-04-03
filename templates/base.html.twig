@@ -62,7 +62,7 @@
 									<ul class="dropdown-menu">
 										<li>
 											<a class="dropdown-item" href="{{path('app_category_index')}}">Maternité</a>
-											
+
 
 										</li>
 										<li>
@@ -76,16 +76,19 @@
 
 
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_dashboard') }}">Dashboard</a>
+									{% if is_granted('ROLE_ADMIN') %}
+										<a class="nav-link" href="{{ path('app_dashboard') }}">Dashboard</a>
+									{% endif %}
+									
 								</li>
 
 							</ul>
 							{# <div class="container-fluid " >
-																												<form class="d-flex" role="search">
-																													<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-																													<button class="btn btn-outline-success" type="submit">Search</button>
-																												</form>
-																											</div>  #}
+																																			<form class="d-flex" role="search">
+																																				<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+																																				<button class="btn btn-outline-success" type="submit">Search</button>
+																																			</form>
+																																		</div>  #}
 							<ul class="navbar-nav">
 
 
@@ -96,8 +99,12 @@
 									</a>
 								</li>
 								<li class="nav-item">
-									<a class="nav-link" href="{{ path('app_register') }}">
+									<a class="nav-link" href="{{ path('app_login') }}">
 										<i class="bi bi-person"></i>Connexion</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{ path('app_register') }}">
+										|	inscription</a>
 								</li>
 
 

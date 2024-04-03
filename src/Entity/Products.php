@@ -47,11 +47,17 @@ class Products
     #[ORM\Column(length: 255)]
     private ?string $details = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
-    private ?CategoriesBlog $categoriesBlog = null;
+    
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $category = null;
+
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?Cart $cart = null;
+
+    
+
+    
 
     public function getId(): ?int
     {
@@ -192,18 +198,7 @@ class Products
         return $this;
     }
 
-    public function getCategoriesBlog(): ?CategoriesBlog
-    {
-        return $this->categoriesBlog;
-    }
-
-    public function setCategoriesBlog(?CategoriesBlog $categoriesBlog): static
-    {
-        $this->categoriesBlog = $categoriesBlog;
-
-        return $this;
-    }
-
+    
     public function getCategory(): ?Category
     {
         return $this->category;
@@ -215,4 +210,20 @@ class Products
 
         return $this;
     }
+
+    public function getCart(): ?Cart
+    {
+        return $this->cart;
+    }
+
+    public function setCart(?Cart $cart): static
+    {
+        $this->cart = $cart;
+
+        return $this;
+    }
+
+    
+
+    
 }

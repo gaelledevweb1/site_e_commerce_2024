@@ -1,86 +1,100 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Cart index{% endblock %}
+{% block title %}Cart index
+{% endblock %}
 
 {% block body %}
 
-        {% block navBar %}
-		    {{ parent() }}
-	    {% endblock %}
+	{% block navBar %}
+		{{ parent() }}
+	{% endblock %}
+	{% block content %}
+		<h1>votre panier</h1>
 
-    <h1>votre panier</h1>
-
-    <a href="{{path('app_products_index')}}"> vous souhaitez  mettre de nouveaux articles</a>
-{% for item in carts %}
-    <div class="cards">
-        <div class="card">
-            <div class="ctn">
-                <h2>PRODUIT</h2>
-                <div class="wrapper">
-                     {# <img src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}" >  #}
-                    {# <p>référence produit: {{ product.articleRef }}</p>
-                    <h5 class="card-title
-																		                ">{{ product.articleName }}
-				</h5>
-                    <p class="card-text">{{ product.articleDescription }}</p> #}
-                </div>
-            </div>
-            <div class="ctn">
-                <h2>QUANTITE</h2>
-                <div class="wrapper">
-                    <button type="button">+</button>
-                    <p>1</p>
-                    <button type="button">-</button>
-                    <button type="reset">supprimer</button>
-                    
-                </div>
-            </div>
-            <div class="ctn">
-                <h2>TOTAL</h2>
-                <div class="wrapper">
-                    
-                    <p> 29€</p>
-                    
-                </div>
-            </div>
+		<a href="{{path('app_products_index')}}">
+			vous souhaitez  mettre de nouveaux articles</a>
+		{% for cart in carts %}
+			{# <div class="cards">
+			                    <div class="card">
+			                        <div class="ctn">
+			                            <h2>PRODUIT</h2>
+			                            <div class="wrapper">
+			                                <img src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}" >  
+			                                <p>référence produit: {{ product.articleRef }}</p>
+			                                <h5 class="card-title
+			                                                                                                    ">{{ product.articleName }}
+			                            </h5>
+			                                <p class="card-text">{{ product.articleDescription }}</p> 
+			                            </div>
+			                        </div>
+			                        <div class="ctn">
+			                            <h2>QUANTITE</h2>
+			                            <div class="wrapper">
+			                                <button type="button">+</button>
+			                                <p>1</p>
+			                                <button type="button">-</button>
+			                                <button type="reset">supprimer</button>
+			                                
+			                            </div>
+			                        </div>
+			                        <div class="ctn">
+			                            <h2>TOTAL</h2>
+			                            <div class="wrapper">
+			                                
+			                                <p> 29€</p>
+			                                
+			                            </div>
+			                        </div>
+			                        
+			                        
+			                        
+			                        
+			                    </div> #}
             
-            
-            
-            
-        </div>
+			<div class="card" style="width: 18rem;">
+				<img src="{{asset(cart.product.articleThumbnails)}}" class="card-img-top" alt="image de {{ cart.product.articleName }}">
+				<div class="card-body">
+					<h5 class="card-title">{{ cart.product.articleName }}</h5>
+					<p class="card-text">{{ cart.product.articleDescription }}</p>
+					<a href="#" class="btn btn-primary">Go somewhere</a>
+				</div>
+			</div>
+			<h4>coucou</h4>
+		{% endfor %}
 
-{% endfor %}
-    
+        
 
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>ArticleQuantity</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for cart in carts %}
-            <tr>
-                <td>{{ cart.id }}</td>
-                <td>{{ cart.articleQuantity }}</td>
-                <td>
-                    <a href="{{ path('app_cart_show', {'id': cart.id}) }}">show</a>
-                    <a href="{{ path('app_cart_edit', {'id': cart.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		{# <table class="table">
+		                <thead>
+		                    <tr>
+		                        <th>Id</th>
+		                        <th>ArticleQuantity</th>
+		                        <th>actions</th>
+		                    </tr>
+		                </thead>
+		                <tbody>
+		                {% for cart in carts %}
+		                    <tr>
+		                        <td>{{ cart.id }}</td>
+		                        <td>{{ cart.articleQuantity }}</td>
+		                        <td>
+		                            <a href="{{ path('app_cart_show', {'id': cart.id}) }}">show</a>
+		                            <a href="{{ path('app_cart_edit', {'id': cart.id}) }}">edit</a>
+		                        </td>
+		                    </tr>
+		                {% else %}
+		                    <tr>
+		                        <td colspan="3">no records found</td>
+		                    </tr>
+		                {% endfor %}
+		                </tbody>
+		            </table>
+		        
+		            <a href="{{ path('app_cart_new') }}">Create new</a> #}
+	{% endblock %}
 
-    <a href="{{ path('app_cart_new') }}">Create new</a> #}
 
-    {% block footer %}
-        {{ parent() }}
-    {% endblock %}
+	{% block footer %}
+		{{ parent() }}
+	{% endblock %}
 {% endblock %}

@@ -17,10 +17,10 @@
 					<th>Id</th>
 					<th>FirstName</th>
 					<th>LastName</th>
-					<th>Address</th>
+					{# <th>Address</th>
 					<th>City</th>
 					<th>Zip</th>
-					<th>Country</th>
+					<th>Country</th> #}
 					<th>Phone</th>
 					<th>Birthday</th>
 					 <th>Email</th>
@@ -36,10 +36,10 @@
 						<td>{{ user.id }}</td>
 						<td>{{ user.firstName }}</td>
 						<td>{{ user.lastName  }}</td>
-						<td>{{ user.address }}</td>
+						{# <td>{{ user.address }}</td>
 						<td>{{ user.city }}</td>
 						<td>{{ user.zip }}</td>
-						 <td>{{ user.country }}</td>
+						 <td>{{ user.country }}</td> #}
 						
 						<td>{{ user.phone }}</td>
 						<td>{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td>

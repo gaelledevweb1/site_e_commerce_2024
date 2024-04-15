@@ -13,8 +13,7 @@ class Adress
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $Address = null;
+    
 
     #[ORM\Column(length: 255)]
     private ?string $City = null;
@@ -29,22 +28,18 @@ class Adress
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column]
+    private ?int $number = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $street = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getAddress(): ?string
-    {
-        return $this->Address;
-    }
-
-    public function setAddress(string $Address): static
-    {
-        $this->Address = $Address;
-
-        return $this;
-    }
+    
 
     public function getCity(): ?string
     {
@@ -90,6 +85,30 @@ class Adress
     public function setUser(?User $user): static
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getNumber(): ?int
+    {
+        return $this->number;
+    }
+
+    public function setNumber(int $number): static
+    {
+        $this->number = $number;
+
+        return $this;
+    }
+
+    public function getStreet(): ?string
+    {
+        return $this->street;
+    }
+
+    public function setStreet(string $street): static
+    {
+        $this->street = $street;
 
         return $this;
     }

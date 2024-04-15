@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Service\QttProduct;
 
 #[Route('/products')]
 class ProductsController extends AbstractController
@@ -31,6 +32,13 @@ class ProductsController extends AbstractController
             'product' => $product,
         ]);
     }
+
+    // #[Route('/add')]
+    // public function new(QttProduct $QttProduct): Response
+    // {
+    //     $AjouterProduit = $QttProduct-> get_Product();
+    //     $this->addFlash('sucess',$AjouterProduit);
+    // }
 
     
 }

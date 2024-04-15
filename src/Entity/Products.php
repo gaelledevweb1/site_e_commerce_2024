@@ -52,9 +52,7 @@ class Products
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $category = null;
 
-    #[ORM\ManyToOne(inversedBy: 'products')]
-    private ?Cart $cart = null;
-
+    
     
 
     
@@ -211,18 +209,7 @@ class Products
         return $this;
     }
 
-    public function getCart(): ?Cart
-    {
-        return $this->cart;
-    }
-
-    public function setCart(?Cart $cart): static
-    {
-        $this->cart = $cart;
-
-        return $this;
-    }
-
+    
     
 
     

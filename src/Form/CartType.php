@@ -20,17 +20,11 @@ class CartType extends AbstractType
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
-            ])
-            ->add('products', CollectionType::class, [
-                'entry_type' => EntityType::class,
-                'entry_options' => [
-                    'class' => Products::class,
-                    'choice_label' => 'id',
-                ],
-                // 'allow_add' => true,
-                // 'allow_delete' => true,
-                // 'by_reference' => false,
             ]);
+
+            
+            
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

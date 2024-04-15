@@ -1,12 +1,59 @@
+/* general */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
+body{
+    font-family:  "Lato", sans-serif;
+    
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+   
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: "poppins", sans-serif;
+    font-weight: 700;
+}
+h1{
+    font-size: 32px;
+    padding: 10px 0 10px 0;
+
+}
+h2, h3{
+    font-size: 24px;
+}
+p{
+    font-size: 16px;
+}
+li{
+    font-size: 16px;
+}
 
 
 /* home */
+
+/* todo : Reduire la hauteur du header */
+/* !nb:resultat actuel l'image du  slider est  écrasée  */
+/* header{
+    height:30vh;
+} */
+
+
 
 .navbar{
     min-height:180px;
     background: rgb(117,148,189);
 background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%);
+}
+.nav-item:hover{
+    background-color:  #BC4B23;
+    color: #FFFFFF;  
 }
 
 .logoImage{
@@ -19,17 +66,136 @@ background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 
     margin-left: 40px;
     
 }
-    
+
+
+header{
+    height:50vh;
+}
+#carouselExample{
+    height:469px;
+    width: 621px;
+    margin-left: 30%;
+}
+
+ .carousel-inner{
+    height:469px;
+} 
+.img-fluid{
+    height:469px;
+    max-width:621px;
+}
+
+
 
 .sect1 h2{
  text-align: center;
  margin: 20px 0 20px 0;
+}
+.sect1 .btn,.sect3 .btn ,.template-product-btnPanier .btn-Blue{
+    background-color: #1E2337;
+    color: white;
+    
+}
+.sect1 .btn:hover, .sect3 .btn:hover, .template-product-btnPanier .btn-Blue:hover{
+    background-color:#BC4B23 ;
+    color: #FFFFFF;
+}
+
+
+
+.sect1 .btnProducts{
+    width:15rem;
+    padding:3rem;
+    box-shadow: 1px 2px 20px#54565e;
+    border-radius: 50% / 50%;
+    margin: 20px;
+    background: linear-gradient(to right, #1E2337, #BC4B23);
+     transition: all 0.3s ease; /*anime en douceur les transitions*/
+    font-size: 24px;
+    position: relative; /* Ajouté pour positionner le triangle */
+}
+.sect1 .btnProducts::after {
+    content: "";
+    position: absolute;
+    right: -80px; /* Ajustez selon la taille de votre bouton */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 80px 0 80px 80px; /* Ajustez pour changer la taille du triangle */
+    border-color: transparent transparent transparent #BC4B23; /* La dernière couleur est la couleur du triangle */
+}
+
+.sect1 .btnProducts:hover {
+    box-shadow: 1px 2px 30px#54565e;
+    transform: scale(1.05);
+}
+
+.sect1 .btnProducts:active {
+    box-shadow: 1px 2px 10px#54565e;
+    transform: scale(0.95);
+}
+
+.sect1 .btnProducts:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #0099f7;
 }
 
 .sect2,.sect3, footer{
     margin-top: 50px;
 }
 
+.sect2 .card-group .card .card-img-overlay .card-title{
+    cursor: pointer;
+    position: relative;
+    z-index: 100;
+    font-size: 24px;
+    font-weight: 700;
+}
+.sect2 .card-group .card .card-img-overlay .card-title::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    width: 0;
+    
+    transition: width 0.3s;
+}
+
+
+.sect2 .card-group .card1 .card-img-overlay .card-title::after,.sect2 .card-group .card3 .card-img-overlay .card-title::after{
+    background-color: white;
+  }
+  .sect2 .card-group .card2 .card-img-overlay .card-title::after{
+        background-color:black;
+    }
+    .sect2 .card-group .card1 .card-img-overlay .card-title:hover::after{
+        width:33%;
+    }
+    .sect2 .card-group .card3 .card-img-overlay .card-title:hover::after{
+    width: 29%;
+  }
+  .sect2 .card-group .card2 .card-img-overlay .card-title:hover::after{
+        width: 46%;
+    }  
+    
+
+.sect3{
+    background-color: #735D49;
+}
+
+.ctn-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+
+    
+}
 footer{
     background: rgb(117,148,189);
 background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%);
@@ -37,6 +203,9 @@ box-shadow: 0 0 10px rgba(0,0,0,0.1);
 z-index: -20;
 }
 
+.card-iconeSocial,  .contact{
+    margin-top: 5rem;
+}
 
 
 /* cookie */
@@ -46,13 +215,14 @@ z-index: -20;
     bottom :0;
     left: 0;
     width: 100%;
-    background-color: grey;
+    background-color: #767005;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 3rem;
     opacity: 1;
     transition: 0.5;
+    z-index: 100;
     }
     .cookies-btn{
         display: flex;
@@ -68,13 +238,12 @@ z-index: -20;
         background-color: #1E2337;
     }
     .cookies .btn.btn-deny{
-        background-color: grey;
+        background-color: #767005;
     }
-    /* .containerCookies{
-        z-index: 20;
-    } */
+    
 
 /* products */
+
 
 .row-center {
     display: flex;
@@ -103,4 +272,8 @@ h1{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.ctnImgProduct{
+    object-fit: cover;
 }

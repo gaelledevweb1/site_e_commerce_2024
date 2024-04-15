@@ -13,57 +13,58 @@
 		</h1>
 
 		{# <div class="cards row-center">
-						
-										<div class="card"> #}
+								
+		<div class="card"> #}
 		<div class="container">
 
-			<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+			<div class="row row-cols-1 row-cols-sm-2  	row-cols-md-3 g-3 ">
 				{% for product in products %}
-					
-							<div class="col">
-								<div class="card shadow-sm">
-									<div class="ctnImg">
-										<img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}">
-									</div>
-									<div class="card-body">
-										<h5 class="card-title
-																																																														">{{ product.articleName }}
-										</h5>
-										<p class="card-text">{{ product.sellPriceHT }} €</p>
-										<p class="card-text">{{ product.articleDescription }}</p>
-										<div class="dropdown">
-											<button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-												show more
-											</button>
-											<ul class="dropdown-menu">
-												<li>
-													<a class="dropdown-item" href="#">
-														détail:
-														{{ product.details }}</a>
-												</li>
-												<li>
-													<a class="dropdown-item" href="#">
-														référence produit:
-														{{ product.articleRef }}</a>
-												</li>
+				
 
-											</ul>
-										</div>
-
-									</div>
-									<div class="card-footer">
-										<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
-
-										<a href="{{path('app_paiement_index')}}" class="btn btn-primary">acheter maintenant</a>
-									</div>
-								</div>
+					<div class="col">
+						<div class="card  shadow-sm" style= "height: 30rem;  ">
+							<div class="ctnImg ctnImgProduct ">
+								<img class="bd-placeholder-img card-img-top " width="100%" height="225"object-fit: cover src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}">
 							</div>
-						
+							<div class="card-body">
+								<h5 class="card-title
+																																																																			">{{ product.articleName }}
+								</h5>
+								<p class="card-text">{{ product.sellPriceHT }}
+									€</p>
+								<p class="card-text">{{ product.articleDescription }}</p>
+								<div class="dropdown">
+									<button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+										show more
+									</button>
+									<ul class="dropdown-menu">
+										<li>
+											<a class="dropdown-item" href="#">
+												détail:
+												{{ product.details }}</a>
+										</li>
+										<li>
+											<a class="dropdown-item" href="#">
+												référence produit:
+												{{ product.articleRef }}</a>
+										</li>
+
+									</ul>
+								</div>
+
+							</div>
+							<div class="card-footer template-product-btnPanier">
+								<a href="{{path('app_cart_index')}}" class="btn btn-Blue">ajouter au panier</a>
+
+								<a href="{{path('app_paiement_index')}}" class="btn btn-primary">acheter maintenant</a>
+							</div>
+						</div>
+					</div>
 
 
 				{% endfor %}
-		</div>
 			</div>
+		</div>
 
 		{% block footer %}
 			{{ parent() }}

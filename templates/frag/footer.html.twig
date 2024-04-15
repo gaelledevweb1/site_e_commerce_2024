@@ -72,8 +72,8 @@
 
 <footer>
 
-	<div class="row">
-		<div class="col-12 col-md-3 mb-3">
+	<div class="row  justify-content-center">
+		{# <div class="col-12 col-md-3 mb-3 mt-5">
 			<div class="card border-light mb-3" >
 				<div class="card-header">Qui sommes nous ?</div>
 				<div class="card-body">
@@ -83,9 +83,9 @@
 				</div>
 			</div>
 
-		</div>
+		</div> #}
 
-		<div class="col-12 col-md-3 mb-3">
+		{# <div class="col-12 col-md-3 mb-3 mt-5">
 			<div class="card" >
 				<div class="card-header">
 					Catégories
@@ -96,57 +96,60 @@
 					<li class="list-group-item">seniors</li>
 				</ul>
 			</div>
-		</div>
+		</div> #}
 
-		 <div class="col-12 col-md-3 mb-3"> 
+	{# ! separer la card et reduire le form #}
+		 <div class="col-sm-6 col-lg-4 me-lg-5"> 
 
-
-			 <h4 class="mb-3">Contact</h4> 
-			<form class="needs-validation" novalidate="">
-				 <div class="row g-3">
-					<div class="col-sm-6">
-						<label for="firstName" class="form-label">First name</label>
-						<input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
-						<div class="invalid-feedback">
-							Valid first name is required.
+			
+				{# <h4 class="mb-3">Contact</h4> 
+				<form class="needs-validation " novalidate="">
+					<div class="row g-3">
+						<div class="col-sm-6">
+							<label for="firstName" class="form-label">First name</label>
+							<input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+							<div class="invalid-feedback">
+								Valid first name is required.
+							</div>
 						</div>
-					</div>
 
-					<div class="col-sm-6">
-						<label for="lastName" class="form-label">Last name</label>
-						<input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-						<div class="invalid-feedback">
-							Valid last name is required.
+						<div class="col-sm-6 col-lg-4">
+							<label for="lastName" class="form-label">Last name</label>
+							<input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
+							<div class="invalid-feedback">
+								Valid last name is required.
+							</div>
 						</div>
-					</div>
 
 
-					<div class="col-12">
-						<label for="email" class="form-label">Email
-							<span class="text-body-secondary">(Optional)</span>
-						</label>
-						<input type="email" class="form-control" id="email" placeholder="you@example.com">
-						<div class="invalid-feedback">
-							Please enter a valid email address for shipping updates.
+						<div class="col-12">
+							<label for="email" class="form-label">Email
+								<span class="text-body-secondary">(Optional)</span>
+							</label>
+							<input type="email" class="form-control" id="email" placeholder="you@example.com">
+							<div class="invalid-feedback">
+								Please enter a valid email address for shipping updates.
+							</div>
 						</div>
-					</div>
 
-					<textarea class="form-control" id="" rows="3" placeholder="Message"></textarea>
+						<textarea class="form-control" id="" rows="3" placeholder="Message"></textarea>
 
 
-					<button class="w-100 btn btn-primary btn-lg" type="submit">Envoyer</button>
-				</div> 
-			</form> 
+						<button class="w-100 btn btn-primary btn-lg" type="submit">Envoyer</button>
+					</div> 
+				</form>  #}
+
+				<a href="{{path('app_contact')}}"><h4 class="mb-3 contact">Contact</h4></a>
 
 			
 		 </div> 
 
 
-		<div class="col-12 col-md-3 mb-2">
-			<div class="card" >
-				<div class="card-header">
+		<div class="col-sm-6 w-25">
+			<div class=" card-iconeSocial " >
+				<h4>
 					Nous rejoindre sur les reseaux sociaux
-				</div>
+				</h4>
 				<div class="d-flex justify-content-center">
 					<div class="p-2">
 						<i class="fab fa-twitter"></i>
@@ -162,7 +165,7 @@
 		</div>
 
 
-		<div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+		<div class="d-flex flex-column flex-sm-row justify-content-around py-4 my-4 border-top">
 
 
 			<p>CGV</p>

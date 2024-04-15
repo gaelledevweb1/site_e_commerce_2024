@@ -27,15 +27,11 @@ class ProductsType extends AbstractType
             ->add('sellPriceTTC')
             ->add('TVA')
             ->add('details')
-            ->add('categoriesBlog', EntityType::class, [
-                'class' => CategoriesBlog::class,
-'choice_label' => 'id',
-            ])
+            
             ->add('category', EntityType::class, [
                 'class' => Category::class,
 'choice_label' => 'id',
             ])
-
             
                
         ;

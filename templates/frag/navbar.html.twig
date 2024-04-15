@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container-fluid">
+		<img class='logoImage' src="{{asset('images/logo.png')}}" alt="logo qui a pour texte physiosport en conscience">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_admin_article_blog_index')}}">blogadmin</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
+				</li>
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_products_index') }}">produits</a>
+				</li>
+
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="{{ path('app_category_index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Categories
+					</a>
+					<ul class="dropdown-menu">
+						<li>
+							<a class="dropdown-item" href="{{path('app_category_index')}}">Maternité</a>
+
+
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_products_index')}}">Sport pour le dos</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{path('app_products_index')}}">Senior</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_about') }}">A propos</a>
+				</li>
+
+				<li class="nav-item">
+					{% if is_granted('ROLE_ADMIN') %}
+						<a class="nav-link" href="{{ path('app_dashboard') }}">Dashboard</a>
+					{% endif %}
+
+				</li>
+
+			</ul>
+			{# <div class="container-fluid " >
+																																						<form class="d-flex" role="search">
+																																							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+																																							<button class="btn btn-outline-success" type="submit">Search</button>
+																																						</form>
+																																					</div>  #}
+			<ul class="navbar-nav">
+
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_cart_index') }}">
+						<i class="bi bi-cart"></i>
+						Panier
+					</a>
+				</li>
+
+
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout') }}">
+							<i class="bi bi-person"></i>Deconnexion</a>
+					</li>
+				{% else %}
+
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login') }}">
+							<i class="bi bi-person"></i>Connexion</a>
+					</li>
+				{% endif %}
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_register') }}">
+						|	inscription</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="#">
+						|	Mon compte</a>
+				</li>
+
+
+			</ul>
+
+
+		</div>
+	</div>
+
+</nav>

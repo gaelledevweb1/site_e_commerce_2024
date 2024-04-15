@@ -15,28 +15,49 @@
 
 
 		<header>
-			<div id="carouselExampleIndicators" class="carousel slide">
-				<div class="carousel-indicators">
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-					<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-				</div>
+			{# <div id="carouselExampleIndicators " class="carousel slide">
+							<div class="carousel-indicators">
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+								<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+							</div>
+							<div class="carousel-inner ">
+								<div class="carousel-item active ">
+									<img src="{{asset('images/slider/lifestyle-7331253_640.jpg')}}" class="d-block w-100" alt="lifestyle">
+								</div>
+								<div class="carousel-item">
+									<img src="{{asset('images/slider/fit-5024936_640.jpg')}}" class="d-block w-100" alt="posture de yoga realise par une femme">
+								</div>
+								<div class="carousel-item">
+									<img src="{{asset('images/slider/kettlebell-3293475_640.jpg')}}" class="d-block w-100" alt="posture de yoga realise par deux femmes">
+								</div>
+							</div>
+							<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Previous</span>
+							</button>
+							<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+								<span class="carousel-control-next-icon" aria-hidden="true"></span>
+								<span class="visually-hidden">Next</span>
+							</button>
+						</div> #}
+			<div id="carouselExample" class="carousel slide">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-						<img src="{{asset('media/lifestyle-7331253_640.jpg')}}" class="d-block w-100" alt="lifestyle">
+						<img src="{{asset('images/slider/lifestyle-7331253_640.jpg')}}" class="d-block w-100 img-fluid" alt="lifestyle, responsive image">
 					</div>
 					<div class="carousel-item">
-						<img src="{{asset('media/fit-5024936_640.jpg')}}" class="d-block w-100" alt="posture de yoga realise par une femme">
+						<img src="{{asset('images/slider/fit-5024936_640.jpg')}}" class="d-block w-100 img-fluid" alt="posture de yoga realise par une femme, responsive image">
 					</div>
 					<div class="carousel-item">
-						<img src="{{asset('images/kettlebell.jpg')}}" class="d-block w-100" alt="posture de yoga realise par deux femmes">
+						<img src="{{asset('images/slider/kettlebell-3293475_640.jpg')}}" class="d-block w-100 img-fluid" alt="posture de yoga realise par deux femmes, responsive image">
 					</div>
 				</div>
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Previous</span>
 				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Next</span>
 				</button>
@@ -45,12 +66,12 @@
 
 		<main>
 			<section class="sect1 colCenter">
-				<h2>Nos meilleurs ventes</h2>
+				<h1>Nos meilleurs ventes</h1>
 				{# <div class="cards rowCenter"> #}
 				<div class="row row-cols-4 d-flex justify-content-center ">
 
 					<div class="card me-3 mb-3" style="width: 18rem;">
-						<img src="{{asset('media/medicine-ball-1575315_640 (1).jpg')}}" class="card-img-top" alt="medecine ball">
+						<img src="{{asset('images/thumbnail/medicine-ball-1575315_640.jpg')}}" class="card-img-top" alt="medecine ball" style="height:11.5rem">
 						<div class="card-body">
 							<h5 class="card-title">Card title</h5>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -60,7 +81,7 @@
 					</div>
 
 					<div class="card me-3  mb-3" style="width: 18rem;">
-						<img src="{{asset('media/physiotherapy-595529_640.jpg')}}" class="card-img-top" alt="renforcement musculaire avec des poids">
+						<img src="{{asset('images/thumbnail/physiotherapy-595529_640.jpg')}}" class="card-img-top " alt="renforcement musculaire avec des poids" style="height:11.5rem">
 						<div class="card-body">
 							<h5 class="card-title">Card title</h5>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -70,7 +91,7 @@
 					</div>
 
 					<div class="card me-3  mb-3" style="width: 18rem;">
-						<img src="{{asset('media/woman-2959213_640.jpg')}}" class="card-img-top" alt="posture de yoga">
+						<img src="{{asset('images/thumbnail/woman-2959213_640.jpg')}}" class="card-img-top" alt="posture de yoga" style="height:11.5rem">
 						<div class="card-body">
 							<h5 class="card-title">Card title</h5>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -80,7 +101,7 @@
 					</div>
 
 					<div class="card me-3  mb-3" style="width: 18rem;">
-						<img src="{{asset('media/yoga-5780931_640.jpg')}}" class="card-img-top" alt="etirement">
+						<img src="{{asset('images/thumbnail/yoga-5780931_640.jpg')}}" class="card-img-top" alt="etirement" style="height:11.5rem;">
 						<div class="card-body">
 							<h5 class="card-title">Card title</h5>
 							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -93,8 +114,8 @@
 				</div>
 
 
-				<a href="{{path('app_products_index')}}"  >
-					<button class="btn" type="submit">voir tous nos produits</button>
+				<a href="{{path('app_products_index')}}">
+					<button class="btn btnProducts" type="submit">voir tous nos produits</button>
 				</a>
 
 			</section>
@@ -102,43 +123,56 @@
 			<section
 				class="sect2">
 				{# <div class="cards rowCenter">
-				
-									<card class="card card1">
-										<h2>Maternité</h2>
-									</card>
-									<card class="card card2">
-										<h2>Sport pour le  Dos</h2>
-									</card>
-									<card class="card card3">
-										<h2>Seniors</h2>
-									</card>
-				
-								</div> #}
+												
+																	<card class="card card1">
+																		<h2>Maternité</h2>
+																	</card>
+																	<card class="card card2">
+																		<h2>Sport pour le  Dos</h2>
+																	</card>
+																	<card class="card card3">
+																		<h2>Seniors</h2>
+																	</card>
+												
+																</div> #}
 				<div class="card-group">
-					<div class="card">
+					<div class="card card1">
 						<img src="{{asset('media/pregnant-6045825_640.jpg')}}" class="card-img-top" alt="femme enceinte">
+						<div class="card-img-overlay">
+							<h5 class="card-title" style="color:white;">Maternité:découvrir</h5>
+
+						</div>
 
 					</div>
-					<div class="card">
+					<div class="card card2">
 						<img src="{{asset('media/woman-1979258_640.jpg')}}" class="card-img-top" alt="sport pour le dos">
+						<div class="card-img-overlay">
+							<h5 class="card-title">sport pour le dos:découvrir
+							</h5>
+
+						</div>
 
 					</div>
-					<div class="card">
-						<img src="{{asset('media/walking-Seniors.jpg')}}" class="card-img-top" alt="senior">
+					<div class="card card3">
+						<img src="{{asset('media/walking-Seniors.jpg')}}" class="card-img-top" alt="senior" style="height:37rem">
+						<div class="card-img-overlay">
+							<h5 class="card-title" style="color:white;">senior:découvrir</h5>
+
+						</div>
 
 					</div>
 				</div>
 			</section>
-			<section class="sect3">
+			<section class="sect3 ">
 				<div class="d-flex justify-content-center ">
-					<div class="card mb-3 " style="max-width: 540px;">
+					<div class="card  " style="max-width: 1420px;">
 						<div class="row g-0">
 							<div class="col-md-4">
 								<img src="{{asset('/media/exercise-2029430_640.png')}}" class="img-fluid rounded-start" alt="seniors  faisant de la marche nordique">
 							</div>
 							<div class="col-md-8">
-								<div class="card-body">
-									<h5 class="card-title">Atelier sénior</h5>
+								<div class="card-body" style="margin-top:90px;">
+									<h3 class="card-title">Atelier sénior</h3>
 									<p class="card-text">ce que nous verrons dans cet atelier hebdomadaire :  comment travailler votre équilibre, renforcement musculaire, coordination, prévention des chutes, souplesse, cardio, relaxation, etirement, respiration,  et surtout comment adapter les exercices à votre niveau et à vos capacités.</p>
 									<h6 class="card-subtitle mb-2 text-muted">15€/cours</h6>
 									<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>

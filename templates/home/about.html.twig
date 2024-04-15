@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos
+{% endblock %}
+
+
+{% block body %}
+
+	{% block navBar %}
+		{{ parent() }}
+	{% endblock %}
+
+
+	{% block content %}
+
+		<div class="container-fluid colcenter">
+			<div class="card  " style="width: 50rem;">
+				<div class="card-header">Qui sommes nous ?</div>
+				<div class="card-body">
+					<h5 class="card-title">Tout à commencé</h5>
+					<p class="card-text">Après avoir animé pendant plusieurs années aux Hespérides de boulogne un cours de gymnastique douce auprès de personnes agées, j'ai décidé de créer ce site pour pouvoir aussi proposer  aux personnes que je suis en osteopathie et à ceux qui le désirent des produits de qualité pour pratiquer une activité physique  et des ateliers pour les seniors.
+																					                                    Pour les femmes enceintes et les personnes qui ont des douleurs de dos  voici les produits qui pour moi pourront vous apporté une aide.</p>
+				</div>
+			</div>
+		</div>
+	{% endblock %}
+
+	{% block footer %}
+		{{ parent() }}
+	{% endblock %}
+{% endblock %}

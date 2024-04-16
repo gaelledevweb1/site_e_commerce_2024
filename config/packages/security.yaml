@@ -51,6 +51,7 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+        # - { path: ^/gestionnaireDeFluxMarketplaces, roles: ROLE_Gestionnaire_De_Flux_Marketplaces} 
        
 
 when@test:

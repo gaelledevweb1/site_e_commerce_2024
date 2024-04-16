@@ -13,7 +13,8 @@ body{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
+    overflow-x: hidden;  
+    /* overflow: clip; */
    
 }
 h1,h2,h3,h4,h5,h6{
@@ -276,4 +277,10 @@ h1{
 
 .ctnImgProduct{
     object-fit: cover;
+     padding:0 2rem;
+    
+}
+
+.product-card-body{
+    /*  ! dans mon dashboard  je n'ai pas reussi avec mon padding right a  modifier a droite mon texte */
 }

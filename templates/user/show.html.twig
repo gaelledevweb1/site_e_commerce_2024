@@ -59,7 +59,23 @@
                 <th>IsVerified</th>
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
             </tr>
+
+
+            <!--information de l'adresse -->
+    {# {% if user.address is not null %}
+        <h2>Informations de l'adresse</h2>
+        
+        <p><strong>Numero Adresse :</strong> {{ user.adress.number }}</p>
+        <p><strong>Adresse :</strong> {{ user.adress.street }}</p>
+        <p><strong>Ville :</strong> {{ user.adress.City }}</p>
+        <p><strong>Code postal :</strong> {{ user.adress.Zip }}</p>
+        <p><strong>Pays :</strong> {{ user.adress.Country }}</p> #}
+        {# Ajoutez d'autres champs ici en fonction des propriétés de votre entité Address #}
+    {# {% else %}
+        <p>Pas d'adresse</p>
+    {% endif %} #}
         </tbody>
+
     </table>
 
     <a href="{{ path('app_user_index') }}">back to list</a>

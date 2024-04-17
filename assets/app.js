@@ -31,3 +31,4 @@ btnNav.addEventListener('click', () => {
       cookies.style.opacity ='0';
   });
 
+  

@@ -4,17 +4,22 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+*:before, *:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
 body{
     font-family:  "Lato", sans-serif;
     
     font-size: 16px;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+   
     overflow-x: hidden;  
     /* overflow: clip; */
+    min-width: 100vw;
+    background: rgb(117,148,189);
+background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%);
    
 }
 h1,h2,h3,h4,h5,h6{
@@ -49,8 +54,8 @@ li{
 
 .navbar{
     min-height:180px;
-    background: rgb(117,148,189);
-background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%);
+     background: rgb(117,148,189);
+background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%); 
 }
 .nav-item:hover{
     background-color:  #BC4B23;
@@ -70,21 +75,27 @@ background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 
 
 
 header{
-    height:50vh;
+    height:40vh;
 }
-#carouselExample{
+/* #carouselExample{
     height:469px;
-    width: 621px;
-    margin-left: 30%;
-}
+    width: 100%;
+    
+    
+} */
 
- .carousel-inner{
+ /* .carousel-inner{
     height:469px;
 } 
 .img-fluid{
     height:469px;
-    max-width:621px;
+    max-width:100%;
 }
+.card-body-header{
+    background: rgb(117,148,189);
+background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%);
+height: 469px;
+} */
 
 
 
@@ -105,28 +116,17 @@ header{
 
 
 .sect1 .btnProducts{
-    width:15rem;
-    padding:3rem;
+    width:23rem;
+    padding:2rem;
     box-shadow: 1px 2px 20px#54565e;
-    border-radius: 50% / 50%;
+    border-radius: 25px 25px 25px 25px;
     margin: 20px;
     background: linear-gradient(to right, #1E2337, #BC4B23);
      transition: all 0.3s ease; /*anime en douceur les transitions*/
     font-size: 24px;
     position: relative; /* Ajouté pour positionner le triangle */
 }
-.sect1 .btnProducts::after {
-    content: "";
-    position: absolute;
-    right: -80px; /* Ajustez selon la taille de votre bouton */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 80px 0 80px 80px; /* Ajustez pour changer la taille du triangle */
-    border-color: transparent transparent transparent #BC4B23; /* La dernière couleur est la couleur du triangle */
-}
+
 
 .sect1 .btnProducts:hover {
     box-shadow: 1px 2px 30px#54565e;
@@ -184,7 +184,7 @@ header{
     
 
 .sect3{
-    background-color: #735D49;
+    /* background-color: rgb(117,148,189); */
 }
 
 .ctn-form{
@@ -198,8 +198,8 @@ header{
     
 }
 footer{
-    background: rgb(117,148,189);
-background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%);
+    /* background: rgb(117,148,189);
+background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%); */
 box-shadow: 0 0 10px rgba(0,0,0,0.1);
 z-index: -20;
 }
@@ -216,7 +216,8 @@ z-index: -20;
     bottom :0;
     left: 0;
     width: 100%;
-    background-color: #767005;
+    background: linear-gradient(to right, #1E2337, #BC4B23);
+    color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -239,7 +240,7 @@ z-index: -20;
         background-color: #1E2337;
     }
     .cookies .btn.btn-deny{
-        background-color: #767005;
+        background-color:rgba(0,0,0,0.1);
     }
     
 

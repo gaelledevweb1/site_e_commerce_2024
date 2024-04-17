@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon  compte
+{% endblock %}
+
+{% block body %}
+	{% block navBar %}
+		{{ parent() }}
+	{% endblock %}
+
+	{% block content %}
+		<h1>profil
+		</h1>
+
+       {#  je souhaite avoir les informations de l'utilisateur connecter #}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Informations personnelles</h2>
+                    <p>{{ app.user.email }}</p>
+                    <p>{{ app.user.username }}</p>
+                    
+                </div>
+                <div class="col-md-6">
+                    <h2>Commandes</h2>
+                    <p>Vous n'avez pas encore passé de commande</p>
+                </div>
+            </div>
+
+        {% block footer %}
+			{{ parent() }}
+		{% endblock %}
+
+
+	{% endblock %}
+
+
+{% endblock %}

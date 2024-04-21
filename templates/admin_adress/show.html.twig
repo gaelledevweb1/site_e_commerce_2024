@@ -2,7 +2,7 @@
 
 {% block title %}Adress{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Adress</h1>
 
     <table class="table">
@@ -12,9 +12,13 @@
                 <td>{{ adress.id }}</td>
             </tr>
             <tr>
-                <th>Address</th>
-                <td>{{ adress.Address }}</td>
+                <th>Numéro</th>
+                <td>{{ adress.number }}</td>
+                    
             </tr>
+            <tr>
+                <th>rue</th>
+                <td>{{ adress.Street }}</td>
             <tr>
                 <th>City</th>
                 <td>{{ adress.City }}</td>
@@ -27,6 +31,15 @@
                 <th>Country</th>
                 <td>{{ adress.Country }}</td>
             </tr>
+
+            {# <tr>
+                <th>nom</th>
+                <td>{{ adress.user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>prenom</th>
+                <td>{{ adress.user.lastName }}</td>
+            </tr> #}
         </tbody>
     </table>
 

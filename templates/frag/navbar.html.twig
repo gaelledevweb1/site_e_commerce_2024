@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<nav class="navbar navbar-expand-lg bg-body-tertiary ">
 	<div class="container-fluid">
-		<img class='logoImage me-5' src="{{asset('images/logo2.png')}}" alt="logo qui a pour texte physiosport en conscience" >
+		<img class='logoImage me-5' src="{{asset('images/logo2.png')}}" alt="logo qui a pour texte physiosport en conscience">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNav" >
+		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ">
 
 				<li class="nav-item">
@@ -38,7 +38,7 @@
 						</li>
 					</ul>
 				</li>
-				
+
 
 				<li class="nav-item">
 					{% if is_granted('ROLE_ADMIN') %}
@@ -48,13 +48,13 @@
 				</li>
 
 			</ul>
-			 <div class="container-fluid " >
-																																						<form class="d-flex" role="search">
-																																							<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style='width:33rem;'>
-																																							<button class="btn btn-outline-success" type="submit">Search</button>
-																																						</form>
-																																					</div>  
-																																					{# !le flex-row ne fonctionne pas   #}
+			<div class="container-fluid ">
+				<form class="d-flex" role="search">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style='width:33rem;'>
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</form>
+			</div>
+			{# !le flex-row ne fonctionne pas   #}
 			<ul class="navbar-nav ">
 				<li class="nav-item ">
 					<a class="nav-link" href="{{ path('app_about') }}">A propos</a>
@@ -75,7 +75,7 @@
 					</li>
 				{% else %}
 
-					<li class="nav-item">
+					<li class="nav-item ">
 						<a class="nav-link" href="{{ path('app_login') }}">
 							<i class="bi bi-person"></i>Connexion</a>
 					</li>
@@ -84,10 +84,17 @@
 					<a class="nav-link" href="{{ path('app_register') }}">
 						|	inscription</a>
 				</li>
-				<li class="nav-item">
-					<a class="nav-link me-5" href="{{path('app_mon_compte')}}">
-						|	Mon compte</a>
-				</li>
+
+				{# si connexion actif afficher Mon compte #}
+
+				{% if is_granted('IS_AUTHENTICATED_FULLY')  %}
+					<li class="nav-item">
+						<a class="nav-link me-5" href="{{path('app_mon_compte')}}">
+							|	Mon compte</a>
+					</li>
+
+
+				{% endif %}
 
 
 			</ul>

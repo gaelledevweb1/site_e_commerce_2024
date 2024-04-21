@@ -5,9 +5,7 @@
 
 {% block body %}
 
-	{% block navBar %}
-		{{ parent() }}
-	{% endblock %}
+	
 	{% block content %}
 		<h1>votre panier</h1>
 
@@ -87,6 +85,6 @@
 
 
 	{% block footer %}
-		{{ parent() }}
+		{% include 'frag/footer.html.twig' %}
 	{% endblock %}
 {% endblock %}

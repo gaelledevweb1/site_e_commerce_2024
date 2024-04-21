@@ -24,7 +24,7 @@ class Adress
     #[ORM\Column(length: 255)]
     private ?string $Country = null;
 
-    #[ORM\ManyToOne(inversedBy: 'user')]
+    #[ORM\ManyToOne(inversedBy: 'adress', targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 

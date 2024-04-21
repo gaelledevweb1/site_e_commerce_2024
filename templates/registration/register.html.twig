@@ -3,45 +3,56 @@
 {% block title %}Register
 {% endblock %}
 
-{% block body %}
 
-    {% block navBar %}
+{# {% block navBar %}
 		{{ parent() }}
-	{% endblock %}
+	{% endblock %} #}
 
-	{% block content %}
+{% block content %}
+	<div class="container">
 
 
 		{% for flash_error in app.flashes('verify_email_error') %}
 			<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
 		{% endfor %}
 
-		<h1>Register</h1>
+		<h1 class="mb-4">Register</h1>
 
 		{{ form_errors(registrationForm) }}
 
-		{{ form_start(registrationForm) }}
-		{{form_row(registrationForm.firstName)}}
-		{{form_row(registrationForm.lastName)}}
-		{{ form_row(registrationForm.email) }}
-		{{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-		{{ form_row(registrationForm.phone) }}
-		{{ form_row(registrationForm.birthday) }}
-		
-		
-		{{ form_row(registrationForm.agreeTerms) }}
+		{{ form_start(registrationForm,{'attr': {'class': 'needs-validation', 'novalidate': ''}}) }}
+		<div class="mb-3">
+			{{form_row(registrationForm.firstName, {'attr': {'class': 'form-control'}})}}
+		</div>
+		<div class="mb-3">
+			{{form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}})}}
+		</div>
+		<div class="mb-3">
+			{{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+		</div>
+		<div class="mb-3">
+			{{ form_row(registrationForm.plainPassword, {
+				label: 'Password',
+				'attr': {'class': 'form-control'}
+			}) }}
+		</div>
+		<div class="mb-3">
+			{{ form_row(registrationForm.phone, {'attr': {'class': 'form-control'}}) }}
+		</div>
+		<div class="mb-3">
+			{{ form_row(registrationForm.birthday, {'attr': {'class': 'form-control'}}) }}
+		</div>
+
+		<div class="mb-3 form-check">
+			{{ form_row(registrationForm.agreeTerms, {'attr': {'class': 'form-check-input'}}) }}
+		</div>
 
 		<button type="submit" class="btn btn-primary">envoyer</button>
 		{{ form_end(registrationForm) }}
 
+	</div>
 
+	{% block footer %}
+		{% include 'frag/footer.html.twig' %}
 	{% endblock %}
-
-    {% block footer %}
-			{{ parent() }}
-	{% endblock %}
-
-
 {% endblock %}

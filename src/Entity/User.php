@@ -74,7 +74,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $isVerified = false;
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Adress::class)]
-    private Collection $user;
+    private Collection $adress;
 
     
 
@@ -83,7 +83,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->orders = new ArrayCollection();
         $this->article = new ArrayCollection();
         $this->commentsBlog = new ArrayCollection();
-        $this->user = new ArrayCollection();
+        $this->adress= new ArrayCollection();
     }
 
 
@@ -393,27 +393,29 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Adress>
      */
-    public function getUser(): Collection
+    public function getAdress(): Collection
     {
-        return $this->user;
+        return $this->adress;
     }
 
-    public function addUser(Adress $user): static
+    public function addAdress(Adress $adress): static
     {
-        if (!$this->user->contains($user)) {
-            $this->user->add($user);
-            $user->setUser($this);
+        if (!$this->adress->contains($adress)) {
+            // $this->adress->add($adress);
+            $this->adress[]=$adress;
+            $adress->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeUser(Adress $user): static
+    public function removeAdress(Adress $adress): static
     {
-        if ($this->user->removeElement($user)) {
+        if ($this->adress->contains($adress)) {
+            $this->adress->removeElement($adress);
             // set the owning side to null (unless already changed)
-            if ($user->getUser() === $this) {
-                $user->setUser(null);
+            if ($adress->getUser() === $this) {
+                $adress->setUser(null);
             }
         }
 

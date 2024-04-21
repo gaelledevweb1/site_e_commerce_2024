@@ -5,9 +5,7 @@
 
 {% block body %}
 
-	{% block navBar %}
-		{{ parent() }}
-	{% endblock %}
+	
 	{% block content %}
 		<h1>CommentsBlog index</h1>
 
@@ -44,7 +42,5 @@
 		<a href="{{ path('app_admin_comments_blog_new') }}">Create new</a>
 	{% endblock %}
 
-	{% block footer %}
-		{{ parent() }}
-	{% endblock %}
+	
 {% endblock %}

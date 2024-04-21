@@ -183,9 +183,7 @@ height: 469px;
     }  
     
 
-.sect3{
-    /* background-color: rgb(117,148,189); */
-}
+
 
 .ctn-form{
     display: flex;
@@ -204,7 +202,7 @@ box-shadow: 0 0 10px rgba(0,0,0,0.1);
 z-index: -20;
 }
 
-.card-iconeSocial,  .contact{
+.card-iconeSocial{
     margin-top: 5rem;
 }
 
@@ -282,6 +280,7 @@ h1{
     
 }
 
-.product-card-body{
-    /*  ! dans mon dashboard  je n'ai pas reussi avec mon padding right a  modifier a droite mon texte */
-}
+ /*  ! dans mon dashboard  je n'ai pas reussi avec mon padding right a  modifier a droite mon texte */
+/* .product-card-body{} */
+   
+

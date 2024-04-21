@@ -10,13 +10,6 @@ import './bootstrap.js';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
-const btnNav = document.querySelector('.navbar-toggler');
-console.log(btnNav,"btnNav clicked");
-const menu = document.querySelector('.navbar-collapse');
-btnNav.addEventListener('click', () => {
-  
-  menu.classList.toggle('show');
-});
 
 // cookies 
 

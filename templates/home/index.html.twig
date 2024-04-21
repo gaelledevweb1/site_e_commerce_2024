@@ -4,260 +4,254 @@
 {% endblock %}
 
 
-{% block body %}
-
-	{% block navBar %}
-		{{ parent() }}
-	{% endblock %}
+{# {% block body %} #}
 
 
-	{% block content %}
+{% block content %}
 
 
-		<header>
+	<header>
 
-			{#<div id="carouselExample" class="carousel slide">
-							<div class="carousel-inner">
-								<div
-									class="carousel-item active">
-									
-									<div class="card mb-3" style="max-width: 100%;">
-										<div class="row g-0">
-											<div class="col-md-4">
-												<img src="{{asset('images/slider/lifestyle-7331253_640.jpg')}}" class="d-block w-100 img-fluid rounded-start" alt="lifestyle, responsive image">
-			
-											</div>
-											<div class="col-md-8">
-												<div class="card-body card-body-header">
-													<h5 class="card-title">Article Blog</h5>
-													<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-													<p class="card-text">
-														<small class="text-body-secondary">Last updated 3 mins ago</small>
-													</p>
-			
+		{#<div id="carouselExample" class="carousel slide">
+												<div class="carousel-inner">
+													<div
+														class="carousel-item active">
+														
+														<div class="card mb-3" style="max-width: 100%;">
+															<div class="row g-0">
+																<div class="col-md-4">
+																	<img src="{{asset('images/slider/lifestyle-7331253_640.jpg')}}" class="d-block w-100 img-fluid rounded-start" alt="lifestyle, responsive image">
+								
+																</div>
+																<div class="col-md-8">
+																	<div class="card-body card-body-header">
+																		<h5 class="card-title">Article Blog</h5>
+																		<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+																		<p class="card-text">
+																			<small class="text-body-secondary">Last updated 3 mins ago</small>
+																		</p>
+								
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div
+														class="carousel-item">
+														
+														<div class="card mb-3" style="max-width: 100%;">
+															<div class="row g-0">
+																<div class="col-md-4">
+																	<img src="{{asset('images/slider/fit-5024936_640.jpg')}}" class="d-block w-100 img-fluid rounded-start" alt="lifestyle, responsive image">
+								
+																</div>
+																<div class="col-md-8">
+																	<div class="card-body card-body-header">
+																		<h5 class="card-title">Card title</h5>
+																		<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+																		<p class="card-text">
+																			<small class="text-body-secondary">Last updated 3 mins ago</small>
+																		</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
+													<div
+														class="carousel-item">
+														
+														<div class="card mb-3" style="max-width: 100%;">
+															<div class="row g-0">
+																<div class="col-md-4">
+																	<img src="{{asset('images/slider/kettlebell-3293475_640.jpg')}}" class="d-block w-100 img-fluid rounded-start" alt="lifestyle, responsive image"> 
+																	
+								
+																</div>
+																<div class="col-md-8">
+																	<div class="card-body card-body-header">
+																		<h5 class="card-title">Card title</h5>
+																		<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+																		<p class="card-text">
+																			<small class="text-body-secondary">Last updated 3 mins ago</small>
+																		</p>
+																	</div>
+																</div>
+															</div>
+														</div>
+													</div>
 												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-item">
-									
-									<div class="card mb-3" style="max-width: 100%;">
-										<div class="row g-0">
-											<div class="col-md-4">
-												<img src="{{asset('images/slider/fit-5024936_640.jpg')}}" class="d-block w-100 img-fluid rounded-start" alt="lifestyle, responsive image">
-			
-											</div>
-											<div class="col-md-8">
-												<div class="card-body card-body-header">
-													<h5 class="card-title">Card title</h5>
-													<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-													<p class="card-text">
-														<small class="text-body-secondary">Last updated 3 mins ago</small>
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div
-									class="carousel-item">
-									
-									 <div class="card mb-3" style="max-width: 100%;">
-										<div class="row g-0">
-											<div class="col-md-4">
-												 <img src="{{asset('images/slider/kettlebell-3293475_640.jpg')}}" class="d-block w-100 img-fluid rounded-start" alt="lifestyle, responsive image"> 
-												
-			
-											</div>
-											<div class="col-md-8">
-												<div class="card-body card-body-header">
-													<h5 class="card-title">Card title</h5>
-													<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-													<p class="card-text">
-														<small class="text-body-secondary">Last updated 3 mins ago</small>
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Previous</span>
-							</button>
-							<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="visually-hidden">Next</span>
-							</button>
-						</div> #}
+												<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+													<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+													<span class="visually-hidden">Previous</span>
+												</button>
+												<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+													<span class="carousel-control-next-icon" aria-hidden="true"></span>
+													<span class="visually-hidden">Next</span>
+												</button>
+											</div> #}
 
-			<div id="carouselExample" class="carousel slide">
-				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">
-					</div>
-					<div class="carousel-item">
-						<img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">
-					</div>
-					<div class="carousel-item">
-						<img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">
-					</div>
+		<div id="carouselExample" class="carousel slide">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">
 				</div>
-				<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Previous</span>
-				</button>
-				<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-					<span class="carousel-control-next-icon" aria-hidden="true"></span>
-					<span class="visually-hidden">Next</span>
-				</button>
+				<div class="carousel-item">
+					<img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">
+				</div>
+				<div class="carousel-item">
+					<img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">
+				</div>
 			</div>
-		</header>
+			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Previous</span>
+			</button>
+			<button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="visually-hidden">Next</span>
+			</button>
+		</div>
+	</header>
 
-		<main>
-			<section class="sect1 colCenter">
-				<h1>Nos meilleurs ventes</h1>
+	<main>
+		<section class="sect1 colCenter">
+			<h1>Nos meilleurs ventes</h1>
 
-				<div class="row row-cols-4 d-flex justify-content-center   ">
+			<div class="row row-cols-4 d-flex justify-content-center   ">
 
-					<div class="card me-5 mb-5" style="width: 18rem;">
-						<img src="{{asset('images/thumbnail/medicine-ball-1575315_640.jpg')}}" class="card-img-top" alt="medecine ball" style="height:11.5rem">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-							<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
-						</div>
+				<div class="card me-5 mb-5" style="width: 18rem;">
+					<img src="{{asset('images/thumbnail/medicine-ball-1575315_640.jpg')}}" class="card-img-top" alt="medecine ball" style="height:11.5rem">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
+						<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
 					</div>
+				</div>
 
-					<div class="card me-5  mb-5" style="width: 18rem;">
-						<img src="{{asset('images/thumbnail/physiotherapy-595529_640.jpg')}}" class="card-img-top " alt="renforcement musculaire avec des poids" style="height:11.5rem">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-							<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
-						</div>
+				<div class="card me-5  mb-5" style="width: 18rem;">
+					<img src="{{asset('images/thumbnail/physiotherapy-595529_640.jpg')}}" class="card-img-top " alt="renforcement musculaire avec des poids" style="height:11.5rem">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
+						<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
 					</div>
+				</div>
 
-					<div class="card me-5  mb-5" style="width: 18rem;">
-						<img src="{{asset('images/thumbnail/woman-2959213_640.jpg')}}" class="card-img-top" alt="posture de yoga" style="height:11.5rem">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-							<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-							<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
-						</div>
+				<div class="card me-5  mb-5" style="width: 18rem;">
+					<img src="{{asset('images/thumbnail/woman-2959213_640.jpg')}}" class="card-img-top" alt="posture de yoga" style="height:11.5rem">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
+						<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
 					</div>
+				</div>
 
-					<div class="card me-5  mb-5  " style="width: 18rem;">
-						<img src="{{asset('images/thumbnail/yoga-5780931_640.jpg')}}" class="card-img-top" alt="etirement" style="height:11.5rem;">
-						<div class="card-body">
-							<h5 class="card-title">Card title</h5>
-							<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+				<div class="card me-5  mb-5  " style="width: 18rem;">
+					<img src="{{asset('images/thumbnail/yoga-5780931_640.jpg')}}" class="card-img-top" alt="etirement" style="height:11.5rem;">
+					<div class="card-body">
+						<h5 class="card-title">Card title</h5>
+						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
-							<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-							<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
-						</div>
+						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
+						<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
+					</div>
+				</div>
+
+			</div>
+
+
+			<a href="{{path('app_products_index')}}">
+				<button class="btn btnProducts" type="submit">voir tous nos produits</button>
+			</a>
+
+		</section>
+
+		<section
+			class="sect2">
+			{# <div class="cards rowCenter">
+																																			
+																																								<card class="card card1">
+																																									<h2>Maternité</h2>
+																																								</card>
+																																								<card class="card card2">
+																																									<h2>Sport pour le  Dos</h2>
+																																								</card>
+																																								<card class="card card3">
+																																									<h2>Seniors</h2>
+																																								</card>
+																																			
+																																							</div> #}
+			<div class="card-group">
+				<div
+					class="card card1">
+					{# <img src="{{asset('media/pregnant-6045825_640.jpg')}}" class="card-img-top" alt="femme enceinte"> #}
+					<a href="{{path('app_category_index')}}" style="z-index:100"><img src="{{asset('images/img/portrait/belly-1434852_1280.jpg')}}" class="card-img-top" alt="femme enceinte"></a>
+
+					<div class="card-img-overlay">
+						<h5 class="card-title" style="color:white;">Maternité:découvrir</h5>
+
 					</div>
 
 				</div>
-
-
-				<a href="{{path('app_products_index')}}">
-					<button class="btn btnProducts" type="submit">voir tous nos produits</button>
-				</a>
-
-			</section>
-
-			<section
-				class="sect2">
-				{# <div class="cards rowCenter">
-																												
-																																	<card class="card card1">
-																																		<h2>Maternité</h2>
-																																	</card>
-																																	<card class="card card2">
-																																		<h2>Sport pour le  Dos</h2>
-																																	</card>
-																																	<card class="card card3">
-																																		<h2>Seniors</h2>
-																																	</card>
-																												
-																																</div> #}
-				<div class="card-group">
-					<div
-						class="card card1">
-						{# <img src="{{asset('media/pregnant-6045825_640.jpg')}}" class="card-img-top" alt="femme enceinte"> #}
-						<a href="{{path('app_category_index')}}"style="z-index:100"><img src="{{asset('images/img/portrait/belly-1434852_1280.jpg')}}" class="card-img-top" alt="femme enceinte"></a>
-						
-						<div class="card-img-overlay">
-							<h5 class="card-title" style="color:white;">Maternité:découvrir</h5>
-
-						</div>
-
-					</div>
-					<div class="card card2">
-						<a href="{{path('app_products_index')}}" style="z-index:100">
+				<div class="card card2">
+					<a href="{{path('app_products_index')}}" style="z-index:100">
 						<img src="{{asset('images/img/portrait/woman-1979258_1280.jpg')}}" class="card-img-top" alt="sport pour le dos"></a>
-						
-						<div class="card-img-overlay">
-							
-							<h5 class="card-title">sport pour le dos:découvrir
-							</h5>
 
-						</div>
+					<div class="card-img-overlay">
+
+						<h5 class="card-title">sport pour le dos:découvrir
+						</h5>
 
 					</div>
-					<div class="card card3">
-						<a href="{{path('app_products_index')}}"style="z-index:100">
+
+				</div>
+				<div class="card card3">
+					<a href="{{path('app_products_index')}}" style="z-index:100">
 						<img src="{{asset('images/img/portrait/walking-5357721_1280.jpg')}}" class="card-img-top" alt="senior" style="height:27.5rem;"></a>
-						<div class="card-img-overlay">
-							<h5 class="card-title" style="color:white;">senior:découvrir</h5>
+					<div class="card-img-overlay">
+						<h5 class="card-title" style="color:white;">senior:découvrir</h5>
 
-						</div>
-
-					</div>
-				</div>
-			</section>
-			<section class="sect3 ">
-				<div class="d-flex justify-content-center ">
-					<div class="card  " style="max-width: 1420px;">
-						<div class="row g-0">
-							<div class="col-md-4">
-								<img src="{{asset('/media/exercise-2029430_640.png')}}" class="img-fluid rounded-start" alt="seniors  faisant de la marche nordique">
-							</div>
-							<div class="col-md-8">
-								<div class="card-body" style="margin-top:90px;">
-									<h3 class="card-title">Atelier sénior</h3>
-									<p class="card-text">ce que nous verrons dans cet atelier hebdomadaire :  comment travailler votre équilibre, renforcement musculaire, coordination, prévention des chutes, souplesse, cardio, relaxation, etirement, respiration,  et surtout comment adapter les exercices à votre niveau et à vos capacités.</p>
-									<h6 class="card-subtitle mb-2 text-muted">15€/cours</h6>
-									<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
-
-									<p class="card-text">
-										<small class="text-body-secondary">Last updated 3 mins ago</small>
-									</p>
-								</div>
-							</div>
-						</div>
 					</div>
 
 				</div>
+			</div>
+		</section>
+		<section class="sect3 ">
+			<div class="d-flex justify-content-center ">
+				<div class="card  " style="max-width: 1420px;">
+					<div class="row g-0">
+						<div class="col-md-4">
+							<img src="{{asset('/media/exercise-2029430_640.png')}}" class="img-fluid rounded-start" alt="seniors  faisant de la marche nordique">
+						</div>
+						<div class="col-md-8">
+							<div class="card-body" style="margin-top:90px;">
+								<h3 class="card-title">Atelier sénior</h3>
+								<p class="card-text">ce que nous verrons dans cet atelier hebdomadaire :  comment travailler votre équilibre, renforcement musculaire, coordination, prévention des chutes, souplesse, cardio, relaxation, etirement, respiration,  et surtout comment adapter les exercices à votre niveau et à vos capacités.</p>
+								<h6 class="card-subtitle mb-2 text-muted">15€/cours</h6>
+								<a href="{{path('app_cart_index')}}" class="btn btn-primary">ajouter au panier</a>
+
+								<p class="card-text">
+									<small class="text-body-secondary">Last updated 3 mins ago</small>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
 
 
-			</section>
+		</section>
 
 
-			{% include "frag/modalCookie.html.twig" %}
-		</main>
-
-
-	{% endblock %}
+		{% include "frag/modalCookie.html.twig" %}
+	</main>
 
 	{% block footer %}
-		{{ parent() }}
+		{% include 'frag/footer.html.twig' %}
 	{% endblock %}
 {% endblock %}
+

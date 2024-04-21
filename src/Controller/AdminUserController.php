@@ -44,10 +44,18 @@ class AdminUserController extends AbstractController
 
     #[Route('/{id}', name: 'app_admin_user_show', methods: ['GET'])]
     public function show(User $user): Response
-    {
+    { 
+         foreach ( $user->getAdress()as $adress) {
+          ($adress->getCountry());
+         }
+         
+         $adressFields = ['number','street', 'City', 'Zip', 'Country'];
         return $this->render('admin_user/show.html.twig', [
             'user' => $user,
+             'userAdress' => $user->getAdress(),
+             'adressFields' =>$adressFields,
         ]);
+            
     }
 
     #[Route('/{id}/edit', name: 'app_admin_user_edit', methods: ['GET', 'POST'])]

@@ -3,11 +3,23 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
 }
 *:before, *:after {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+  }
+  .col-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .spacebetween{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 body{
     font-family:  "Lato", sans-serif;
@@ -17,7 +29,7 @@ body{
    
     overflow-x: hidden;  
     /* overflow: clip; */
-    min-width: 100vw;
+    /* min-width: 100vw; */
     background: rgb(117,148,189);
 background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 61%, rgba(110,143,187,1) 100%);
    
@@ -34,12 +46,12 @@ h1{
 h2, h3{
     font-size: 24px;
 }
-p{
+p,li, h4 {
     font-size: 16px;
 }
-li{
+/* li{
     font-size: 16px;
-}
+} */
 
 
 /* home */
@@ -62,7 +74,7 @@ background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 
     color: #FFFFFF;  
 }
 
-.logoImage{
+/* .logoImage{
     object-position: left top;
     object-fit: none;
     width: 200px; 
@@ -71,7 +83,7 @@ background: linear-gradient(90deg, rgba(117,148,189,1) 15%, rgba(156,177,204,1) 
     transform: scale(1.5);
     margin-left: 40px;
     
-}
+} */
 
 
 header{
@@ -113,7 +125,12 @@ height: 469px;
     color: #FFFFFF;
 }
 
-
+.sect1 .row .card img{
+    transition: all 0.3s ease; /*anime en douceur les transitions*/
+}
+.sect1 .row .card img:hover{
+    transform: scale(1.1);
+}
 
 .sect1 .btnProducts{
     width:23rem;
@@ -206,6 +223,11 @@ z-index: -20;
     margin-top: 5rem;
 }
 
+/* footer icone pour remonter en haut de page */
+ .fa-square-caret-up{
+    font-size: 48px;
+} 
+
 
 /* cookie */
 
@@ -234,12 +256,18 @@ z-index: -20;
         border-radius: 10px;
     
     }
-    .cookies .btn.btn-success{
+    /* .cookies .btn.btn-success{
         background-color: #1E2337;
     }
     .cookies .btn.btn-deny{
         background-color:rgba(0,0,0,0.1);
+    } */
+     .cookies .cookies-btn  .btn-success{
+        background-color: #1E2337;
     }
+    .cookies .cookies-btn .btn-deny{
+        background-color:rgba(0,0,0,0.1);
+    } 
     
 
 /* products */
@@ -283,4 +311,9 @@ h1{
  /*  ! dans mon dashboard  je n'ai pas reussi avec mon padding right a  modifier a droite mon texte */
 /* .product-card-body{} */
    
-
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+  }

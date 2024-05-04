@@ -1,86 +1,65 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Mon Compte{% endblock %}
 
 {% block content %}
-    <h1>User</h1>
+    
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
-            <tr>
-                <th>FirstName</th>
-                <td>{{ user.firstName }}</td>
-            </tr>
-            <tr>
-                <th>LastName</th>
-                <td>{{ user.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Address</th>
-                <td>{{ user.address }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ user.city }}</td>
-            </tr>
-            <tr>
-                <th>Zip</th>
-                <td>{{ user.zip }}</td>
-            </tr>
-            <tr>
-                <th>Country</th>
-                <td>{{ user.country }}</td>
-            </tr>
-            <tr>
-                <th>Phone</th>
-                <td>{{ user.phone }}</td>
-            </tr>
-            <tr>
-                <th>Birthday</th>
-                <td>{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            {# <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr> #}
-            <tr>
-                <th>IsVerified</th>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-            </tr>
+    
+	<h1>Mon compte
+	</h1>
+
+	{#  je souhaite avoir les informations de l'utilisateur connecter #}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<h2>Informations personnelles</h2>
+				  <p>{{app.user.firstName}}</p> 
+				<p>{{ app.user.lastName }}</p> 
+				 <p>{{app.user.birthday ? user.birthday|date('Y-m-d') : '' }}</p> 
+				
+
+				  <p>{{ app.user.email }}</p>
+				 <p>{{ app.user.password }}</p>
+				<p>{{ app.user.phone }}</p>  
+				<h2>Adresse</h2>
+				 
+				{% for adress in user.adress %}
+                    {% for field in adressFields %}
+                        <tr>
+                            <th>{{ field }}</th>
+                            <td>{{ attribute(adress, field) }}</td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+				
+				 
+
+			</div>
+            
+            <div class="col-md-6">
+                    <h2>Commandes</h2>
+                    <p>Vous n'avez pas encore passé de commande</p>
+                
+                    <h2> historique de vos Commandes</h2>
+                    <p>Aucune</p>
+            </div>    
+            
+		</div>
+	</div>
 
 
-            <!--information de l'adresse -->
-    {# {% if user.address is not null %}
-        <h2>Informations de l'adresse</h2>
-        
-        <p><strong>Numero Adresse :</strong> {{ user.adress.number }}</p>
-        <p><strong>Adresse :</strong> {{ user.adress.street }}</p>
-        <p><strong>Ville :</strong> {{ user.adress.City }}</p>
-        <p><strong>Code postal :</strong> {{ user.adress.Zip }}</p>
-        <p><strong>Pays :</strong> {{ user.adress.Country }}</p> #}
-        {# Ajoutez d'autres champs ici en fonction des propriétés de votre entité Address #}
-    {# {% else %}
-        <p>Pas d'adresse</p>
-    {% endif %} #}
-        </tbody>
+		
 
-    </table>
 
     <a href="{{ path('app_user_index') }}">back to list</a>
 
     <a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
 
     {{ include('user/_delete_form.html.twig') }}
+
+    {% block footer %}
+			{% include 'frag/footer.html.twig' %}
+	{% endblock %}
+
 {% endblock %}

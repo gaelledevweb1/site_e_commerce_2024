@@ -6,9 +6,11 @@ use App\Entity\Cart;
 use App\Form\CartType;
 use App\Repository\CartRepository;
 use App\Repository\ProductsRepository;
+use App\Service\QttProduct;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -16,34 +18,38 @@ use Symfony\Component\Routing\Annotation\Route;
 class CartController extends AbstractController
 {
     #[Route('/', name: 'app_cart_index', methods: ['GET'])]
-    public function index(CartRepository $cartRepository, ProductsRepository $productsRepository): Response
-    {
-        $carts = $cartRepository->findAll();
+    // public function index(CartRepository $cartRepository, ProductsRepository $productsRepository): Response
+    // {
+    //     $carts = $cartRepository->findAll();
+    //     $products= $productsRepository->findAll();
+    //     return $this->render('cart/index.html.twig', [
+    //         'carts' => $carts,
+    //         'products' => $products ,
+            
+    //     ]);
+    // }
+    public function index(ProductsRepository $productsRepository): Response{
+       
         $products= $productsRepository->findAll();
         return $this->render('cart/index.html.twig', [
-            'carts' => $carts,
             'products' => $products ,
             
         ]);
     }
 
-    #[Route('/new', name: 'app_cart_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    #[Route('/add/{id}', name: 'app_cart_add', methods: ['GET', 'POST'],requirements: ['id' => '\d+'])]
+    public function new(RequestStack $requestStack,QttProduct $qttProduct,int $id): Response
     {
-        $cart = new Cart();
-        $form = $this->createForm(CartType::class, $cart);
-        $form->handleRequest($request);
+        $cart = $qttProduct->AddTocard( $id);
+         dd($qttProduct);
+       
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->persist($cart);
-            $entityManager->flush();
+           
+        
 
-            return $this->redirectToRoute('app_cart_index', [], Response::HTTP_SEE_OTHER);
-        }
-
-        return $this->render('cart/new.html.twig', [
+        return $this->redirectToRoute('app_cart_index', [
             'cart' => $cart,
-            'form' => $form,
+            
         ]);
     }
 

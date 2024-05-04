@@ -9,8 +9,8 @@
 	</h1>
 
 	{# <div class="cards row-center">
-									
-			<div class="card"> #}
+										
+				<div class="card"> #}
 	<div class="container ">
 
 		<div class="row row-cols-1 row-cols-sm-2  	row-cols-md-3 g-3 ">
@@ -26,7 +26,7 @@
 						</div>
 						<div class="card-body product-card-body">
 							<h5 class="card-title
-																																																																											">{{ product.articleName }}
+																																																																																			">{{ product.articleName }}
 							</h5>
 							<p class="card-text">{{ product.sellPriceHT }}
 								€</p>
@@ -51,9 +51,12 @@
 							</div>
 
 						</div>
-						<div class="card-footer template-product-btnPanier">
-							<a href="{{path('app_cart_index')}}" class="btn btn-Blue">ajouter au panier</a>
-
+						<div class="card-footer template-product-btnPanier ">
+							{# !todo comprendre l'erreur sur la route ajouter au panier quand je clique sur voir tous nos produits #}
+							 {# <a href="{{path('app_cart_add',{'id':product.id}')}}" class="btn btn-Blue">ajouter au panier</a>  #}
+							 {# !pas la bonne route pour le moment le temps de corriger erreur #}
+							 {# todo mofier qqch  sors de son ctn depuis #}
+							<a href="{{path('app_products_index')}}" class="btn btn-Blue">ajouter au panier</a>
 							<a href="{{path('app_paiement_index')}}" class="btn btn-primary">acheter maintenant</a>
 						</div>
 					</div>
@@ -64,9 +67,9 @@
 		</div>
 	</div>
 
-
-	{% block footer %}
+	
+	 {% block footer %}
 		{% include 'frag/footer.html.twig' %}
-	{% endblock %}
+	{% endblock %}  
 
 {% endblock %}

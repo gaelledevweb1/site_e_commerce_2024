@@ -11,7 +11,7 @@
 
 		<a href="{{path('app_products_index')}}">
 			vous souhaitez  mettre de nouveaux articles</a>
-		{% for product in products %}
+		 {% for product in products %}
 			 <div class="cards">
 			                    <div class="card">
 			                        <div class="ctn">
@@ -31,7 +31,8 @@
 			                                <button type="button">+</button>
 			                                <p>1</p>
 			                                <button type="button">-</button>
-			                                <button type="reset">supprimer</button>
+											<a href="{path('app_cart_delete')}">
+			                                <button type="reset">supprimer</button></a>
 			                                
 			                            </div>
 			                        </div>
@@ -51,7 +52,7 @@
             
 			
 		{% endfor %}
-
+		
         
 
 		{# <table class="table">

@@ -14,9 +14,10 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/category')]
 class AdminCategoryController extends AbstractController
 {
-    #[Route('/', name: 'app_admin_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    #[Route('/', name: 'app_admin_category_index', methods: ['GET', 'POST'])]
+    public function index(CategoryRepository $categoryRepository,Request $request): Response
     {
+        $frameId = $request->headers->get('Turbo-Frame');
         return $this->render('admin_category/index.html.twig', [
             'categories' => $categoryRepository->findAll(),
             
@@ -43,7 +44,7 @@ class AdminCategoryController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_admin_category_show', methods: ['GET'])]
+    #[Route('/{id}', name: 'app_admin_category_show', methods: ['GET', 'POST'])]
     public function show(Category $category): Response
     {
         return $this->render('admin_category/show.html.twig', [

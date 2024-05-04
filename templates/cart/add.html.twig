@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}add Cart{% endblock %}
+
+{% block body %}
+    <h1>ajouter au panier</h1>
+
+    {{ include('cart/_form.html.twig') }}
+
+    <a href="{{ path('app_cart_index') }}">back to list</a>
+{% endblock %}

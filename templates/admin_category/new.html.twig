@@ -3,9 +3,11 @@
 {% block title %}New Category{% endblock %}
 
 {% block body %}
-    <h1>Create new Category</h1>
+    <turbo-frame id="the_frame_id">
+        <h1>Create new Category</h1>
 
-    {{ include('admin_category/_form.html.twig') }}
+        {{ include('admin_category/_form.html.twig') }}
 
-    <a href="{{ path('app_admin_category_index') }}">back to list</a>
+        <a href="{{ path('app_admin_category_index') }}">back to list</a>
+    </turbo-frame>
 {% endblock %}

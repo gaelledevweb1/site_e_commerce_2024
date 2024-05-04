@@ -1,0 +1,23 @@
+{
+  "name": "rncp_site_e_commerce_2024",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaelledevweb1/site_e_commerce_2024.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaelledevweb1/site_e_commerce_2024/issues"
+  },
+  "homepage": "https://github.com/gaelledevweb1/site_e_commerce_2024#readme"
+}

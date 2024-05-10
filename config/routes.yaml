@@ -3,3 +3,14 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+dashboard:
+    path: /admin
+    controller: App\Controller\Admin\AdminDashboardController::index
+    methods: GET
+
+    # config/routes.yaml
+nelmio_csp_report:
+    path:     /nelmio/csp/report
+    defaults: { _controller: nelmio_security.csp_reporter_controller::indexAction }
+    methods:  [POST]

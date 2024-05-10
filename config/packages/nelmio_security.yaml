@@ -1,0 +1,139 @@
+nelmio_security:
+    # signs/verifies all cookies
+    signed_cookie:
+        names: ['*']
+    # prevents framing of the entire site
+    clickjacking:
+        paths:
+            '^/.*': DENY
+        hosts:
+            - '^foo\.com$'
+            - '\.example\.org$'
+    # prevents redirections outside the website's domain
+    external_redirects:
+        abort: true
+        log: true
+
+    # prevents inline scripts, unsafe eval, external scripts/images/styles/frames, etc
+    csp:
+        enabled: true
+        report_logger_service: logger
+        hosts: []
+        content_types: []
+        hash:
+            algorithm: sha512 # default is sha256, available are sha256, sha384 and sha512
+        enforce:
+
+             # Provides compatibility with CSP level 1 (old / non-yet-compatible browsers) when using CSP level 2
+            # features likes hash and nonce. It adds a 'unsafe-inline' source to a directive whenever a nonce or hash
+            # is used.
+            # From RFC: " If 'unsafe-inline' is not in the list of allowed style sources, or if at least one
+            #             nonce-source or hash-source is present in the list of allowed style sources "
+            # See https://www.w3.org/TR/CSP2/#directive-style-src and https://www.w3.org/TR/CSP2/#directive-script-src
+            
+
+            # see full description below
+            level1_fallback: true
+            # only send directives supported by the browser, defaults to false
+            # this is a port of https://github.com/twitter/secureheaders/blob/83a564a235c8be1a8a3901373dbc769da32f6ed7/lib/secure_headers/headers/policy_management.rb#L97
+            browser_adaptive:
+                enabled: true
+                parser: my_own_parser
+            report-uri: '%router.request_context.base_url%/nelmio/csp/report'
+            default-src: [ 'self' ]
+            frame-src: [ 'https://www.youtube.com' ]
+            script-src:
+                - 'self'
+                - 'http://127.0.0.1:8000/assets'
+                - 'https://ga.jspm.io'
+                # - 'http://127.0.0.1:8000/assets/bootstrap.js'
+                
+                - 'https://cdn.jsdelivr.net'
+                - 'https://fonts.googleapis.com'
+                - 'sha512-cRp09kMpmHra8r2Wa2NeQTwK68Y1tpu7otebBzEH5gy+qFUfrxLpAAALWvhXMFTSAT4b0Ku8NwjYlO5uGPr74Q=='
+                
+            style-src:
+                - 'self'
+                - 'http://127.0.0.1:8000/assets'
+                # - 'http://127.0.0.1:8000/assets/styles/app.css'
+                
+                
+                - 'https://fonts.googleapis.com'
+                - "https://cdn.jsdelivr.net"
+                - 'https://cdnjs.cloudflare.com'
+            font-src:
+                - 'self'
+                - 'https://fonts.gstatic.com'
+                - 'https://cdnjs.cloudflare.com'
+                
+              
+            img-src:
+                - 'self'
+                - facebook.com
+                - flickr.com
+                - 'https://picsum.photos'
+                - 'https://fastly.picsum.photos'
+            block-all-mixed-content: true # defaults to false, blocks HTTP content over HTTPS transport
+            # upgrade-insecure-requests: true # defaults to false, upgrades HTTP requests to HTTPS transport
+        report:
+            # see full description below
+            level1_fallback: true
+            # only send directives supported by the browser, defaults to false
+            # this is a port of https://github.com/twitter/secureheaders/blob/83a564a235c8be1a8a3901373dbc769da32f6ed7/lib/secure_headers/headers/policy_management.rb#L97
+            browser_adaptive:
+                enabled: true
+            report-uri: '%router.request_context.base_url%/nelmio/csp/report'
+            script-src:
+                - 'self'
+    # disables content type sniffing for script resources
+    # source copilote de la documentation:  "Cela désactive la détection du type de contenu pour les ressources de script. Il force le navigateur à exécuter uniquement les fichiers de script avec des en-têtes de type de contenu valides. Cela nécessite l'utilisation d'un en-tête non standard nosniff de Microsoft."
+    content_type:
+        nosniff: true
+
+    # forces Microsoft's XSS-Protection with
+    # its block mode
+    xss_protection:
+        enabled: true
+        mode_block: true
+        report_uri: '%router.request_context.base_url%/nelmio/xss/report'
+
+    # Send a full URL in the `Referer` header when performing a same-origin request,
+    # only send the origin of the document to secure destination (HTTPS->HTTPS),
+    # and send no header to a less secure destination (HTTPS->HTTP).
+    # If `strict-origin-when-cross-origin` is not supported, use `no-referrer` policy,
+    # no referrer information is sent along with requests.
+    referrer_policy:
+        enabled: true
+        policies:
+            - 'no-referrer'
+            - 'strict-origin-when-cross-origin'
+
+    # forces HTTPS handling, don't combine with flexible mode
+    # and make sure you have SSL working on your site before enabling this
+#    forced_ssl:
+#        hsts_max_age: 2592000 # 30 days
+#        hsts_subdomains: true
+#        redirect_status_code: 302 # default, switch to 301 for permanent redirects
+
+    # flexible HTTPS handling, read the detailed config info
+    # and make sure you have SSL working on your site before enabling this
+#    flexible_ssl:
+#        cookie_name: auth
+#        unsecured_logout: false
+
+    
+
+# source perplexity: " voici les mesures mises en oeuvre : 
+# Protection contre les attaques XSS :
+# xss_protection est activé avec le mode mode_block: true. Cela active la protection XSS de Microsoft et bloque les attaques détectées.
+# content_type.nosniff: true désactive le reniflage de type de contenu pour les ressources de script, ce qui empêche l'exécution de scripts non autorisés.
+# La politique de sécurité de contenu (CSP) est activée avec csp.enabled: true. Cela restreint les sources approuvées pour les scripts, les styles, les images, etc.
+# Protection contre les attaques par redirection d'URL :
+# external_redirects.abort: true empêche les redirections en dehors du domaine de votre site web.
+# external_redirects.log: true journalise les tentatives de redirection externe, ce qui permet de détecter les activités suspectes.
+# clickjacking est configuré pour empêcher l'intégration de votre site dans des iframes non autorisés.
+# Autres mesures de sécurité :
+# signed_cookie signe et vérifie tous les cookies, ce qui empêche leur falsification.
+# referrer_policy contrôle les informations envoyées dans l'en-tête Referer pour limiter les fuites de données.
+# La configuration CSP inclut des sources approuvées spécifiques pour les scripts, les styles, les images, les polices, etc.
+# block-all-mixed-content: true bloque le contenu HTTP sur un transport HTTPS, ce qui empêche les attaques d'injection de contenu."

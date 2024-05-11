@@ -1,3 +1,10 @@
+
+{% cspstyle %}
+
+<style> body #navbar_top .container-fluid  #navbarNav  .container-fluid .d-flex .form-control {width:33rem;}  </style>
+{% endcspstyle %}
+
+
 <nav id="navbar_top" class="navbar navbar-expand-lg bg-body-tertiary ">
 	<div class="container-fluid">
 		<a class="navbar-brand " href="{{ path('app_home') }}">
@@ -54,7 +61,7 @@
 			</ul>
 			<div class="container-fluid ">
 				<form class="d-flex me-5" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style='width:33rem;'>
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 					<button class="btn btn-outline-success" type="submit">Search</button>
 				</form>
 			</div>

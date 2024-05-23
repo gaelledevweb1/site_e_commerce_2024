@@ -9,7 +9,7 @@
 
 {% block content %}
 
-	{% cspstyle %}
+	
 	<style>
 		body main .sect1 .row .card {width:24rem;}
 		body main .sect1 .row .card img {height:11.5rem;}
@@ -20,7 +20,7 @@
 		body main .sect3 .d-flex .card .row .col-md-8 .card-body{margin-top:90px;}
 
 	</style>
-	{% endcspstyle %}
+	
 
 
 	<header>
@@ -62,7 +62,8 @@
 						<h5 class="card-title">Card title</h5>
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-						<a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a>
+						  {# <a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a>   #}
+						  <a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
 					</div>
 
 				</div>
@@ -73,7 +74,8 @@
 						<h5 class="card-title">Card title</h5>
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-						<a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a>
+						{# <a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a> #}
+						<a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
 					</div>
 				</div>
 
@@ -83,7 +85,8 @@
 						<h5 class="card-title">Card title</h5>
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-						<a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a>
+						{# <a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a> #}
+						<a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
 					</div>
 				</div>
 
@@ -94,7 +97,8 @@
 						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
 
 						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-						<a href="{{path('app_cart_add',{'id':product.id} )}}" class="btn btn-primary btnAddPanier">ajouter au panier</a>
+						{# <a href="{{path('app_cart_add',{'id':product.id} )}}" class="btn btn-primary btnAddPanier">ajouter au panier</a> #}
+						<a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
 					</div>
 				</div>
 
@@ -156,7 +160,7 @@
 								<h3 class="card-title">Atelier sénior</h3>
 								<p class="card-text">ce que nous verrons dans cet atelier hebdomadaire :  comment travailler votre équilibre, renforcement musculaire, coordination, prévention des chutes, souplesse, cardio, relaxation, etirement, respiration,  et surtout comment adapter les exercices à votre niveau et à vos capacités.</p>
 								<h6 class="card-subtitle mb-2 text-muted">15€/cours</h6>
-								<a href="{{path('app_cart_index')}}" class="btn btn-primary btnAddPanier">ajouter au panier</a>
+								{# <a href="{{path('app_cart_index')}}" class="btn btn-primary btnAddPanier">ajouter au panier</a> #}
 
 								<p class="card-text">
 									<small class="text-body-secondary">Last updated 3 mins ago</small>

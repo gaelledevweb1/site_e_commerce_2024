@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cart;
+use App\Entity\Products;
 use App\Form\CartType;
 use App\Repository\CartRepository;
 use App\Repository\ProductsRepository;
@@ -37,21 +38,38 @@ class CartController extends AbstractController
         ]);
     }
 
-    #[Route('/add/{id}', name: 'app_cart_add', methods: ['GET', 'POST'],requirements: ['id' => '\d+'])]
-    public function new(RequestStack $requestStack,QttProduct $qttProduct,int $id): Response
-    {
-        $cart = $qttProduct->AddTocard( $id);
-         dd($qttProduct);
+    // #[Route('/add/{id}', name: 'app_cart_add', methods: ['GET', 'POST'],requirements: ['id' => '\d+'])]
+    // public function new(RequestStack $requestStack,QttProduct $qttProduct,int $id): Response
+    // {
+    //     $cart = $qttProduct->AddTocard( $id);
+    //      dd($qttProduct);
        
 
            
         
 
+    //     return $this->redirectToRoute('app_cart_index', [
+    //         'cart' => $cart,
+            
+    //     ]);
+    // }
+
+    #[Route('/add/{id}', name: 'app_cart_add', methods: ['GET', 'POST'],requirements: ['id' => '\d+'])]
+     public function new(RequestStack $requestStack,int $id,ProductsRepository $productsRepository): Response
+     {
+        
+
+        $product = $productsRepository->find($id);
+        if (!$product) {
+             throw $this->createNotFoundException('Le produit demandé n\'existe pas');
+            return $this->redirectToRoute('app_cart_index');
+        }
+        //  dd($product);
         return $this->redirectToRoute('app_cart_index', [
-            'cart' => $cart,
+           'product' => $product,
             
         ]);
-    }
+     }
 
     #[Route('/{id}', name: 'app_cart_show', methods: ['GET'])]
     public function show(Cart $cart): Response

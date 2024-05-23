@@ -26,11 +26,11 @@
 						</div>
 						<div class="card-body product-card-body">
 							<h5 class="card-title
-																																																																																			">{{ product.articleName }}
+																																																																																			">{{ product.articleName  }}
 							</h5>
-							<p class="card-text">{{ product.sellPriceHT }}
+							<p class="card-text">{{ product.sellPriceHT  }}
 								€</p>
-							<p class="card-text">{{ product.articleDescription }}</p>
+							<p class="card-text">{{ product.articleDescription  }}</p>
 							<div class="dropdown">
 								<button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 									show more
@@ -39,12 +39,12 @@
 									<li>
 										<a class="dropdown-item" href="#">
 											détail:
-											{{ product.details }}</a>
+											{{ product.details  }}</a>
 									</li>
 									<li>
 										<a class="dropdown-item" href="#">
 											référence produit:
-											{{ product.articleRef }}</a>
+											{{ product.articleRef  }}</a>
 									</li>
 
 								</ul>
@@ -52,11 +52,12 @@
 
 						</div>
 						<div class="card-footer template-product-btnPanier ">
-							{# !todo comprendre l'erreur sur la route ajouter au panier quand je clique sur voir tous nos produits #}
-							 {# <a href="{{path('app_cart_add',{'id':product.id}')}}" class="btn btn-Blue">ajouter au panier</a>  #}
+							
+							    {# <a href="{{path('app_cart_add',{'id':product.id}')}}" class="btn btn-Blue">ajouter au panier</a>   #}
 							 {# !pas la bonne route pour le moment le temps de corriger erreur #}
 							 {# todo mofier qqch  sors de son ctn depuis #}
-							<a href="{{path('app_products_index')}}" class="btn btn-Blue">ajouter au panier</a>
+							   {# <a href="{{path('app_products_index')}}" class="btn btn-Blue">ajouter au panier</a>    #}
+							   <a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
 							<a href="{{path('app_paiement_index')}}" class="btn btn-primary">acheter maintenant</a>
 						</div>
 					</div>

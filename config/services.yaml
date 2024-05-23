@@ -25,11 +25,7 @@ services:
     # please note that last definitions always *replace* previous ones
 
 
-    #  le code ci-dessous est ajouté pour la configuration de la sécurité pour le bundle nelmio ( copilote m'a aider a convertir la documentation du code xml en yaml)
-    my_own_parser:
-        class: Nelmio\SecurityBundle\UserAgent\UAFamilyParser\PsrCacheUAFamilyParser
-        arguments:
-            - '@app.my_cache.pool'
-            - '@nelmio_security.ua_parser.ua_php'
-            - 604800
+    App\DataFixtures\:
+        resource: '../src/DataFixtures'
+        tags: ['doctrine.fixture.orm']
 

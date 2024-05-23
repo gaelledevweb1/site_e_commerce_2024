@@ -11,39 +11,39 @@
             <tbody>
                 <tr>
                     <th>Id</th>
-                    <td>{{ user.id }}</td>
+                    <td>{{ user.id  }}</td>
                 </tr>
                 <tr>
                     <th>FirstName</th>
-                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.firstName  }}</td>
                 </tr>
                 <tr>
                     <th>LastName</th>
-                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.lastName  }}</td>
                 </tr>
 
                 {% for adress in user.adress %}
                     {% for field in adressFields %}
                         <tr>
-                            <th>{{ field }}</th>
-                            <td>{{ attribute(adress, field) }}</td>
+                            <th>{{ field  }}</th>
+                            <td>{{ attribute(adress, field ) }}</td>
                         </tr>
                     {% endfor %}
                 {% endfor %}
                 <th>Phone</th>
-                <td>{{ user.phone }}</td>
+                <td>{{ user.phone  }}</td>
 
                 <tr>
                     <th>Birthday</th>
-                    <td>{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td>
+                    <td>{{ user.birthday ? user.birthday|date('Y-m-d') : ''  }}</td>
                 </tr>
                 <tr>
                     <th>Email</th>
-                    <td>{{ user.email }}</td>
+                    <td>{{ user.email  }}</td>
                 </tr>
                 <tr>
                     <th>Password</th>
-                    <td>{{ user.password }}</td>
+                    <td>{{ user.password  }}</td>
                 </tr>
                 {# <tr>
                                                                         <th>Confirm_password</th>
@@ -51,7 +51,7 @@
                                                                     </tr> #}
                 <tr>
                     <th>Roles</th>
-                    <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                    <td>{{ user.roles ? user.roles|json_encode : ''  }}</td>
                 </tr>
             </tbody>
         </table>

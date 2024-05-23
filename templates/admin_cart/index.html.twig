@@ -21,8 +21,8 @@
 				<tbody>
 					{% for cart in carts %}
 						<tr>
-							<td>{{ cart.id }}</td>
-							<td>{{ cart.articleQuantity }}</td>
+							<td>{{ cart.id  }}</td>
+							<td>{{ cart.articleQuantity  }}</td>
 							<td>
 								<a href="{{ path('app_admin_cart_show', {'id': cart.id}) }}"><button type="submit" class="btn btn-primary mb-2">show</button></a>
 								<a href="{{ path('app_admin_cart_edit', {'id': cart.id}) }}"><button type="submit" class="btn btn-warning mb-2">edit</button></a>

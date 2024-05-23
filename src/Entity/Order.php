@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\OrderRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: OrderRepository::class)]
 #[ORM\Table(name: '`order`')]
@@ -42,6 +43,10 @@ class Order
         return $this->id;
     }
 
+    /**
+     * @var string A "Y-m-d H:i:s" formatted value
+     */
+    #[Assert\DateTime]
     public function getOrderDate(): ?\DateTimeInterface
     {
         return $this->orderDate;
@@ -90,6 +95,10 @@ class Order
         return $this;
     }
 
+     /**
+     * @var string A "Y-m-d H:i:s" formatted value
+     */
+    #[Assert\DateTime]
     public function getDeliveryDate(): ?\DateTimeInterface
     {
         return $this->deliveryDate;
@@ -124,5 +133,10 @@ class Order
         $this->user = $user;
 
         return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->getId();
     }
 }

@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Order;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -24,9 +25,9 @@ class OrderCrudController extends AbstractCrudController
         return [
              IdField::new('id')->hideOnForm(),
             DateTimeField::new('orderDate'),
-            TextField::new('paid'),
+            BooleanField::new('paid'),
             TextField::new('status'),
-            TextField::new('delivered'),
+            BooleanField::new('delivered'),
             DateTimeField::new('deliveryDate'),
             TextField::new('deliveryInfo'),
             

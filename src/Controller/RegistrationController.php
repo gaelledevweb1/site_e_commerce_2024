@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\EmailVerifier;
+
 use Doctrine\ORM\EntityManagerInterface;
 use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -44,6 +45,11 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+        
+            
+
+
+            
 
             $entityManager->persist($user);
             $entityManager->flush();
@@ -67,11 +73,14 @@ class RegistrationController extends AbstractController
 
 
             return $this->redirectToRoute('app_home');
+        }else if ($form->isSubmitted() && !$form->isValid()) {
+            $this->addFlash('error', 'The form is not valid.');
+           
         }
-
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
         ]);
+        
     }
 
     #[Route('/verify/email', name: 'app_verify_email')]

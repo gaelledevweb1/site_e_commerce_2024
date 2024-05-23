@@ -6,6 +6,7 @@ namespace App\Entity;
 use App\Repository\PaiementRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 #[ORM\Entity(repositoryClass: PaiementRepository::class)]
@@ -74,6 +75,21 @@ class Paiement
         return $this;
     }
 
+
+
+    #[Assert\Sequentially([
+        new Assert\NotBlank,
+        new Assert\CardScheme(
+            schemes: [Assert\CardScheme::VISA, Assert\CardScheme::MASTERCARD,  Assert\CardScheme::DISCOVER, Assert\CardScheme::JCB,  Assert\CardScheme::MAESTRO,
+            Assert\CardScheme::AMEX],
+            message: 'Votre numéro de carte de crédit est invalide.',
+            
+            
+           
+            
+        )
+    ])]
+    
     public function getCardNumber(): ?string
     {
         return $this->cardNumber;
@@ -110,6 +126,7 @@ class Paiement
         return $this;
     }
 
+    #[Assert\NotBlank]
     public function getExpirationDate(): ?\DateTimeInterface
     {
         return $this->expirationDate;
@@ -122,6 +139,15 @@ class Paiement
         return $this;
     }
 
+    
+    #[Assert\Sequentially([
+        new Assert\NotNull,
+        new Assert\Type('integer'),
+        new Assert\Length(min: 3,max: 4,minMessage: 'Your first name must be at least {{ limit }} characters long',
+        maxMessage: 'Your first name cannot be longer than {{ limit }} characters',),
+        new Assert\Positive,
+        
+    ])]
     public function getCVCCode(): ?int
     {
         return $this->CVCCode;
@@ -146,6 +172,7 @@ class Paiement
         return $this;
     }
 
+    #[Assert\Currency]
     public function getCurrency(): ?string
     {
         return $this->currency;

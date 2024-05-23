@@ -32,20 +32,20 @@
 				<tbody>
 					{% for user in users %}
 						<tr>
-							<td>{{ user.id }}</td>
-							<td>{{ user.firstName }}</td>
-							<td>{{ user.lastName  }}</td>
+							<td>{{ user.id  }}</td>
+							<td>{{ user.firstName  }}</td>
+							<td>{{ user.lastName   }}</td>
 							{# <td>{{ user.address }}</td>
 							<td>{{ user.city }}</td>
 							<td>{{ user.zip }}</td>
 							<td>{{ user.country }}</td> #}
 							
-							<td>{{ user.phone }}</td>
-							<td>{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td>
+							<td>{{ user.phone  }}</td>
+							<td>{{ user.birthday ? user.birthday|date('d/m/Y') : '' }}</td>
 							<td>{{ user.email }}</td>
 							<td>{{ user.password }}</td> 
 							{# <td>{{ user.confirmPassword }}</td> #}
-							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+							<td>{{ user.roles ? user.roles|json_encode : ''  }}</td>
 							<td>  
 								<a href="{{ path('app_admin_user_show', {'id': user.id}) }}"><button type="submit" class="btn btn-primary mb-2">show</button></a>
 								<a href="{{ path('app_admin_user_edit', {'id': user.id}) }}"><button type="submit" class="btn btn-warning mb-2">edit</button></a>

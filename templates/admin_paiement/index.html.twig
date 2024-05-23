@@ -29,16 +29,16 @@
 				<tbody>
 					{% for paiement in paiements %}
 						<tr>
-							<td>{{ paiement.id }}</td>
-							<td>{{ paiement.bankName }}</td>
-							<td>{{ paiement.cardName }}</td>
-							<td>{{ paiement.cardNumber }}</td>
-							<td>{{ paiement.cardNetwork }}</td>
-							<td>{{ paiement.cardHoldername }}</td>
-							<td>{{ paiement.expirationDate ? paiement.expirationDate|date('Y-m-d') : '' }}</td>
-							<td>{{ paiement.CVCCode }}</td>
-							<td>{{ paiement.securityCard }}</td>
-							<td>{{ paiement.currency }}</td>
+							<td>{{ paiement.id  }}</td>
+							<td>{{ paiement.bankName  }}</td>
+							<td>{{ paiement.cardName  }}</td>
+							<td>{{ paiement.cardNumber  }}</td>
+							<td>{{ paiement.cardNetwork  }}</td>
+							<td>{{ paiement.cardHoldername  }}</td>
+							<td>{{ paiement.expirationDate ? paiement.expirationDate|date('Y-m-d') : ''  }}</td>
+							<td>{{ paiement.CVCCode  }}</td>
+							<td>{{ paiement.securityCard  }}</td>
+							<td>{{ paiement.currency  }}</td>
 							<td>
 								<a href="{{ path('app_admin_paiement_show', {'id': paiement.id}) }}"><button type="submit" class="btn btn-primary mb-2">show</button></a>
 								<a href="{{ path('app_admin_paiement_edit', {'id': paiement.id}) }}"><button type="submit" class="btn btn-warning mb-2">edit</button></a>

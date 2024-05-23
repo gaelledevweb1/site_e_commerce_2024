@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ProductsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProductsRepository::class)]
 class Products
@@ -62,11 +63,13 @@ class Products
         return $this->id;
     }
 
+    #[Assert\NotBlank]
     public function getArticleRef(): ?string
     {
         return $this->articleRef;
     }
 
+    
     public function setArticleRef(string $articleRef): static
     {
         $this->articleRef = $articleRef;
@@ -86,6 +89,7 @@ class Products
         return $this;
     }
 
+    // #[Assert\Url]
     public function getArticleImages(): ?string
     {
         return $this->articleImages;
@@ -98,6 +102,7 @@ class Products
         return $this;
     }
 
+    // #[Assert\Url]
     public function getArticleThumbnails(): ?string
     {
         return $this->articleThumbnails;
@@ -110,6 +115,7 @@ class Products
         return $this;
     }
 
+    #[Assert\PositiveOrZero]
     public function getArticleStockQuantity(): ?int
     {
         return $this->articleStockQuantity;

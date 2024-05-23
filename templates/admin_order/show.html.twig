@@ -9,7 +9,7 @@
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ order.id }}</td>
+                <td>{{ order.id  }}</td>
             </tr>
             <tr>
                 <th>OrderDate</th>
@@ -17,23 +17,23 @@
             </tr>
             <tr>
                 <th>Paid</th>
-                <td>{{ order.paid ? 'Yes' : 'No' }}</td>
+                <td>{{ order.paid ? 'Yes' : 'No'  }}</td>
             </tr>
             <tr>
                 <th>Status</th>
-                <td>{{ order.status }}</td>
+                <td>{{ order.status  }}</td>
             </tr>
             <tr>
                 <th>Delivered</th>
-                <td>{{ order.delivered ? 'Yes' : 'No' }}</td>
+                <td>{{ order.delivered ? 'Yes' : 'No'  }}</td>
             </tr>
             <tr>
                 <th>DeliveryDate</th>
-                <td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : '' }}</td>
+                <td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : ''  }}</td>
             </tr>
             <tr>
                 <th>DeliveryInfo</th>
-                <td>{{ order.deliveryInfo }}</td>
+                <td>{{ order.deliveryInfo  }}</td>
             </tr>
         </tbody>
     </table>

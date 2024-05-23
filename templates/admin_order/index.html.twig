@@ -26,13 +26,13 @@
 				<tbody>
 					{% for order in orders %}
 						<tr>
-							<td>{{ order.id }}</td>
-							<td>{{ order.orderDate ? order.orderDate|date('Y-m-d') : '' }}</td>
-							<td>{{ order.paid ? 'Yes' : 'No' }}</td>
-							<td>{{ order.status }}</td>
-							<td>{{ order.delivered ? 'Yes' : 'No' }}</td>
-							<td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : '' }}</td>
-							<td>{{ order.deliveryInfo }}</td>
+							<td>{{ order.id  }}</td>
+							<td>{{ order.orderDate ? order.orderDate|date('Y-m-d') : ''  }}</td>
+							<td>{{ order.paid ? 'Yes' : 'No'  }}</td>
+							<td>{{ order.status   }}</td>
+							<td>{{ order.delivered ? 'Yes' : 'No'  }}</td>
+							<td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : ''  }}</td>
+							<td>{{ order.deliveryInfo  }}</td>
 							<td>
 								<a href="{{ path('app_admin_order_show', {'id': order.id}) }}"><button type="submit" class="btn btn-primary mb-2">show</button></a>
 								<a href="{{ path('app_admin_order_edit', {'id': order.id}) }}"><button type="submit" class="btn btn-warning mb-2">edit</button></a>

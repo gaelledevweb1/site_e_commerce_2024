@@ -10,9 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
-#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+ #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+ #[ORM\HasLifecycleCallbacks]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
@@ -61,12 +63,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Order::class)]
     private Collection $orders;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: ArticleBlog::class, orphanRemoval: true)]
-    private Collection $article;
-
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: CommentsBlog::class)]
-    private Collection $commentsBlog;
-
+   
     #[ORM\Column(type: 'json')]
     private array $roles = [];
 
@@ -76,13 +73,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Adress::class)]
     private Collection $adress;
 
+    #[ORM\Column(type:"datetime_immutable")]
+    private ?\DateTimeImmutable $CreatedAt = null;
+
+    #[ORM\Column (type:"datetime_immutable")]
+    private ?\DateTimeImmutable $UpdateAt = null;
+
     
 
     public function __construct()
     {
         $this->orders = new ArrayCollection();
-        $this->article = new ArrayCollection();
-        $this->commentsBlog = new ArrayCollection();
+        
+        
         $this->adress= new ArrayCollection();
     }
 
@@ -93,11 +96,25 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id;
     }
 
+    
+    #[Assert\Sequentially([
+        new Assert\NotBlank,
+        new Assert\Type('string'),
+        new Assert\Length(min: 2,max:20),
+        
+    ])]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Your name cannot contain a number',
+    )]
+        
      public function getFirstName(): ?string
      {
          return $this->firstName;
      }
 
+    
      public function setFirstName(string $firstName): static
      {
          $this->firstName = $firstName;
@@ -105,6 +122,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
          return $this;
      }
 
+     #[Assert\Sequentially([
+        new Assert\NotBlank,
+        new Assert\Type('string'),
+        new Assert\Length(min: 2,max:20),
+        
+    ])]
+    #[Assert\Regex(
+        pattern: '/\d/',
+        match: false,
+        message: 'Your name cannot contain a number',
+    )]
      public function getLastName(): ?string
      {
          return $this->lastName;
@@ -165,6 +193,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     //      return $this;
     //  }
 
+    // #[Assert\Regex(
+    //     pattern: '[+]?[(]?[0-9]{3}[)]?[-\s.]?[0-9]{3}[-\s.]?[0-9]{4,6}',
+    //     match: true,
+    //     message: 'Please enter a valid phone number'
+    // )]
      public function getPhone(): ?string
      {
          return $this->phone;
@@ -177,6 +210,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
          return $this;
      }
 
+
+
+     
+    //  #[Assert\DateTime()]
      public function getBirthday(): ?\DateTimeInterface
      {
          return $this->birthday;
@@ -189,6 +226,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
          return $this;
      }
 
+     
+     #[Assert\Email(
+        message: 'The email {{ value }} is not a valid email.',
+    )]
     public function getEmail(): ?string
     {
         return $this->email;
@@ -212,10 +253,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
+
+    #[Assert\Regex(
+        pattern: '/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/',
+        match: true,
+        message: 'Minimum eight characters, at least one upper case English letter, one lower case English letter, one number and one special character'
+    )]
     /**
      * @see PasswordAuthenticatedUserInterface
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return $this->password;
     }
@@ -272,70 +319,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, ArticleBlog>
-     */
-    public function getArticle(): Collection
-    {
-        return $this->article;
-    }
-
-    public function addArticle(ArticleBlog $article): static
-    {
-        if (!$this->article->contains($article)) {
-            $this->article->add($article);
-            $article->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeArticle(ArticleBlog $article): static
-    {
-        if ($this->article->removeElement($article)) {
-            // set the owning side to null (unless already changed)
-            if ($article->getUser() === $this) {
-                $article->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, CommentsBlog>
-     */
-    public function getCommentsBlog(): Collection
-    {
-        return $this->commentsBlog;
-    }
-
-    public function addCommentsBlog(CommentsBlog $commentsBlog): static
-    {
-        if (!$this->commentsBlog->contains($commentsBlog)) {
-            $this->commentsBlog->add($commentsBlog);
-            $commentsBlog->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommentsBlog(CommentsBlog $commentsBlog): static
-    {
-        if ($this->commentsBlog->removeElement($commentsBlog)) {
-            // set the owning side to null (unless already changed)
-            if ($commentsBlog->getUser() === $this) {
-                $commentsBlog->setUser(null);
-            }
-        }
-
-        return $this;
-    }
+    
     // Vous devez également implémenter les méthodes requises par UserInterface ici.
     // Par exemple :
     public function getUsername()
     {
         // Retournez le nom d'utilisateur ici.
+        return $this->email;
     }
 
      /**
@@ -425,6 +415,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function __toString(): string
     {
         return $this->getId();
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->CreatedAt;
+    }
+
+    
+    // public function setCreatedAt(\DateTimeImmutable $CreatedAt): static
+    // {
+    //     $this->CreatedAt = $CreatedAt;
+
+    //     return $this;
+    // }
+
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
+    {
+        $this->CreatedAt = new \DateTimeImmutable();
+    }
+
+    public function getUpdateAt(): ?\DateTimeImmutable
+    {
+        return $this->UpdateAt;
+    }
+
+    // public function setUpdateAt(\DateTimeImmutable $UpdateAt): static
+    // {
+    //     $this->UpdateAt = $UpdateAt;
+
+    //     return $this;
+    // }
+    #[ORM\PrePersist]
+    public function setUpdateAtValue(): void
+    {
+        $this->UpdateAt = new \DateTimeImmutable();
     }
    
 

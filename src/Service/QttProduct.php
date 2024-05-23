@@ -6,85 +6,27 @@ use Symfony\Component\HttpFoundation\Exception\SessionNotFoundException;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-// class QttProduct {
-//      public $ArticleQuantit;
-//      public $ArticleNam;
-    
 
 
-//      public function __construct(int $ArticleQuantit, string $ArticleNam  ) {
-        
-//         $this->ArticleQuantit = $ArticleQuantit;
-//         $this->ArticleNam = $ArticleNam;
-        
-        
+// Class QttProduct {
+//     private $requestStack;
 
-        
+//     public function __construct(RequestStack $requestStack) {
+//         $this->requestStack = $requestStack;
 //     }
 
-//     public function CreateProduct(int $ArticleQuantit, string $ArticleNam ) {
-//         $this->ArticleQuantit = $ArticleQuantit;
-//         $this->ArticleNam = $ArticleNam;
-       
+//     public function create(RequestStack $requestStack){
+//         $this->requestStack = $requestStack;
 //     }
 
-//     public function get_Product(){
-//         return 
-//         " ArticleQuantité: $this->ArticleQuantit
-//         ArticleName:
-//         $this->ArticleNam
-//         ";
-//     }
-//     public function set_AddProduct($ArticleQuantit,$ArticleNam){
-//         $this->ArticleQuantit = $ArticleQuantit;
-//         $this->ArticleNam = $ArticleNam;
-        
-        
-        
-//     }
-
-//     public function set_IncreaseProduct($ArticleQuantit,$ArticleNam){
-//         $this->ArticleQuantit = $ArticleQuantit;
-//         $this->ArticleNam = $ArticleNam;
-
-        
-//     }
-
-//     public function delete($ArticleNam,$ArticleQuantit){
-        
-//         unset($ArticleQuantit); 
-//        unset($ArticleNam);
-        
-//     }
-
-
-// }
-// $QttProduct1 = new QttProduct(2,'tapis',);
-// $QttProduct1 -> CreateProduct(2,'tapis');
-//  echo $QttProduct1 -> get_Product();
-
-
-// $this->requestStack = $requestStack;
-
-Class QttProduct {
-    private $requestStack;
-
-    public function __construct(RequestStack $requestStack) {
-        $this->requestStack = $requestStack;
-    }
-
-    public function create(RequestStack $requestStack){
-        $this->requestStack = $requestStack;
-    }
-
-     public function AddTocard(int $id){
-        //  $request = $this->requestStack->getCurrentRequest();
-        $requestcart = $this->requestStack->getSession()->get('cart',[]);
-       if ( !empty($requestcart['$id'])) {
-            $requestcart++;
-        } else {
-            $requestcart = 1;
-        }  
+//      public function AddTocard(int $id){
+//         //  $request = $this->requestStack->getCurrentRequest();
+//         $requestcart = $this->requestStack->getSession()->get('cart',[]);
+//        if ( !empty($requestcart['$id'])) {
+//             $requestcart++;
+//         } else {
+//             $requestcart = 1;
+//         }  
 
 
         //  if ( !empty($cart)) {
@@ -92,12 +34,12 @@ Class QttProduct {
         //  } else {
         //      $cart = 1;
         //  }  
-         $this->getSession()->set('cart',$requestcart);
+    //      $this->getSession()->set('cart',$requestcart);
         
-     }
-     public function getSession():SessionInterface{
-        return $this->requestStack->getSession(); 
-    }
+    //  }
+    //  public function getSession():SessionInterface{
+    //     return $this->requestStack->getSession(); 
+    // }
 
     
     // public function getSession(): SessionInterface
@@ -130,7 +72,7 @@ Class QttProduct {
         
 
     // }
-}
+// }
     
 
 ?>

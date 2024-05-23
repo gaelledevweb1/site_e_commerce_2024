@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AdressRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AdressRepository::class)]
 class Adress
@@ -53,11 +54,13 @@ class Adress
         return $this;
     }
 
+    #[Assert\PositiveOrZero]
     public function getZip(): ?int
     {
         return $this->Zip;
     }
 
+    
     public function setZip(int $Zip): static
     {
         $this->Zip = $Zip;
@@ -65,6 +68,7 @@ class Adress
         return $this;
     }
 
+    
     public function getCountry(): ?string
     {
         return $this->Country;
@@ -89,11 +93,13 @@ class Adress
         return $this;
     }
 
+    #[Assert\Positive]
     public function getNumber(): ?int
     {
         return $this->number;
     }
 
+    
     public function setNumber(int $number): static
     {
         $this->number = $number;
@@ -101,11 +107,19 @@ class Adress
         return $this;
     }
 
+    #[Assert\Sequentially([
+        new Assert\NotNull,
+        new Assert\Type('string'),
+        new Assert\Length(min: 4, max:20),
+        
+        
+    ])]
     public function getStreet(): ?string
     {
         return $this->street;
     }
 
+    
     public function setStreet(string $street): static
     {
         $this->street = $street;

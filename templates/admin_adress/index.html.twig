@@ -22,12 +22,12 @@
             <tbody>
             {% for adress in adresses %}
                 <tr>
-                    <td>{{ adress.id }}</td>
-                    <td>{{ adress.number }}</td>
-                    <td>{{ adress.street }}</td>
-                    <td>{{ adress.City }}</td>
-                    <td>{{ adress.Zip }}</td>
-                    <td>{{ adress.Country }}</td>
+                    <td>{{ adress.id  }}</td>
+                    <td>{{ adress.number  }}</td>
+                    <td>{{ adress.street  }}</td>
+                    <td>{{ adress.City  }}</td>
+                    <td>{{ adress.Zip  }}</td>
+                    <td>{{ adress.Country  }}</td>
                     <td>
                         <a href="{{ path('app_admin_adress_show', {'id': adress.id}) }}"><button type="submit" class="btn btn-primary mb-2">show</button></a>
                         <a href="{{ path('app_admin_adress_edit', {'id': adress.id}) }}"><button type="submit" class="btn btn-warning mb-2">edit</button></a>

@@ -14,6 +14,7 @@ use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use App\Form\DataTransformer\StringToDateTransformer;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class RegistrationFormType extends AbstractType
 {
@@ -69,16 +70,24 @@ class RegistrationFormType extends AbstractType
             // ])
             // ->get('birthday')
             // ->addModelTransformer(new StringToDateTransformer());
-            ->add('birthday', DateType::class, [
-                'widget' => 'single_text',
-                'constraints' => [
-                    new Assert\Date()
+            // ->add('birthday', DateType::class, [
+            //     'widget' => 'single_text',
+            //     'constraints' => [
+            //         new Assert\Date()
                    
-                ],
-               ]);
+            //     ],
+            //    ]);
+
+            // ->add('birthday', TextType::class, [
+            //         'widget' => 'single_text',
+            //         'constraints' => [
+            //             new Assert\Date()
+                       
+            //         ],
+            //        ]);
 
 
-        $builder
+       
             ->add('email')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,

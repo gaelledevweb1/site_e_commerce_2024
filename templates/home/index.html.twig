@@ -9,18 +9,19 @@
 
 {% block content %}
 
-	
-	<style>
-		body main .sect1 .row .card {width:24rem;}
-		body main .sect1 .row .card img {height:11.5rem;}
-		body main .sect2 .card-group .card  a {z-index:100}
-		body main .sect2 .card-group .card a img {height:27.5rem;}
-		body main .sect2 .card-group .card1 .card-img-overlay .card-title,body main .sect2 .card-group .card3 .card-img-overlay .card-title {color:white}
-		body main .sect3 .d-flex .card  {max-width: 1420px;}
-		body main .sect3 .d-flex .card .row .col-md-8 .card-body{margin-top:90px;}
 
+	<style>
+		body main .sect1 .row .card{width:28rem}
+		body main .sect1 .row .card img{height:16.5rem}
+		body main .sect2 .card-group .card a{z-index:100
+		}
+		body main .sect2 .card-group .card a img{height:27.5rem}
+		body main .sect2 .card-group .card1 .card-img-overlay .card-title,
+		body main .sect2 .card-group .card3 .card-img-overlay .card-title{color:white
+		}
+		body main .sect3 .d-flex .card{max-width:1420px}
+		body main .sect3 .d-flex .card .row .col-md-8 .card-body{margin-top:90px}
 	</style>
-	
 
 
 	<header>
@@ -55,79 +56,46 @@
 
 			<div class="row row-cols-4 d-flex justify-content-center   ">
 
-				<div class="card me-5 mb-5" id="home-sect1-card">
 
-					<img src="{{asset('images/thumbnail/medicine-ball-1575315_640.jpg')}}" class="card-img-top" alt="medecine ball" >
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-						  {# <a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a>   #}
-						  <a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
+				{% for product in products %}
+					<div class="card me-5  mb-5 mt-5">
+						<img src="{{asset(product.articleThumbnails)}}" class="card-img-top img-fluid w-75 p-4 mx-auto" alt="image de {{ product.articleName }}">
+						<div class="card-body">
+							<h5 class="card-title">{{ product.articleName  }}</h5>
+							<p class="card-text">{{ product.articleDescription  }}</p>
+
+							<h6 class="card-subtitle mb-2 text-muted">{{ product.sellPriceHT  }}</h6>
+							<a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-Blue">ajouter au panier</a>
+							<a href="{{path('app_paiement_index')}}" class="btn btn-primary">acheter maintenant</a>
+						</div>
 					</div>
-
-				</div>
-
-				<div class="card me-5  mb-5">
-					<img src="{{asset('images/thumbnail/physiotherapy-595529_640.jpg')}}" class="card-img-top " alt="renforcement musculaire avec des poids" >
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-						{# <a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a> #}
-						<a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
-					</div>
-				</div>
-
-				<div class="card me-5  mb-5">
-					<img src="{{asset('images/thumbnail/woman-2959213_640.jpg')}}" class="card-img-top" alt="posture de yoga" >
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-						{# <a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-primary btnAddPanier">ajouter au panier</a> #}
-						<a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
-					</div>
-				</div>
-
-				<div class="card me-5  mb-5"  >
-					<img src="{{asset('images/thumbnail/yoga-5780931_640.jpg')}}" class="card-img-top" alt="etirement" >
-					<div class="card-body">
-						<h5 class="card-title">Card title</h5>
-						<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-
-						<h6 class="card-subtitle mb-2 text-muted">1000€</h6>
-						{# <a href="{{path('app_cart_add',{'id':product.id} )}}" class="btn btn-primary btnAddPanier">ajouter au panier</a> #}
-						<a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
-					</div>
-				</div>
-
+				{% endfor %}
 			</div>
 
 
 			<a href="{{path('app_products_index')}}">
-				<button class="btn btnProducts" type="submit">voir tous nos produits</button>
+				<button type="button" class="btn btnProducts btn-rounded" data-mdb-ripple-init>voir tous nos produits</button>
+				{# <button class="btn btnProducts" type="submit">voir tous nos produits</button> #}
 			</a>
 
 		</section>
 
-		<section
-			class="sect2">
-			
+		<section class="sect2">
+
 			<div class="card-group">
 				<div class="card card1">
 
-					<a href="{{path('app_category_index')}}" ><img src="{{asset('images/img/portrait/belly-1434852_1280.jpg')}}" class="card-img-top" alt="femme enceinte"></a>
+					<a href="{{path('app_category_index')}}"><img src="{{asset('media/images/img/paysage/belly-1434852_1280 (1).jpg')}}" class="card-img-top " alt="femme enceinte"></a>
 
 					<div class="card-img-overlay">
-						<h5 class="card-title" >Maternité: découvrir</h5>
+						<h5 class="card-title ">Maternité: découvrir</h5>
 
 					</div>
 
 				</div>
 				<div class="card card2">
-					<a href="{{path('app_products_index')}}" >
-						<img src="{{asset('images/img/portrait/woman-1979258_1280.jpg')}}" class="card-img-top" alt="sport pour le dos"></a>
+					<a href="{{path('app_products_index')}}">
+						<img src="{{asset('media/images/img/paysage/pilates-1950971_1280.jpg')}}" class="card-img-top " alt="sport pour le dos"></a>
 
 					<div class="card-img-overlay">
 
@@ -138,10 +106,10 @@
 
 				</div>
 				<div class="card card3">
-					<a href="{{path('app_products_index')}}" >
-						<img src="{{asset('images/img/portrait/walking-5357721_1280.jpg')}}" class="card-img-top" alt="senior"></a>
+					<a href="{{path('app_products_index')}}">
+						<img src="{{asset('media/images/img/paysage/nordic-walking-1814784_1280.jpg')}}" class="card-img-top " alt="senior"></a>
 					<div class="card-img-overlay">
-						<h5 class="card-title" >senior: découvrir</h5>
+						<h5 class="card-title ">senior: découvrir</h5>
 
 					</div>
 
@@ -149,22 +117,21 @@
 			</div>
 		</section>
 		<section class="sect3 ">
+
 			<div class="d-flex justify-content-center ">
-				<div class="card" >
+				<div class="card ">
 					<div class="row g-0">
-						<div class="col-md-4">
-							<img src="{{asset('/media/exercise-2029430_640.png')}}" class="img-fluid rounded-start" alt="seniors  faisant de la marche nordique">
+						<div class="col-md-3 offset-md-1 position-relative ">
+							<img src="{{asset('/media/exercise-2029430_640.png')}}" class="img-fluid rounded-start " alt="seniors  faisant de la marche nordique">
 						</div>
-						<div class="col-md-8">
+						<div class="col-md-7 d-flex align-items-start mt-5 pt-5">
 							<div class="card-body">
-								<h3 class="card-title">Atelier sénior</h3>
+								<h3 class="card-title ">Atelier sénior</h3>
 								<p class="card-text">ce que nous verrons dans cet atelier hebdomadaire :  comment travailler votre équilibre, renforcement musculaire, coordination, prévention des chutes, souplesse, cardio, relaxation, etirement, respiration,  et surtout comment adapter les exercices à votre niveau et à vos capacités.</p>
 								<h6 class="card-subtitle mb-2 text-muted">15€/cours</h6>
-								{# <a href="{{path('app_cart_index')}}" class="btn btn-primary btnAddPanier">ajouter au panier</a> #}
+								<a href="{{path('app_paiement_index')}}" class="btn btn-primary">acheter maintenant</a>
 
-								<p class="card-text">
-									<small class="text-body-secondary">Last updated 3 mins ago</small>
-								</p>
+
 							</div>
 						</div>
 					</div>
@@ -172,7 +139,7 @@
 
 			</div>
 
-
+			
 		</section>
 
 

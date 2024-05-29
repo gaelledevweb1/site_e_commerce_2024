@@ -38,6 +38,9 @@ class Order
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $reference = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +105,7 @@ class Order
     public function getDeliveryDate(): ?\DateTimeInterface
     {
         return $this->deliveryDate;
+        
     }
 
     public function setDeliveryDate(\DateTimeInterface $deliveryDate): static
@@ -138,5 +142,17 @@ class Order
     public function __toString(): string
     {
         return $this->getId();
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): static
+    {
+        $this->reference = $reference;
+
+        return $this;
     }
 }

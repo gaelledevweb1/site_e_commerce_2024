@@ -53,6 +53,9 @@ class Products
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Category $category = null;
 
+    #[ORM\Column]
+    private ?int $sales = null;
+
     
     
 
@@ -218,6 +221,18 @@ class Products
     public function __toString(): string
     {
         return $this->getId();
+    }
+
+    public function getSales(): ?int
+    {
+        return $this->sales;
+    }
+
+    public function setSales(int $sales): static
+    {
+        $this->sales = $sales;
+
+        return $this;
     }
     
 

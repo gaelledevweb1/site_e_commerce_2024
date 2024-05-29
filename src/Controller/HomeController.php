@@ -14,21 +14,16 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home')]
     public function index(ProductsRepository $productsRepository): Response
     {
-        
-        // !trouver un produit par son id mais en gerant l'automatique
-        
-            $productid = 1;
-            $product =  $productsRepository->find($productid);
-          
-             
-        
-          
+        // $products = $productsRepository->findAll();
+        // Récupère les produits et les trie par le nombre de ventes en ordre décroissant, puis on prend les 3 premiers
+     $products = $productsRepository->findBy([], ['sales' => 'DESC'],3);
 
-        return $this->render('home/index.html.twig', [
-            
-             'product' => $product,
-        ]);
+    return $this->render('home/index.html.twig', [
+         'products' => $products,
+    ]);
     }
+
+   
 
     #[Route('/about', name: 'app_about')]
     public function about(): Response

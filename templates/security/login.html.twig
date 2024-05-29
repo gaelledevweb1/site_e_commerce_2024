@@ -36,13 +36,21 @@
 					<input type="checkbox" name="_remember_me">
 					Remember me
 				</label>
+				
+				<a class="ms-3"  href="{{path('app_forgot_password_request')}}">mot de passe oublié?</a>
 			</div>
 
 			<button class="btn btn-lg btn-primary" type="submit">
 				Sign in
 			</button>
 		</form>
+		
+			
+		
 	</div>
+
+
+
 	{% block footer %}
 		{% include 'frag/footer.html.twig' %}
 	{% endblock %}

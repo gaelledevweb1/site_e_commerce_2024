@@ -7,104 +7,177 @@ use App\Entity\Products;
 use App\Form\CartType;
 use App\Repository\CartRepository;
 use App\Repository\ProductsRepository;
-use App\Service\QttProduct;
+use App\Service\CartService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/cart')]
 class CartController extends AbstractController
 {
     #[Route('/', name: 'app_cart_index', methods: ['GET'])]
-    // public function index(CartRepository $cartRepository, ProductsRepository $productsRepository): Response
-    // {
-    //     $carts = $cartRepository->findAll();
-    //     $products= $productsRepository->findAll();
-    //     return $this->render('cart/index.html.twig', [
-    //         'carts' => $carts,
-    //         'products' => $products ,
-            
-    //     ]);
-    // }
-    public function index(ProductsRepository $productsRepository): Response{
-       
-        $products= $productsRepository->findAll();
+
+    public function index(ProductsRepository $productsRepository, SessionInterface $session): Response
+    {
+
+
+        $products = $productsRepository->findAll();
+        
+
+        $cart = $session->get('cart', []);
+        // dd($cart);
+        // on initialise des variables
+        $data = [];
+        $total = 0;
+
+
+        foreach ($cart as $id => $quantity) {
+            $product = $productsRepository->find($id);
+
+            $data[] = [
+                'product' => $product,
+                'quantity' => $quantity
+            ];
+            $total += $product->getSellPriceHT() * $quantity;
+        }
+
+        // dd($data);
+        // dd($total);
+
         return $this->render('cart/index.html.twig', [
-            'products' => $products ,
-            
+            'products' => $products,
+            'data' => $data,
+            'total' => $total
+
         ]);
     }
 
-    // #[Route('/add/{id}', name: 'app_cart_add', methods: ['GET', 'POST'],requirements: ['id' => '\d+'])]
-    // public function new(RequestStack $requestStack,QttProduct $qttProduct,int $id): Response
-    // {
-    //     $cart = $qttProduct->AddTocard( $id);
-    //      dd($qttProduct);
-       
 
-           
-        
 
-    //     return $this->redirectToRoute('app_cart_index', [
-    //         'cart' => $cart,
-            
-    //     ]);
-    // }
+    #[Route('/add/{id}', name: 'app_cart_add', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
+    public function new(RequestStack $requestStack, int $id, ProductsRepository $productsRepository, SessionInterface $session): Response
+    {
 
-    #[Route('/add/{id}', name: 'app_cart_add', methods: ['GET', 'POST'],requirements: ['id' => '\d+'])]
-     public function new(RequestStack $requestStack,int $id,ProductsRepository $productsRepository): Response
-     {
-        
+
+
+
+
+
+
 
         $product = $productsRepository->find($id);
+
         if (!$product) {
-             throw $this->createNotFoundException('Le produit demandé n\'existe pas');
+            throw $this->createNotFoundException('Le produit demandé n\'existe pas');
             return $this->redirectToRoute('app_cart_index');
         }
+
+
+        // on recupère l'id du produit
+        $id = $product->getId();
+
+        // on recupère le panier existant
+        $cart = $session->get('cart', []);
+
+        // on ajoute le produit dans le panier s'il n'y est pas encore
+        // sinon on incrémente sa quantité
+
+        if (!isset($cart[$id])) {
+            $cart[$id] = 1;
+        } else {
+            $cart[$id]++;
+        }
+
+        $session->set('cart', $cart);
+
+        // on redirige vers la page du panier
+
         //  dd($product);
         return $this->redirectToRoute('app_cart_index', [
-           'product' => $product,
-            
-        ]);
-     }
+            'product' => $product,
 
-    #[Route('/{id}', name: 'app_cart_show', methods: ['GET'])]
-    public function show(Cart $cart): Response
-    {
-        return $this->render('cart/show.html.twig', [
-            'cart' => $cart,
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_cart_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Cart $cart, EntityManagerInterface $entityManager): Response
+
+    #[Route('/remove/{id}', name: 'app_cart_remove', methods: ['GET', 'POST'], requirements: ['id' => '\d+'])]
+    public function remove(RequestStack $requestStack, int $id, ProductsRepository $productsRepository, SessionInterface $session): Response
     {
-        $form = $this->createForm(CartType::class, $cart);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
+        $product = $productsRepository->find($id);
 
-            return $this->redirectToRoute('app_cart_index', [], Response::HTTP_SEE_OTHER);
+        if (!$product) {
+            throw $this->createNotFoundException('Le produit demandé n\'existe pas');
+            return $this->redirectToRoute('app_cart_index');
         }
 
-        return $this->render('cart/edit.html.twig', [
-            'cart' => $cart,
-            'form' => $form,
+
+        // on recupère l'id du produit
+        $id = $product->getId();
+
+        // on recupère le panier existant
+        $cart = $session->get('cart', []);
+
+        // on retire le produit du panier s'il n'y a qu'un exemplaire
+        // sinon on décrémente sa quantité
+
+        if (!empty($cart[$id])) {
+            if ($cart[$id] > 1) {
+                $cart[$id]--;
+            } else {
+                unset($cart[$id]);
+            }
+        }
+
+        $session->set('cart', $cart);
+
+        // on redirige vers la page du panier
+
+        //  dd($product);
+        return $this->redirectToRoute('app_cart_index', [
+            'product' => $product,
+
         ]);
     }
 
-    #[Route('/{id}', name: 'app_cart_delete', methods: ['POST'])]
-    public function delete(Request $request, Cart $cart, EntityManagerInterface $entityManager): Response
+
+
+
+    
+    #[Route('/delete/{id}', name: 'app_cart_delete')]
+    public function delete( SessionInterface $session, Products $product): Response
+
     {
-        if ($this->isCsrfTokenValid('delete'.$cart->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($cart);
-            $entityManager->flush();
+
+        // on recupère l'id du produit
+        $id = $product->getId();
+
+        // on recupère le panier existant
+        $cart = $session->get('cart', []);
+
+        if (!empty($cart[$id])) {
+            unset($cart[$id]);
         }
 
-        return $this->redirectToRoute('app_cart_index', [], Response::HTTP_SEE_OTHER);
+        $session->set('cart', $cart);
+
+        // on redirige vers la page du panier
+
+
+
+
+        return $this->redirectToRoute('app_cart_index');
+    }
+
+
+    #[Route('/empty', name: 'app_cart_empty')]
+    public function empty(SessionInterface $session): Response
+    {
+        $session->remove('cart');
+        return $this->redirectToRoute('app_cart_index');
     }
 }

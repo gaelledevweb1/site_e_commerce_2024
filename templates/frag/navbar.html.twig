@@ -1,25 +1,25 @@
-
-
-
-<style> body #navbar_top .container-fluid  #navbarNav  .container-fluid .d-flex .form-control {width:33rem;}  </style>
-
+<style>
+	body #navbar_top .container-fluid #navbarNav .container-fluid .d-flex .form-control{width:10rem
+	}
+</style>
 
 
 <nav id="navbar_top" class="navbar navbar-expand-lg bg-body-tertiary ">
 	<div class="container-fluid">
 		<a class="navbar-brand " href="{{ path('app_home') }}">
-			<img class='logoImage me-5 logo' src="{{asset('images/logo2.png')}}" alt="logo qui a pour texte physiosport en conscience">
+			<img class='logoImage me-5 logo' src="{{asset('media/images/logo2.png')}}" alt="logo qui a pour texte physiosport en conscience">
 		</a>
-		
+
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav ml-auto me-5">
+			<ul
+				class="navbar-nav ml-auto me-5">
 
 				{# <li class="nav-item">
-					<a class="nav-link" href="{{ path('app_admin_article_blog_index')}}">blogadmin</a>
-				</li> #}
+													<a class="nav-link" href="{{ path('app_admin_article_blog_index')}}">blogadmin</a>
+												</li> #}
 
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
@@ -48,73 +48,78 @@
 						</li>
 					</ul>
 				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="{{ path('app_about') }}">A propos</a>
+				</li>
 
 
 				<li class="nav-item">
 					{% if is_granted('ROLE_ADMIN') %}
-						<a class="nav-link" href="{{ path('app_dashboard') }}">Dashboard</a>
+						{# <a class="nav-link" href="{{ path('app_dashboard') }}">Dashboard</a> #}
 						<a class="nav-link" href="{{ path('admin') }}">Dashboard2</a>
 					{% endif %}
 
 				</li>
 
+
 			</ul>
-			<div class="container-fluid ">
-				<form class="d-flex me-5" role="search">
-					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-					<button class="btn btn-outline-success" type="submit">Search</button>
-				</form>
-			</div>
-			{# !le flex-row ne fonctionne pas avec la variation du responsive  #}
-			<div class="container-fluid ">
-				<ul class="navbar-nav  me-5">
-					<li class="nav-item ">
-						<a class="nav-link" href="{{ path('app_about') }}">A propos</a>
+
+
+		</div>
+		<div class="collapse navbar-collapse  d-flex justify-content-end" id="navbarNav">
+			<ul class="navbar-nav ml-auto me-5 ">
+				<li class="nav-item ">
+					<a class="nav-link" href="{{ path('app_cart_index') }}">
+
+						<i class="fa-solid fa-basket-shopping"></i>
+						{# Panier #}
+					</a>
+				</li>
+
+
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout') }}">
+							<i class="fa-regular fa-user"></i>
+							<span class=" nav-item-text">Déconnexion</span>
+
+						</a>
+
 					</li>
+				{% else %}
 
 					<li class="nav-item ">
-						<a class="nav-link" href="{{ path('app_cart_index')  }}">
-							<i class="bi bi-cart"></i>
-							Panier
+						<a
+							class="nav-link" href="{{ path('app_login') }}">
+							 <i class="fa-solid fa-user"></i> 
+							<span class=" nav-item-text">Connexion</span>
+
+						</a>
+
+
+					</li>
+				{% endif %}
+
+
+				{# si connexion actif afficher Mon compte #}
+
+				{% if is_granted('IS_AUTHENTICATED_FULLY')  %}
+					<li
+						class="nav-item">
+						{# <a class="nav-link me-5" href="{{path('app_mon_compte')}}"> #}
+						<a class="nav-link me-5" href="{{path('app_user_show',{"id":app.user.id})}}">
+							|	Mon compte</a>
+					</li>
+				{% else %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_register') }}">
+							<i class="bi bi-person"></i>inscription
 						</a>
 					</li>
-
-						
-					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('app_logout') }}">
-								<i class="bi bi-person"></i>Deconnexion</a>
-						</li>
-					{% else %}
-
-						<li class="nav-item ">
-							<a class="nav-link" href="{{ path('app_login') }}">
-								<i class="bi bi-person"></i>Connexion</a>
-						</li>
-					{% endif %} 
-
-					
-
-					
-					
-						
-					
-
-					{# si connexion actif afficher Mon compte #}
-
-					{% if is_granted('IS_AUTHENTICATED_FULLY')  %}
-						<li class="nav-item">
-							{# <a class="nav-link me-5" href="{{path('app_mon_compte')}}"> #}
-							<a class="nav-link me-5" href="{{path('app_user_show',{"id":app.user.id})}}">
-								|	Mon compte</a>
-						</li>
-					{% else %}
-						<li class="nav-item"><a class="nav-link" href="{{ path('app_register') }}"><i class="bi bi-person"></i>inscription </a></li>
-					{% endif %}
+				{% endif %}
 
 
-				</ul>
-			</div>
+			</ul>
 
 
 		</div>

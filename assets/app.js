@@ -71,7 +71,7 @@ btnSuccessCookie.addEventListener("click", function () {
 //Get the button
 // attendre de charger le DOM
  document.addEventListener("DOMContentLoaded", function() {
-   let mybutton = document.getElementById("btn-back-to-top");
+   let mybutton = document.querySelector("#btn-back-to-top");
    console.log(mybutton);
 
    // When the user scrolls down 20px from the top of the document, show the button
@@ -97,3 +97,5 @@ btnSuccessCookie.addEventListener("click", function () {
      document.documentElement.scrollTop = 0;
    }
  });
+
+

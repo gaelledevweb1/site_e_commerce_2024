@@ -40,7 +40,7 @@ class AppFixtures extends Fixture
         $user->setFirstName('Luna');
         $user->setLastName('Doe');
         $user->setPhone('123456789');
-        $user->setBirthday(new \DateTime('1980-01-01'));
+        // $user->setBirthday(new \DateTime('1980-01-01'));
         $user->setEmail('Luna@gmail.com');
         $user->setPassword($this->hasher->hashPassword(
             $user,
@@ -76,7 +76,7 @@ class AppFixtures extends Fixture
         $admin->setFirstName('admin');
         $admin->setLastName('magdalina');
         $admin->setPhone('123457789');
-        $admin->setBirthday(new \DateTime('1984-05-01'));
+        // $admin->setBirthday(new \DateTime('1984-05-01'));
 
         $admin->setEmail('magdelina@gmail.com');
         $password = $this->hasher->hashPassword($admin, 'pass_1234');
@@ -131,8 +131,8 @@ class AppFixtures extends Fixture
             $product = new Products();
             $product->setArticleRef($faker->NumberBetween(1,6000));
             $product->setArticleName($faker->words (3, true));
-            $product->setArticleImages($faker->imageUrl(200,200, true));
-            $product->setArticleThumbnails($faker->imageUrl(100,100, true));
+            $product->setArticleImages($faker->imageUrl(300, true));
+            $product->setArticleThumbnails($faker->imageUrl(150, true));
             $product->setArticleStockQuantity($faker->randomDigit());
             $product->setArticleDescription($faker->sentence(10));
             $product->setBoughtPrice($faker->randomFloat(2, 0, 1000));
@@ -140,7 +140,7 @@ class AppFixtures extends Fixture
             $product->setSellPriceTTC($faker->randomFloat(2, 0, 1000));
             $product->setTVA(20);
             $product->setDetails($faker->sentence(5));
-    
+            $product->setSales($faker->randomDigit());
             $product->setCategory($category);
             $products[] = $product;
             $manager->persist($product);

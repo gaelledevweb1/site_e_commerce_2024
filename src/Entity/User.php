@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 #[ORM\Entity(repositoryClass: UserRepository::class)]
  #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
  #[ORM\HasLifecycleCallbacks]
@@ -43,12 +44,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      #[ORM\Column]
      private ?string $phone = null;
 
-     #[ORM\Column(type: Types::DATE_MUTABLE)]
-     private ?\DateTimeInterface $birthday = null;
+    //  #[ORM\Column(type: Types::DATE_MUTABLE)]
+    //  private ?\DateTimeInterface $birthday = null;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
     private ?string $email;
 
+    
+ 
     #[ORM\Column(length: 255)]
     private ?string $password = null;
 
@@ -214,17 +217,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
      
     //  #[Assert\DateTime()]
-     public function getBirthday(): ?\DateTimeInterface
-     {
-         return $this->birthday;
-     }
+    //  public function getBirthday(): ?\DateTimeInterface
+    //  {
+    //      return $this->birthday;
+    //  }
 
-     public function setBirthday(\DateTimeInterface $birthday): static
-     {
-         $this->birthday = $birthday;
+    //  public function setBirthday(\DateTimeInterface $birthday): static
+    //  {
+    //      $this->birthday = $birthday;
 
-         return $this;
-     }
+    //      return $this;
+    //  }
 
      
      #[Assert\Email(

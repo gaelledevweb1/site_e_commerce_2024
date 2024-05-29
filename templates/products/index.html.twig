@@ -3,6 +3,7 @@
 {% block title %}Products index
 {% endblock %}
 
+{# !le style css est inline risque securite xss #}
 
 {% block content %}
 	<h1>Produits
@@ -13,24 +14,24 @@
 				<div class="card"> #}
 	<div class="container ">
 
-		<div class="row row-cols-1 row-cols-sm-2  	row-cols-md-3 g-3 ">
+		<div class="row row-cols-1 row-cols-sm-2  	row-cols-md-3 g-3 justify-content-center">
 			{% for product in products %}
 
 
-				<div class="col">
-					<div class="card  shadow-sm" style="height: 30rem;  ">
+				<div class="col mx-5">
+					<div class="card  shadow-sm mb-5 " style="height: 30rem;  ">
 						<div class="ctnImg ctnImgProduct ">
 							<img class="bd-placeholder-img card-img-top " width="100%" height="225" object-fit: cover src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}">
 
 
 						</div>
-						<div class="card-body product-card-body">
+						<div class="card-body product-card-body" style="overflow: auto;">
 							<h5 class="card-title
 																																																																																			">{{ product.articleName  }}
 							</h5>
 							<p class="card-text">{{ product.sellPriceHT  }}
 								€</p>
-							<p class="card-text">{{ product.articleDescription  }}</p>
+							<div class="card-text">{{ product.articleDescription  }}</div>
 							<div class="dropdown">
 								<button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 									show more
@@ -53,11 +54,8 @@
 						</div>
 						<div class="card-footer template-product-btnPanier ">
 							
-							    {# <a href="{{path('app_cart_add',{'id':product.id}')}}" class="btn btn-Blue">ajouter au panier</a>   #}
-							 {# !pas la bonne route pour le moment le temps de corriger erreur #}
-							 {# todo mofier qqch  sors de son ctn depuis #}
-							   {# <a href="{{path('app_products_index')}}" class="btn btn-Blue">ajouter au panier</a>    #}
-							   <a href="#" class="btn btn-primary btnAddPanier">ajouter au panier</a>
+							     <a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-Blue">ajouter au panier</a>  
+							 
 							<a href="{{path('app_paiement_index')}}" class="btn btn-primary">acheter maintenant</a>
 						</div>
 					</div>

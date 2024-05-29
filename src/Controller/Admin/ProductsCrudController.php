@@ -7,7 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ProductsCrudController extends AbstractCrudController
@@ -27,12 +27,12 @@ class ProductsCrudController extends AbstractCrudController
             TextField::new('articleImages'),
             TextField::new('articleThumbnails'),
             IntegerField::new('articleStockQuantity'),
-            TextEditorField::new('articleDescription'),
+            TextField::new('articleDescription'),
             IntegerField::new('boughtPrice'),
             IntegerField::new('sellPriceHT'),
             IntegerField::new('sellPriceTTC'),
             IntegerField::new('TVA'),
-            TextEditorField::new('details'),
+            TextField::new('details'),
             
 
              AssociationField::new('category'),

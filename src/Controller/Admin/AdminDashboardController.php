@@ -8,6 +8,7 @@ use App\Entity\Category;
 use App\Entity\Order;
 use App\Entity\Paiement;
 use App\Entity\Products;
+use App\Entity\Transporter;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
@@ -69,6 +70,7 @@ class AdminDashboardController extends AbstractDashboardController
          yield MenuItem::linkToCrud('Products', 'fas fa-suitcase-medical', Products::class);
          yield MenuItem::linkToCrud('cart', 'fas fa-cart-shopping', Cart::class);
          yield MenuItem::linkToCrud('Category', 'fas fa-list', Category::class);
+         yield MenuItem::linkToCrud('Transporter',  ' fas fa-truck', Transporter::class);
          yield MenuItem::linkToCrud('order', 'fas fa-receipt', Order::class);
          yield MenuItem::linkToCrud('Paiement', 'fas fa-money-check', Paiement::class);
          yield MenuItem::linkToUrl('Acceuil','fas fa-home',$this->generateUrl('app_home'));

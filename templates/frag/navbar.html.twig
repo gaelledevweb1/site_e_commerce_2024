@@ -1,7 +1,7 @@
 <style>
 	body #navbar_top .container-fluid #navbarNav .container-fluid .d-flex .form-control{width:10rem
 	}
-</style>
+</style> 
 
 
 <nav id="navbar_top" class="navbar navbar-expand-lg bg-body-tertiary ">
@@ -13,13 +13,11 @@
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
+		<div class="collapse navbar-collapse" class="navbarNav">
 			<ul
 				class="navbar-nav ml-auto me-5">
 
-				{# <li class="nav-item">
-													<a class="nav-link" href="{{ path('app_admin_article_blog_index')}}">blogadmin</a>
-												</li> #}
+				
 
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
@@ -31,7 +29,7 @@
 
 
 				<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="{{ path('app_category_index') }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 						Categories
 					</a>
 					<ul class="dropdown-menu">
@@ -55,8 +53,8 @@
 
 				<li class="nav-item">
 					{% if is_granted('ROLE_ADMIN') %}
-						{# <a class="nav-link" href="{{ path('app_dashboard') }}">Dashboard</a> #}
-						<a class="nav-link" href="{{ path('admin') }}">Dashboard2</a>
+
+						<a class="nav-link" href="{{ path('admin') }}">Dashboard</a>
 					{% endif %}
 
 				</li>
@@ -72,7 +70,7 @@
 					<a class="nav-link" href="{{ path('app_cart_index') }}">
 
 						<i class="fa-solid fa-basket-shopping"></i>
-						{# Panier #}
+						
 					</a>
 				</li>
 
@@ -89,9 +87,8 @@
 				{% else %}
 
 					<li class="nav-item ">
-						<a
-							class="nav-link" href="{{ path('app_login') }}">
-							 <i class="fa-solid fa-user"></i> 
+						<a class="nav-link" href="{{ path('app_login') }}">
+							<i class="fa-solid fa-user"></i>
 							<span class=" nav-item-text">Connexion</span>
 
 						</a>
@@ -106,14 +103,14 @@
 				{% if is_granted('IS_AUTHENTICATED_FULLY')  %}
 					<li
 						class="nav-item">
-						{# <a class="nav-link me-5" href="{{path('app_mon_compte')}}"> #}
+						
 						<a class="nav-link me-5" href="{{path('app_user_show',{"id":app.user.id})}}">
 							|	Mon compte</a>
 					</li>
 				{% else %}
 					<li class="nav-item">
 						<a class="nav-link" href="{{ path('app_register') }}">
-							<i class="bi bi-person"></i>inscription
+							inscription
 						</a>
 					</li>
 				{% endif %}
@@ -125,4 +122,4 @@
 		</div>
 	</div>
 
-</nav>
+</nav> 

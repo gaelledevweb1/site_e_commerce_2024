@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\OrderRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -40,6 +42,14 @@ class Order
 
     #[ORM\Column(length: 255)]
     private ?string $reference = null;
+
+    #[ORM\OneToMany(mappedBy: 'orderProduct', targetEntity: RecapDetails::class)]
+    private Collection $recapDetails;
+
+    public function __construct()
+    {
+        $this->recapDetails = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -141,7 +151,7 @@ class Order
 
     public function __toString(): string
     {
-        return $this->getId();
+        return $this->getId()  ?? '';
     }
 
     public function getReference(): ?string
@@ -152,6 +162,36 @@ class Order
     public function setReference(string $reference): static
     {
         $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, RecapDetails>
+     */
+    public function getRecapDetails(): Collection
+    {
+        return $this->recapDetails;
+    }
+
+    public function addRecapDetail(RecapDetails $recapDetail): static
+    {
+        if (!$this->recapDetails->contains($recapDetail)) {
+            $this->recapDetails->add($recapDetail);
+            $recapDetail->setOrderProduct($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRecapDetail(RecapDetails $recapDetail): static
+    {
+        if ($this->recapDetails->removeElement($recapDetail)) {
+            // set the owning side to null (unless already changed)
+            if ($recapDetail->getOrderProduct() === $this) {
+                $recapDetail->setOrderProduct(null);
+            }
+        }
 
         return $this;
     }

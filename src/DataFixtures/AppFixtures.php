@@ -187,6 +187,7 @@ class AppFixtures extends Fixture
         $order->setDeliveryDate(new \DateTime('2021-10-15'));
         
         $order->setDeliveryInfo('Livraison à domicile');
+        
        
         $user = $this->getReference('user-' . rand(0, 1));
         $order->setUser($user);

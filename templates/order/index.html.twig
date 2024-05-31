@@ -1,45 +1,124 @@
 {% extends 'base.html.twig' %}
+{% use "bootstrap_5_layout.html.twig" %}
 
-{% block title %}Order index{% endblock %}
+{% block title %}Order index
+{% endblock %}
 
 {% block content %}
-    <h1>Order index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>OrderDate</th>
-                <th>Paid</th>
-                <th>Status</th>
-                <th>Delivered</th>
-                <th>DeliveryDate</th>
-                <th>DeliveryInfo</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for order in orders %}
-            <tr>
-                <td>{{ order.id }}</td>
-                <td>{{ order.orderDate ? order.orderDate|date('Y-m-d') : '' }}</td>
-                <td>{{ order.paid ? 'Yes' : 'No' }}</td>
-                <td>{{ order.status }}</td>
-                <td>{{ order.delivered ? 'Yes' : 'No' }}</td>
-                <td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : '' }}</td>
-                <td>{{ order.deliveryInfo }}</td>
-                <td>
-                    <a href="{{ path('app_order_show', {'id': order.id}) }}">show</a>
-                    <a href="{{ path('app_order_edit', {'id': order.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': '', 'data-turbo': 'false'}}) }}
+	{{ form_errors(form) }}
+	<h1>Creation de la commande</h1>
 
-    <a href="{{ path('app_order_new') }}">Create new</a>
+	<h3 class="text-uppercase">
+		<u>Shopping détail</u>
+	</h3>
+	<p>
+		Si vous n'avez pas d'adresse ajouter en une  dans votre espace compte
+		<a href="#">Ajouter une adresse</a>
+	</p>
+
+	<h3 class="text-uppercase">
+		<u>
+			choisir votre livraison</u>
+	</h3>
+	<div class="mb-3">
+		{{ form_row(form.address, {'attr': {'class': 'form-control'}}) }}
+	</div>
+
+	<h3 class="text-uppercase">
+		<u>
+			mode de livraison
+		</u>
+	</h3>
+	<div class="mb-3">
+
+		{{ form_row(form.transporter)|replace({'[br]': '<br/>'})|raw }}
+
+	</div>
+	<div
+		class="col-lg-5 offset-lg-1 pt-1">
+		{# {{dump(recapCart)}}    #}
+		<h2 class="pb-2 pt-md-2 my-4 mt-lg-5  ">
+			Récapitulatif de la commande
+			<u>{{ (recapCart | length) > 1 ? 'produits' : 'produit'  }}
+				
+			</u>
+		</h2>
+	</div>
+	
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col-12">
+				
+                {% set total = null %}
+				{% for item in recapCart.data %}
+					{% set total = total + (item.product.sellPriceHT * item.quantity) %}
+					<div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-3">
+						<img src="{{ asset(item.product.articleThumbnails) }}" alt="{{ item.product.articleName }}" class="mr-3" style="width: 100px;">
+						<div class="flex-grow-1">
+							<h5>{{ item.product.articleName }}</h5>
+							<p>Quantity:
+								{{item.quantity}}</p>
+							<p>Price:
+								{{ (item.product.sellPriceHT * item.quantity ) |number_format( 2, ',' , '.')}}
+								€</p>
+						</div>
+						{# <div>
+							<button class="btn btn-primary mb-2">Edit</button>
+							<button class="btn btn-danger">Remove</button>
+						</div> #}
+					</div>
+				{% endfor %}
+				<div class="d-flex justify-content-between align-items-center mt-4">
+					<h4 class="fw-bold">Total</h4>
+					<h4 class="fw-bold">{{ (total  ) |number_format( 2, ',' , '.')}}
+						€</h4>
+				</div>
+				<button type="submit" class="btn btn-primary mt-4">valider la commande</button>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	</div>
+
+
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>OrderDate</th>
+				<th>Paid</th>
+				<th>Status</th>
+				<th>Delivered</th>
+				<th>DeliveryDate</th>
+				<th>DeliveryInfo</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for order in orders %}
+				<tr>
+					<td>{{ order.id }}</td>
+					<td>{{ order.orderDate ? order.orderDate|date('Y-m-d') : '' }}</td>
+					<td>{{ order.paid ? 'Yes' : 'No' }}</td>
+					<td>{{ order.status }}</td>
+					<td>{{ order.delivered ? 'Yes' : 'No' }}</td>
+					<td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : '' }}</td>
+					<td>{{ order.deliveryInfo }}</td>
+					<td>
+						<a href="{{ path('app_order_show', {'id': order.id}) }}">show</a>
+						<a href="{{ path('app_order_edit', {'id': order.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="8">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	{# <a href="{{ path('app_order_new') }}">Create new</a> #}
 {% endblock %}

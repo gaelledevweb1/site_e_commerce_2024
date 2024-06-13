@@ -35,6 +35,21 @@
 					<a href="{{ path('app_adress_new') }}">Ajouter une  addresse</a>
 				{% endfor %}
 
+				<h2>Adresse de livraison</h2>
+
+
+					{# <a href="{{ adressDeliveryFormUrl }}">Modifier l'adresse de livraison</a> #}
+				{# {% for adressDelivery in order.adress %}
+					{% for field in adressFields %}
+						<tr>
+							<th>{{ field }}</th>
+							<td>{{ attribute(adressDelivery, field) }}</td>
+						</tr>
+					{% endfor %}
+
+					<a href="{{ path('app_adress_new') }}">Ajouter une adresse</a>
+				{% endfor %} #}
+
 				{% if app.user %}
 					<a href="{{ path('app_adress_new') }}">Ajouter une adresse</a>
 				{% endif %}

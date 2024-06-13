@@ -7,6 +7,7 @@ use App\Form\AdressType;
 use App\Repository\AdressRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -30,6 +31,7 @@ class AdressController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $adress->setUser($this->getUser()); // Définissez l'utilisateur avant de persister l'adresse
             $entityManager->persist($adress);
             $entityManager->flush();
 
@@ -43,10 +45,32 @@ class AdressController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_adress_show', methods: ['GET'])]
-    public function show(Adress $adress): Response
+    public function show(Adress $adress,Adress $adressDelivery,Security $security): Response
     {
+        
+
+    $user = $security->getUser(); // Récupère l'utilisateur actuellement connecté
+
+    if ($adress->getUser() !== $user) {
+        // Si l'utilisateur associé à l'adresse n'est pas l'utilisateur actuellement connecté,
+        // renvoyez une erreur 403 Forbidden
+        throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette adresse.');
+    }
+
+    if ($adressDelivery->getUser() !== $user) {
+        // Si l'utilisateur associé à l'adresse de livraison n'est pas l'utilisateur actuellement connecté,
+        // renvoyez une erreur 403 Forbidden
+        throw $this->createAccessDeniedException('Vous n\'êtes pas autorisé à accéder à cette adresse de livraison.');
+    }
+    
+    
+
+
+
+
         return $this->render('adress/show.html.twig', [
             'adress' => $adress,
+            'adressDelivery' => $adressDelivery,
         ]);
     }
 

@@ -110,9 +110,14 @@
 						</tr>
 					</tfoot>
 				</table>
-				{# <a href="{{path('app_order_new')}}" class = 'btn btn-primary btn-valider-panier'> Valider le panier</a> #}
-				{% if data is not empty %}
+				
+				{# {% if data is not empty %}
 					<a href="{{path('app_order_new')}}" class='btn btn-primary btn-valider-panier'>
+						Valider le panier</a>
+				{% endif %} #}
+
+				{% if data is not empty %}
+					<a href="{{path('app_order_index')}}" class='btn btn-primary btn-valider-panier'>
 						Valider le panier</a>
 				{% endif %}
 			</div>

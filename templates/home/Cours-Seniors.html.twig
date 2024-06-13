@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Cours de Gymnastique Douce pour Seniors
+{% endblock %}
+
+
+{% block content %}
+
+	{% for cours in CoursGymnastiqueDouceSenior %}
+		<div class="container my-5">
+			<div
+				class="jumbotron">
+
+				
+				<h1 class="display-4">
+					{{ cours.nomCours }}</h1>
+				<p class="lead">Animés par un APA certifié</p>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+					<h2>Détails du cours</h2>
+					<ul>
+						<li>
+							<strong>Jour :</strong>
+							Vendredi</li>
+						<li>
+							<strong>Horaires :</strong>
+							10h00 - 10h45</li>
+						<li>
+							<strong>Lieu :</strong>
+							32 rue Carnot, 92100 Boulogne</li>
+						<li>
+							<strong>Prix :</strong>
+							15€ par cours</li>
+					</ul>
+				</div>
+				<div
+					class="col-md-6">
+					
+					<img src="{{asset(cours.image)}}" class="img-fluid" alt="Image de gymnastique douce">
+				</div>
+			</div>
+
+			<hr>
+
+			<h2>Description</h2>
+			
+			<p>{{ cours.description}}</p>
+
+
+			<h2>Inscription</h2>
+
+			{% if is_granted('ROLE_USER') %}
+
+				<a href="{{ path('app_inscription_cours_gymnastique_senior_new') }}">S'inscrire</a>
+
+			{% else %}
+				<p>Pour vous inscrire, veuillez vous connecter ou créer un compte.</p>
+				<a href="{{ path('app_login') }}" class="btn btn-primary">Se connecter</a>
+				<a href="{{ path('app_register') }}" class="btn btn-secondary">Créer un compte</a>
+			{% endif %}
+
+
+		</div>
+	{% endfor %}
+
+	{% block footer %}
+		{% include 'frag/footer.html.twig' %}
+	{% endblock %}
+{% endblock %}

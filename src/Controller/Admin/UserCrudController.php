@@ -88,13 +88,15 @@ class UserCrudController extends AbstractCrudController
             BooleanField::new('isVerified')->renderAsSwitch(false),
             AssociationField::new('adress'),
             AssociationField::new('orders'),
+            AssociationField::new('inscriptions'),
+           
         ];
         $fields[] = $password;
         return $fields;
     }
     
 
-    // !incompatibilite de methode ( signature) entre useradmin (controler ) et easyadmin admin user pour le hashage de mot de passe  je dois choisir entre l'un des deux 
+    
     // public function createNewFormBuilder(EntityDto $entityDto, KeyValueStore $formOptions, AdminContext $context): FormBuilderInterface
     // {
     //     $formBuilder = parent::createNewFormBuilder($entityDto, $formOptions, $context);

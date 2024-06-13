@@ -47,6 +47,12 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
+
+        // Récupérez l'adresse de livraison associée à l'utilisateur
+    // $adressDelivery = $user->getOrder()->getAdressDelivery();
+
+    // // Générez l'URL pour le formulaire de l'adresse de livraison
+    // $adressDeliveryFormUrl = $this->generateUrl('app_adress_delivery_edit', ['id' => $adressDelivery->getId()]);
         
         foreach ( $user->getAdress()as $adress) {
             ($adress->getCountry());
@@ -57,6 +63,12 @@ class UserController extends AbstractController
               'user' => $user,
                'userAdress' => $user->getAdress(),
                'adressFields' =>$adressFields,
+               
+            //    'adressDeliveryFormUrl' => $adressDeliveryFormUrl,
+            
+                
+
+               
           ]);
         
     }

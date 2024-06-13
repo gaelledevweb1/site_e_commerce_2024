@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Products;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -14,11 +15,17 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/category')]
 class CategoryController extends AbstractController
 {
-    #[Route('/', name: 'app_category_index', methods: ['GET'])]
-    public function index(CategoryRepository $categoryRepository): Response
+    #[Route('/maternite/{id}', name: 'app_category_index', methods: ['GET'], requirements: ['id' => '\d+'])]
+    public function index(CategoryRepository $categoryRepository,int $id,EntityManagerInterface $entityManager): Response
     {
+         $products = $entityManager->getRepository(Products::class)->findBy(['category' => $id]);
+        //  $materniteId =3;
+        
         return $this->render('category/index.html.twig', [
-            'categories' => $categoryRepository->findAll(),
+            // 'categories' => $categoryRepository->findAll(),
+            'products' => $products,
+            // 'materniteId' => $materniteId,
+            
         ]);
     }
 

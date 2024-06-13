@@ -6,8 +6,9 @@
 
 {% block content %}
 
-	{{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': '', 'data-turbo': 'false'}}) }}
-	{{ form_errors(form) }}
+	{# {{ include('order/_form.html.twig') }} #}
+
+	
 	<h1>Creation de la commande</h1>
 
 	<h3 class="text-uppercase">
@@ -23,9 +24,15 @@
 			choisir votre livraison</u>
 	</h3>
 	<div class="mb-3">
-		{{ form_row(form.address, {'attr': {'class': 'form-control'}}) }}
-	</div>
+	 {# {{ form_row(form.adress, {'attr': {'class': 'form-control'}}) }}  #}
+	 {# {{ form_row(form.adressDelivery, {'attr': {'class': 'form-control'}}) }}
+	 
+		 #}
 
+		<p> {{ adressDelivery| e }} </p> 
+
+	</div>
+      {# {{dump(form.adress)}}  #}
 	<h3 class="text-uppercase">
 		<u>
 			mode de livraison
@@ -33,8 +40,8 @@
 	</h3>
 	<div class="mb-3">
 
-		{{ form_row(form.transporter)|replace({'[br]': '<br/>'})|raw }}
-
+		{# {{ form_row(form.transporter)|replace({'[br]': '<br/>'})|raw }} #}
+			  {# {{dump(form.transporter)}}  #}
 	</div>
 	<div
 		class="col-lg-5 offset-lg-1 pt-1">
@@ -56,6 +63,7 @@
                 {% set total = null %}
 				{% for item in recapCart.data %}
 					{% set total = total + (item.product.sellPriceHT * item.quantity) %}
+					
 					<div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-3">
 						<img src="{{ asset(item.product.articleThumbnails) }}" alt="{{ item.product.articleName }}" class="mr-3" style="width: 100px;">
 						<div class="flex-grow-1">
@@ -66,10 +74,10 @@
 								{{ (item.product.sellPriceHT * item.quantity ) |number_format( 2, ',' , '.')}}
 								€</p>
 						</div>
-						{# <div>
+						<div>
 							<button class="btn btn-primary mb-2">Edit</button>
 							<button class="btn btn-danger">Remove</button>
-						</div> #}
+						</div> 
 					</div>
 				{% endfor %}
 				<div class="d-flex justify-content-between align-items-center mt-4">
@@ -77,8 +85,10 @@
 					<h4 class="fw-bold">{{ (total  ) |number_format( 2, ',' , '.')}}
 						€</h4>
 				</div>
-				<button type="submit" class="btn btn-primary mt-4">valider la commande</button>
-				{{ form_end(form) }}
+				{# <button type="submit" class="btn btn-primary mt-4">valider la commande</button> #}
+				{# jesouhaite  un  lien avec btn boostrap #}
+				<a href="{{ path('app_order_new') }}" class="btn btn-primary mt-4">valider la commande</a>
+				
 			</div>
 		</div>
 	</div>
@@ -107,10 +117,10 @@
 					<td>{{ order.delivered ? 'Yes' : 'No' }}</td>
 					<td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : '' }}</td>
 					<td>{{ order.deliveryInfo }}</td>
-					<td>
+					{# <td>
 						<a href="{{ path('app_order_show', {'id': order.id}) }}">show</a>
 						<a href="{{ path('app_order_edit', {'id': order.id}) }}">edit</a>
-					</td>
+					</td> #}
 				</tr>
 			{% else %}
 				<tr>

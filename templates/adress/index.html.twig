@@ -3,7 +3,9 @@
 {% block title %}Adress index{% endblock %}
 
 {% block body %}
-    <h1>Adress index</h1>
+    <h1>Adresses</h1>
+
+    <h2>Adresse personnelle</h2>
 
     <table class="table">
         <thead>
@@ -38,6 +40,51 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <h2>Adresse de livraison</h2>
+
+    {% for adressDelivery in adresses %}
+        <table class="table">
+            <thead>
+                <tr>
+                     <th>Id</th> 
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Phone</th>
+                    <th>Number</th>
+                    <th>Street</th>
+                    <th>Zip</th>
+                    <th>City</th>
+                    <th>Country</th>
+                
+                
+
+
+
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {# <td>{{ adressDelivery.id }}</td> #}
+                    <td>{{ adressDelivery.firstName }}</td>
+                    <td>{{ adressDelivery.lastName }}</td>
+                    <td>{{ adressDelivery.phone }}</td>
+                    <td>{{ adressDelivery.number }}</td>
+                    <td>{{ adressDelivery.street }}</td>
+                    <td>{{ adressDelivery.Zip }}</td>
+                    <td>{{ adressDelivery.City }}</td>
+                    <td>{{ adressDelivery.Country }}</td>
+                
+                    <td>
+                        <a href="{{ path('app_adress_show', {'id': adressDelivery.id}) }}">show</a>
+                        <a href="{{ path('app_adress_edit', {'id': adressDelivery.id}) }}">edit</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    {% endfor %}
 
     <a href="{{ path('app_adress_new') }}">Create new</a>
 {% endblock %}

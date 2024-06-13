@@ -82,6 +82,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column (type:"datetime_immutable")]
     private ?\DateTimeImmutable $UpdateAt = null;
 
+    // #[ORM\OneToMany(mappedBy: 'user', targetEntity: CoursGymnastiqueDouceSenior::class)]
+    // private Collection $coursGymnastiqueDouceSeniors;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Inscription::class)]
+    private Collection $inscriptions;
+
     
 
     public function __construct()
@@ -90,6 +96,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         
         
         $this->adress= new ArrayCollection();
+        // $this->coursGymnastiqueDouceSeniors = new ArrayCollection();
+        $this->inscriptions = new ArrayCollection();
     }
 
 
@@ -454,6 +462,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setUpdateAtValue(): void
     {
         $this->UpdateAt = new \DateTimeImmutable();
+    }
+
+    // /**
+    //  * @return Collection<int, CoursGymnastiqueDouceSenior>
+    //  */
+    // public function getCoursGymnastiqueDouceSeniors(): Collection
+    // {
+    //     return $this->coursGymnastiqueDouceSeniors;
+    // }
+
+    // public function addCoursGymnastiqueDouceSenior(CoursGymnastiqueDouceSenior $coursGymnastiqueDouceSenior): static
+    // {
+    //     if (!$this->coursGymnastiqueDouceSeniors->contains($coursGymnastiqueDouceSenior)) {
+    //         $this->coursGymnastiqueDouceSeniors->add($coursGymnastiqueDouceSenior);
+    //         $coursGymnastiqueDouceSenior->setUser($this);
+    //     }
+
+    //     return $this;
+    // }
+
+    // public function removeCoursGymnastiqueDouceSenior(CoursGymnastiqueDouceSenior $coursGymnastiqueDouceSenior): static
+    // {
+    //     if ($this->coursGymnastiqueDouceSeniors->removeElement($coursGymnastiqueDouceSenior)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($coursGymnastiqueDouceSenior->getUser() === $this) {
+    //             $coursGymnastiqueDouceSenior->setUser(null);
+    //         }
+    //     }
+
+    //     return $this;
+    // }
+
+    /**
+     * @return Collection<int, Inscription>
+     */
+    public function getInscriptions(): Collection
+    {
+        return $this->inscriptions;
+    }
+
+    public function addInscription(Inscription $inscription): static
+    {
+        if (!$this->inscriptions->contains($inscription)) {
+            $this->inscriptions->add($inscription);
+            $inscription->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeInscription(Inscription $inscription): static
+    {
+        if ($this->inscriptions->removeElement($inscription)) {
+            // set the owning side to null (unless already changed)
+            if ($inscription->getUser() === $this) {
+                $inscription->setUser(null);
+            }
+        }
+
+        return $this;
     }
    
 

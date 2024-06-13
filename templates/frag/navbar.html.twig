@@ -1,7 +1,7 @@
 <style>
 	body #navbar_top .container-fluid #navbarNav .container-fluid .d-flex .form-control{width:10rem
 	}
-</style> 
+</style>
 
 
 <nav id="navbar_top" class="navbar navbar-expand-lg bg-body-tertiary ">
@@ -14,10 +14,8 @@
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" class="navbarNav">
-			<ul
-				class="navbar-nav ml-auto me-5">
+			<ul class="navbar-nav ml-auto me-5">
 
-				
 
 				<li class="nav-item">
 					<a class="nav-link" href="{{ path('app_home') }}">Accueil</a>
@@ -34,8 +32,9 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a class="dropdown-item" href="{{path('app_category_index')}}">Maternité</a>
-
+							 
+							 <a class="dropdown-item" href="{{path('app_category_index',{ 'id': 3 })}}">Maternité</a> 
+							 
 
 						</li>
 						<li>
@@ -61,65 +60,66 @@
 
 
 			</ul>
-
-
-		</div>
-		<div class="collapse navbar-collapse  d-flex justify-content-end" id="navbarNav">
-			<ul class="navbar-nav ml-auto me-5 ">
-				<li class="nav-item ">
-					<a class="nav-link" href="{{ path('app_cart_index') }}">
-
-						<i class="fa-solid fa-basket-shopping"></i>
-						
-					</a>
-				</li>
-
-
-				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_logout') }}">
-							<i class="fa-regular fa-user"></i>
-							<span class=" nav-item-text">Déconnexion</span>
-
-						</a>
-
-					</li>
-				{% else %}
-
+			<div class="collapse navbar-collapse  d-flex justify-content-end" id="navbarNav">
+				<ul class="navbar-nav ml-auto me-5 ">
 					<li class="nav-item ">
-						<a class="nav-link" href="{{ path('app_login') }}">
-							<i class="fa-solid fa-user"></i>
-							<span class=" nav-item-text">Connexion</span>
+						<a class="nav-link" href="{{ path('app_cart_index') }}">
+
+							<i class="fa-solid fa-basket-shopping"></i>
 
 						</a>
-
-
 					</li>
-				{% endif %}
 
 
-				{# si connexion actif afficher Mon compte #}
+					{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_logout') }}">
+								<i class="fa-regular fa-user"></i>
+								<span class=" nav-item-text">Déconnexion</span>
 
-				{% if is_granted('IS_AUTHENTICATED_FULLY')  %}
-					<li
-						class="nav-item">
-						
-						<a class="nav-link me-5" href="{{path('app_user_show',{"id":app.user.id})}}">
-							|	Mon compte</a>
-					</li>
-				{% else %}
-					<li class="nav-item">
-						<a class="nav-link" href="{{ path('app_register') }}">
-							inscription
-						</a>
-					</li>
-				{% endif %}
+							</a>
+
+						</li>
+					{% else %}
+
+						<li class="nav-item ">
+							<a class="nav-link" href="{{ path('app_login') }}">
+								<i class="fa-solid fa-user"></i>
+								<span class=" nav-item-text">Connexion</span>
+
+							</a>
 
 
-			</ul>
+						</li>
+					{% endif %}
 
+
+					{# si connexion actif afficher Mon compte #}
+
+					{% if is_granted('IS_AUTHENTICATED_FULLY')  %}
+						<li class="nav-item">
+
+							<a class="nav-link me-5" href="{{path('app_user_show',{"id":app.user.id})}}">
+								|	Mon compte</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_register') }}">
+								inscription
+							</a>
+						</li>
+					{% endif %}
+
+
+				</ul>
+
+
+			</div>
 
 		</div>
+
 	</div>
 
-</nav> 
+</nav>
+
+

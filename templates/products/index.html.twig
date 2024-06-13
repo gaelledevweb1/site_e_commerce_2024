@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Products index
+{% block title %} Products index
 {% endblock %}
 
 {# !le style css est inline risque securite xss #}
@@ -20,11 +20,11 @@
 
 				<div class="col mx-5">
 					<div class="card  shadow-sm mb-5 " style="height: 30rem;  ">
-						<div class="ctnImg ctnImgProduct ">
-							<img class="bd-placeholder-img card-img-top " width="100%" height="225" object-fit: cover src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}">
+						 <div class="ctnImg ctnImgProduct ">
+							<img class="bd-placeholder-img card-img-top " width="100%" height="225" style = 'object-fit: cover;' src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}">
 
 
-						</div>
+						</div> 
 						<div class="card-body product-card-body" style="overflow: auto;">
 							<h5 class="card-title
 																																																																																			">{{ product.articleName  }}

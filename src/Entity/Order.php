@@ -46,6 +46,17 @@ class Order
     #[ORM\OneToMany(mappedBy: 'orderProduct', targetEntity: RecapDetails::class)]
     private Collection $recapDetails;
 
+    #[ORM\Column(length: 255)]
+    private ?string $Method = null;
+
+     
+
+     
+
+    
+
+      
+
     public function __construct()
     {
         $this->recapDetails = new ArrayCollection();
@@ -59,7 +70,8 @@ class Order
     /**
      * @var string A "Y-m-d H:i:s" formatted value
      */
-    #[Assert\DateTime]
+    
+    #[Assert\Type("\DateTimeInterface")]
     public function getOrderDate(): ?\DateTimeInterface
     {
         return $this->orderDate;
@@ -111,7 +123,7 @@ class Order
      /**
      * @var string A "Y-m-d H:i:s" formatted value
      */
-    #[Assert\DateTime]
+    #[Assert\Type("\DateTimeInterface")]
     public function getDeliveryDate(): ?\DateTimeInterface
     {
         return $this->deliveryDate;
@@ -195,4 +207,24 @@ class Order
 
         return $this;
     }
+
+    public function getMethod(): ?string
+    {
+        return $this->Method;
+    }
+
+    public function setMethod(string $Method): static
+    {
+        $this->Method = $Method;
+
+        return $this;
+    }
+
+    
+
+    
+
+    
+
+     
 }

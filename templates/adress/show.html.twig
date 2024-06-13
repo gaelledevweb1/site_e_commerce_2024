@@ -3,26 +3,16 @@
 {% block title %}Adress{% endblock %}
 
 {% block body %}
-    <h1>Adress</h1>
+    <h1>Adresses </h1>
+
+    <h2>Adresse personnelle</h2>
 
     <table class="table">
         <tbody>
-            <tr>
+            {# <tr>
                 <th>Id</th>
                 <td>{{ adress.id }}</td>
-            </tr>
-            <tr>
-                <th>City</th>
-                <td>{{ adress.City }}</td>
-            </tr>
-            <tr>
-                <th>Zip</th>
-                <td>{{ adress.Zip }}</td>
-            </tr>
-            <tr>
-                <th>Country</th>
-                <td>{{ adress.Country }}</td>
-            </tr>
+            </tr> #}
             <tr>
                 <th>Number</th>
                 <td>{{ adress.number }}</td>
@@ -31,8 +21,71 @@
                 <th>Street</th>
                 <td>{{ adress.street }}</td>
             </tr>
+            
+            <tr>
+                <th>Zip</th>
+                <td>{{ adress.Zip }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ adress.City }}</td>
+            </tr>
+            <tr>
+                <th>Country</th>
+                <td>{{ adress.Country }}</td>
+            </tr>
+            
         </tbody>
     </table>
+
+    <h2>Adresse de livraison</h2>
+
+
+    <table class="table">
+        <tbody>
+            {# <tr>
+                <th>Id</th>
+                <td>{{ adressDelivery.id }}</td>
+            </tr> #}
+            <tr>
+                <th>FirsName</th>
+                <td>{{ adressDelivery.firstName }}</td>
+            </tr>
+            <tr>
+                <th>lastName</th>
+                <td>{{ adressDelivery.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ adressDelivery.phone}}</td>
+            </tr>
+            <tr>
+                <th>Number</th>
+                <td>{{ adressDelivery.number }}</td>
+            </tr>
+            <tr>
+                <th>Street</th>
+                <td>{{ adressDelivery.street }}</td>
+            </tr>
+            <tr>
+                <th>Zip</th>
+                <td>{{ adressDelivery.Zip }}</td>
+            </tr>
+            <tr>
+                <th>City</th>
+                <td>{{ adressDelivery.City }}</td>
+            </tr>
+            
+            <tr>
+                <th>Country</th>
+                <td>{{ adressDelivery.Country }}</td>
+            </tr>
+            
+            
+
+
+
+        </tbody>
 
     <a href="{{ path('app_adress_index') }}">back to list</a>
 

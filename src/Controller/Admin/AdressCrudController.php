@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use Faker\Provider\ar_EG\Text;
 
 class AdressCrudController extends AbstractCrudController
 {
@@ -27,6 +28,10 @@ class AdressCrudController extends AbstractCrudController
             TextField::new('City'),
             IntegerField::new('Zip'),
             TextField::new('Country'),
+            TextField::new('firstName'),
+            TextField::new('lastName'),
+            TextField::new('phone'),
+            
             
             AssociationField::new('user'),
         ];

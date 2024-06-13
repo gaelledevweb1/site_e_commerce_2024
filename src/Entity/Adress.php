@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AdressRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -25,7 +27,7 @@ class Adress
     #[ORM\Column(length: 255)]
     private ?string $Country = null;
 
-    #[ORM\ManyToOne(inversedBy: 'adress', targetEntity: User::class)]
+    #[ORM\ManyToOne(inversedBy: 'adress', targetEntity: User::class, cascade: ['persist'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
@@ -35,6 +37,16 @@ class Adress
     #[ORM\Column(length: 255)]
     private ?string $street = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $phone = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $lastName = null;
+
+     
     public function getId(): ?int
     {
         return $this->id;
@@ -129,6 +141,45 @@ class Adress
     public function __toString()
     {
         
-        return $this->getId();
+        // return $this->getId();
+        return $this->getNumber() . ' ' . $this->getStreet() . ' ' . $this->getCity() . ' ' . $this->getZip() . ' ' . $this->getCountry();
     }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): static
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): static
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->lastName;
+    }
+
+    public function setLastName(string $lastName): static
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+     
 }

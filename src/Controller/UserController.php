@@ -11,9 +11,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Controller for managing user-related actions.
+ */
 #[Route('/user')]
 class UserController extends AbstractController
 {
+    /**
+     * Displays a list of users.
+     *
+     * @param UserRepository $userRepository The user repository.
+     * @return Response The response object.
+     */
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
@@ -23,6 +32,13 @@ class UserController extends AbstractController
         ]);
     }
 
+    /**
+     * Creates a new user.
+     *
+     * @param Request $request The request object.
+     * @param EntityManagerInterface $entityManager The entity manager.
+     * @return Response The response object.
+     */
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -43,6 +59,7 @@ class UserController extends AbstractController
             'form' => $form,
         ]);
     }
+
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
@@ -73,7 +90,17 @@ class UserController extends AbstractController
         
     }
 
-    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    /**
+     * Edit a user.
+     *
+     * @param Request                $request         The request object.
+     * @param User                   $user            The user object to edit.
+     * @param EntityManagerInterface $entityManager  The entity manager.
+     *
+     * @return Response The response object.
+     *
+     * @Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])
+     */
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -91,7 +118,17 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
+    /**
+     * Delete a user.
+     *
+     * @param Request                $request         The request object.
+     * @param User                   $user            The user object to delete.
+     * @param EntityManagerInterface $entityManager  The entity manager.
+     *
+     * @return Response The response object.
+     *
+     * @Route('/{id}', name: 'app_user_delete', methods: ['POST'])
+     */
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$user->getId(), $request->request->get('_token'))) {

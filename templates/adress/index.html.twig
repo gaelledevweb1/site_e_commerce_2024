@@ -23,11 +23,11 @@
         {% for adress in adresses %}
             <tr>
                 {# <td>{{ adress.id }}</td> #}
-                <td>{{ adress.City }}</td>
-                <td>{{ adress.Zip }}</td>
-                <td>{{ adress.Country }}</td>
-                <td>{{ adress.number }}</td>
-                <td>{{ adress.street }}</td>
+                <td>{{ adress.City |e }}</td>
+                <td>{{ adress.Zip |e }}</td>
+                <td>{{ adress.Country |e }}</td>
+                <td>{{ adress.number |e }}</td>
+                <td>{{ adress.street |e }}</td>
                 <td>
                     <a href="{{ path('app_adress_show', {'id': adress.id}) }}">show</a>
                     <a href="{{ path('app_adress_edit', {'id': adress.id}) }}">edit</a>
@@ -67,14 +67,14 @@
             <tbody>
                 <tr>
                     {# <td>{{ adressDelivery.id }}</td> #}
-                    <td>{{ adressDelivery.firstName }}</td>
-                    <td>{{ adressDelivery.lastName }}</td>
-                    <td>{{ adressDelivery.phone }}</td>
-                    <td>{{ adressDelivery.number }}</td>
-                    <td>{{ adressDelivery.street }}</td>
-                    <td>{{ adressDelivery.Zip }}</td>
-                    <td>{{ adressDelivery.City }}</td>
-                    <td>{{ adressDelivery.Country }}</td>
+                    <td>{{ adressDelivery.firstName |e }}</td>
+                    <td>{{ adressDelivery.lastName |e }}</td>
+                    <td>{{ adressDelivery.phone |e }}</td>
+                    <td>{{ adressDelivery.number |e }}</td>
+                    <td>{{ adressDelivery.street |e }}</td>
+                    <td>{{ adressDelivery.Zip  |e}}</td>
+                    <td>{{ adressDelivery.City  |e}}</td>
+                    <td>{{ adressDelivery.Country |e }}</td>
                 
                     <td>
                         <a href="{{ path('app_adress_show', {'id': adressDelivery.id}) }}">show</a>

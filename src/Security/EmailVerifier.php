@@ -12,6 +12,12 @@ use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
 
 
+/**
+ * Class EmailVerifier
+ * 
+ * This class is responsible for handling email verification functionality.
+ * It provides methods to send email confirmation and handle email confirmation requests.
+ */
 class EmailVerifier
 {
     public function __construct(

@@ -8,7 +8,7 @@
 
 	{# {{ include('order/_form.html.twig') }} #}
 
-	
+
 	<h1>Creation de la commande</h1>
 
 	<h3 class="text-uppercase">
@@ -24,24 +24,23 @@
 			choisir votre livraison</u>
 	</h3>
 	<div class="mb-3">
-	 {# {{ form_row(form.adress, {'attr': {'class': 'form-control'}}) }}  #}
-	 {# {{ form_row(form.adressDelivery, {'attr': {'class': 'form-control'}}) }}
-	 
-		 #}
+		{# {{ form_row(form.adress, {'attr': {'class': 'form-control'}}) }}  #}
+		{# {{ form_row(form.adressDelivery, {'attr': {'class': 'form-control'}}) }}
+					 
+						 #}
 
-		<p> {{ adressDelivery| e }} </p> 
+			<p>
+		{{ adressDelivery| e }}
+	</p>
 
 	</div>
-      {# {{dump(form.adress)}}  #}
-	<h3 class="text-uppercase">
-		<u>
+	{# {{dump(form.adress)}}  #}
+		<h3 class="text-uppercase"> <u>
 			mode de livraison
 		</u>
 	</h3>
-	<div class="mb-3">
-
-		{# {{ form_row(form.transporter)|replace({'[br]': '<br/>'})|raw }} #}
-			  {# {{dump(form.transporter)}}  #}
+	<div class="mb-3">{# {{ form_row(form.transporter)|replace({'[br]': '<br/>'})|raw }} #}
+		{# {{dump(form.transporter)}}  #}
 	</div>
 	<div
 		class="col-lg-5 offset-lg-1 pt-1">
@@ -49,35 +48,44 @@
 		<h2 class="pb-2 pt-md-2 my-4 mt-lg-5  ">
 			Récapitulatif de la commande
 			<u>{{ (recapCart | length) > 1 ? 'produits' : 'produit'  }}
-				
+
 			</u>
 		</h2>
 	</div>
-	
 
 
 	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				
-                {% set total = null %}
+
+				{% set total = null %}
 				{% for item in recapCart.data %}
 					{% set total = total + (item.product.sellPriceHT * item.quantity) %}
-					
+
 					<div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-3">
 						<img src="{{ asset(item.product.articleThumbnails) }}" alt="{{ item.product.articleName }}" class="mr-3" style="width: 100px;">
 						<div class="flex-grow-1">
-							<h5>{{ item.product.articleName }}</h5>
+							<h5>{{ item.product.articleName |e  }}</h5>
 							<p>Quantity:
-								{{item.quantity}}</p>
+								{{item.quantity |e }}</p>
 							<p>Price:
 								{{ (item.product.sellPriceHT * item.quantity ) |number_format( 2, ',' , '.')}}
 								€</p>
 						</div>
 						<div>
-							<button class="btn btn-primary mb-2">Edit</button>
-							<button class="btn btn-danger">Remove</button>
-						</div> 
+							<a href="{{path('app_cart_add', {'id': item
+							.product.id})}}" class="btn btn-success mr-1">
+								<i class="fas fa-plus"></i>
+							</a>
+							
+							<a href="{{path('app_cart_remove', {'id': item.product.id})}}" class="btn btn-warning mr-1">
+								<i class="fas fa-minus"></i>
+							</a>
+							
+							<a href="{{path('app_cart_delete', {'id': item.product.id})}}" class="btn btn-danger">
+								<i class="fas fa-trash"></i>
+							</a>
+						</div>
 					</div>
 				{% endfor %}
 				<div class="d-flex justify-content-between align-items-center mt-4">
@@ -88,7 +96,7 @@
 				{# <button type="submit" class="btn btn-primary mt-4">valider la commande</button> #}
 				{# jesouhaite  un  lien avec btn boostrap #}
 				<a href="{{ path('app_order_new') }}" class="btn btn-primary mt-4">valider la commande</a>
-				
+
 			</div>
 		</div>
 	</div>
@@ -118,9 +126,9 @@
 					<td>{{ order.deliveryDate ? order.deliveryDate|date('Y-m-d') : '' }}</td>
 					<td>{{ order.deliveryInfo }}</td>
 					{# <td>
-						<a href="{{ path('app_order_show', {'id': order.id}) }}">show</a>
-						<a href="{{ path('app_order_edit', {'id': order.id}) }}">edit</a>
-					</td> #}
+																<a href="{{ path('app_order_show', {'id': order.id}) }}">show</a>
+																<a href="{{ path('app_order_edit', {'id': order.id}) }}">edit</a>
+															</td> #}
 				</tr>
 			{% else %}
 				<tr>

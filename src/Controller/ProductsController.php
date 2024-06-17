@@ -12,19 +12,33 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Service\QttProduct;
 
+/**
+ * Controller class for managing products.
+ */
 #[Route('/products')]
 class ProductsController extends AbstractController
 {
+    /**
+     * Displays a list of all products.
+     *
+     * @param ProductsRepository $productsRepository The repository for products.
+     * @return Response The response object.
+     */
     #[Route('/', name: 'app_products_index', methods: ['GET'])]
     public function index(ProductsRepository $productsRepository): Response
     {
-        $products= $productsRepository->findAll();
+        $products = $productsRepository->findAll();
         return $this->render('products/index.html.twig', [
-            'products' => $products ,
+            'products' => $products,
         ]);
     }
 
-    
+    /**
+     * Displays the details of a specific product.
+     *
+     * @param Products $product The product entity.
+     * @return Response The response object.
+     */
     #[Route('/{id}', name: 'app_products_show', methods: ['GET'])]
     public function show(Products $product): Response
     {
@@ -32,13 +46,4 @@ class ProductsController extends AbstractController
             'product' => $product,
         ]);
     }
-
-    // #[Route('/add')]
-    // public function new(QttProduct $QttProduct): Response
-    // {
-    //     $AjouterProduit = $QttProduct-> get_Product();
-    //     $this->addFlash('sucess',$AjouterProduit);
-    // }
-
-    
 }

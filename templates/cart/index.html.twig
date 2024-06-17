@@ -75,9 +75,9 @@
 						{% for element in data %}
 							<tr>
 
-								<td>{{ element.product.articleName}}</td>
-								<td>{{element.product.sellPriceHT}}€</td>
-								<td>{{element.quantity}}</td>
+								<td>{{ element.product.articleName |e }}</td>
+								<td>{{element.product.sellPriceHT |e }}€</td>
+								<td>{{element.quantity |e }}</td>
 								<td>{{element.quantity * element.product.sellPriceHT }}€</td>
 								<td>
 									<a href="{{path('app_cart_add', {'id': element.product.id})}}" class="btn btn-success mr-1">

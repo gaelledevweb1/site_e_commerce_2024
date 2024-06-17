@@ -7,7 +7,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-
+use EasyCorp\Bundle\EasyAdminBundle\Field\NumberField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ProductsCrudController extends AbstractCrudController
@@ -17,26 +17,25 @@ class ProductsCrudController extends AbstractCrudController
         return Products::class;
     }
 
-    
+
     public function configureFields(string $pageName): iterable
     {
         return [
-             IdField::new('id')->hideOnForm(),
+            IdField::new('id')->hideOnForm(),
             IntegerField::new('articleRef'),
             TextField::new('articleName'),
             TextField::new('articleImages'),
             TextField::new('articleThumbnails'),
             IntegerField::new('articleStockQuantity'),
             TextField::new('articleDescription'),
-            IntegerField::new('boughtPrice'),
-            IntegerField::new('sellPriceHT'),
-            IntegerField::new('sellPriceTTC'),
-            IntegerField::new('TVA'),
+            NumberField::new('boughtPrice'),
+            NumberField::new('sellPriceHT'),
+            NumberField::new('sellPriceTTC'),
+            NumberField::new('TVA'),
             TextField::new('details'),
-            
 
-             AssociationField::new('category'),
+
+            AssociationField::new('category'),
         ];
     }
-    
 }

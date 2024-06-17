@@ -8,16 +8,29 @@
 
 
 	<style>
-		body main .container-fluid .container-fluid .card{width:50rem;margin-top:5rem;background:rgba(117, 148, 189, 0.5);background:linear-gradient(90deg, rgba(117,148,189,0.5) 15%, rgba(156,177,204,0.5) 61%, rgba(110,143,187,0.5) 100%)}
+		/* body main .container-fluid .container-fluid .card{width:50rem;margin-top:5rem;background:rgba(117, 148, 189, 0.5);background:linear-gradient(90deg, rgba(117,148,189,0.5) 15%, rgba(156,177,204,0.5) 61%, rgba(110,143,187,0.5) 100%)}
 		body main .container-fluid .container-fluid .card .card-body{color:white}
 		body main .container-fluid .container-fluid .container-fluid .card{width:50rem;margin-top:5rem;background:rgba(117, 148, 189, 0.5);background:linear-gradient(90deg, rgba(117,148,189,0.5) 15%, rgba(156,177,204,0.5) 61%, rgba(110,143,187,0.5) 100%)}
 		body main .container-fluid .container-fluid .container-fluid .card .card-body{color:white}
 		body main .container-fluid .container-fluid .container-fluid .card .card-body .card{width:18rem;background:rgba(117, 148, 189, 0.5);background:linear-gradient(90deg, rgba(117,148,189,0.5) 15%, rgba(156,177,204,0.5) 61%, rgba(110,143,187,0.5) 100%)}
 
-		body main .container-fluid .container-fluid .container-fluid .container-fluid .card .card-body .d-flex .card{width:18rem;}
+		body main .container-fluid .container-fluid .container-fluid .container-fluid .card .card-body .d-flex .card{width:18rem;} */
 
-		
-		
+		/* Styles pour les cartes principales */
+		.card-main{width:50rem;margin-top:5rem;background:rgba(117, 148, 189, 0.5);background:linear-gradient(90deg, rgba(117,148,189,0.5) 15%, rgba(156,177,204,0.5) 61%, rgba(110,143,187,0.5) 100%);height:100%
+		}
+
+		.card-main .card-body{color:white;height:calc(100% - 3.5rem);overflow-y:auto
+		}
+
+		/* Styles pour les cartes imbriquées */
+		.card-nested{width:18rem;background:rgba(117, 148, 189, 0.5);background:linear-gradient(90deg, rgba(117,148,189,0.5) 15%, rgba(156,177,204,0.5) 61%, rgba(110,143,187,0.5) 100%);height:100%
+		}
+
+		/* Styles pour les cartes imbriquées dans un flex */
+		.card-flex{height:100%
+		}
+
 	</style>
 
 
@@ -32,7 +45,7 @@
 					<div class="card-body">
 						<h5 class="card-title">Tout à commencé</h5>
 						<p class="card-text overflow-y-scroll ">Après avoir animé pendant plusieurs années aux Hespérides de boulogne un cours de gymnastique douce auprès de personnes agées, j'ai décidé de créer ce site pour pouvoir aussi proposer  aux personnes que je suis en osteopathie et à ceux qui le désirent des produits de qualité pour pratiquer une activité physique  et des ateliers pour les seniors.
-																																																																	Pour les femmes enceintes et les personnes qui ont des douleurs de dos  voici les produits qui pour moi pourront vous apporté une aide.</p>
+																																																																									Pour les femmes enceintes et les personnes qui ont des douleurs de dos  voici les produits qui pour moi pourront vous apporté une aide.</p>
 					</div>
 				</div>
 			</div>
@@ -48,8 +61,8 @@
 										<div class="card-body">
 											<h5 class="card-title">la qualite</h5>
 											<p class="card-text overflow-y-scroll ">Accessibilité et inclusion
-												Rendre la pratique d'activités physiques accessible à tous les seniors, quelles que soient leurs limitations, en proposant des installations et du matériel adaptés ainsi qu'un encadrement qualifié.Promotion de l'autonomie
-												Encourager les seniors à rester actifs et autonomes le plus longtemps possible, en travaillant sur le renforcement musculaire, l'équilibre et la mobilité à travers des exercices de gymnastique douce adaptés.</p>
+																									Rendre la pratique d'activités physiques accessible à tous les seniors, quelles que soient leurs limitations, en proposant des installations et du matériel adaptés ainsi qu'un encadrement qualifié.Promotion de l'autonomie
+																									Encourager les seniors à rester actifs et autonomes le plus longtemps possible, en travaillant sur le renforcement musculaire, l'équilibre et la mobilité à travers des exercices de gymnastique douce adaptés.</p>
 
 										</div>
 									</div>
@@ -57,8 +70,8 @@
 										<div class="card-body">
 											<h5 class="card-title">optimisation de notre savoir faire pour être au plus prés de nos clients</h5>
 											<p class="card-text overflow-y-scroll ">Qualité et durabilité
-												Utiliser des matériaux robustes et faciles d'entretien pour garantir une longue durée de vie au matériel. Proposer des produits fiables qui inspireront confiance aux utilisateurs.Expertise et accompagnement
-												S'appuyer sur des connaissances pointues en physiothérapie, kinésithérapie et activité physique adaptée pour concevoir des produits réellement bénéfiques. Proposer également un accompagnement personnalisé par des professionnels qualifiés</p>
+																									Utiliser des matériaux robustes et faciles d'entretien pour garantir une longue durée de vie au matériel. Proposer des produits fiables qui inspireront confiance aux utilisateurs.Expertise et accompagnement
+																									S'appuyer sur des connaissances pointues en physiothérapie, kinésithérapie et activité physique adaptée pour concevoir des produits réellement bénéfiques. Proposer également un accompagnement personnalisé par des professionnels qualifiés</p>
 
 										</div>
 									</div>
@@ -73,6 +86,8 @@
 			</div>
 		</div>
 	</div>
+
+
 	{% block footer %}
 		{% include 'frag/footer.html.twig' %}
 	{% endblock %}

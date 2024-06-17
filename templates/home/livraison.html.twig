@@ -1,0 +1,59 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Informations sur la livraison
+{% endblock %}
+
+{% block body %}
+  
+ 
+
+  <div class="container my-5">
+    <h1 class="text-center mb-4">Informations sur la livraison</h1>
+
+    <div class="row">
+      <div class="col-md-8 offset-md-2">
+        <h2>Délais de livraison</h2>
+        <p>Nous expédions vos commandes dans un délai de 1 à 3 jours ouvrables après réception du paiement. Les délais de livraison  :</p>
+        <ul>
+          <li>France métropolitaine : 2 à 5 jours ouvrables</li>
+          
+        </ul>
+
+        <h2 class="mt-4">Modes de livraison</h2>
+        <p>Vous pouvez choisir parmi les modes de livraison suivants :</p>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Mode de livraison</th>
+              <th>Délai</th>
+              <th>Frais</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Colissimo</td>
+              <td>2 à 5 jours ouvrables</td>
+              <td>6,99 €</td>
+            </tr>
+            <tr>
+              <td>Chronopost</td>
+              <td>1 à 2 jours ouvrables</td>
+              <td>9,99 €</td>
+            </tr>
+            <tr>
+              <td>Livraison express</td>
+              <td>1 jour ouvrable</td>
+              <td>14,99 €</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 class="mt-4">Suivi de commande</h2>
+        <p>Vous recevrez un email avec un lien de suivi dès que votre commande sera expédiée. Vous pourrez ainsi suivre l'acheminement de votre colis en temps réel.</p>
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}

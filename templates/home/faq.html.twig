@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}A propos
+{% endblock %}
+
+{% block body %}
+
+	<div class="accordion accordion-flush" id="accordionFlushExample">
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+					Quels types de produits proposez-vous ?
+				</button>
+			</h2>
+			<div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+				<div class="accordion-body">Nous proposons une large gamme de produits pour la gymnastique douce, tels que des tapis de sol, des balles de stabilité, des bandes de résistance et des accessoires pour les exercices.
+					</div>
+			</div>
+		</div>
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+					D'où proviennent vos produits ?
+				</button>
+			</h2>
+			<div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+				<div class="accordion-body">Nous sélectionnons avec soin nos fournisseurs et privilégions les produits de qualité supérieure, fabriqués dans le respect des normes environnementales et éthiques.</div>
+			</div>
+		</div>
+		<div class="accordion-item">
+			<h2 class="accordion-header">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+					Quels sont les délais et frais de livraison ?
+				</button>
+			</h2>
+			<div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+				<div class="accordion-body">Pour les produits, les délais de livraison sont de 3 à 5 jours ouvrables. Les frais de livraison sont offerts à partir de 50€ d'achat, sinon ils s'élèvent à 4,99€.</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

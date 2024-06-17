@@ -4,7 +4,7 @@
 </style>
 
 
-<nav id="navbar_top" class="navbar navbar-expand-lg bg-body-tertiary ">
+  <nav id="navbar_top" class="navbar navbar-expand-lg bg-body-tertiary ">
 	<div class="container-fluid">
 		<a class="navbar-brand " href="{{ path('app_home') }}">
 			<img class='logoImage me-5 logo' src="{{asset('media/images/logo2.png')}}" alt="logo qui a pour texte physiosport en conscience">
@@ -13,7 +13,7 @@
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
-		<div class="collapse navbar-collapse" class="navbarNav">
+		<div class="collapse navbar-collapse" id="navbarNav">
 			<ul class="navbar-nav ml-auto me-5">
 
 
@@ -60,7 +60,7 @@
 
 
 			</ul>
-			<div class="collapse navbar-collapse  d-flex justify-content-end" id="navbarNav">
+			<div class="collapse navbar-collapse  d-flex justify-content-lg-end" id="navbarNav">
 				<ul class="navbar-nav ml-auto me-5 ">
 					<li class="nav-item ">
 						<a class="nav-link" href="{{ path('app_cart_index') }}">
@@ -120,6 +120,7 @@
 
 	</div>
 
-</nav>
+</nav>   
 
 
+ 

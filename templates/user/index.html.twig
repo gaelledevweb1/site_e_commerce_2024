@@ -25,16 +25,16 @@
         {% for user in users %}
             <tr>
                 {# <td>{{ user.id }}</td> #}
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.lastName }}</td>
+                <td>{{ user.firstName |e }}</td>
+                <td>{{ user.lastName  |e }}</td>
                 {# <td>{{ user.address }}</td>
                 <td>{{ user.city }}</td>
                 <td>{{ user.zip }}</td>
                 <td>{{ user.country }}</td> #}
-                <td>{{ user.phone }}</td>
+                <td>{{ user.phone  |e }}</td>
                 {# <td>{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td> #}
-                <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>
+                <td>{{ user.email  |e }}</td>
+                <td>{{ user.password  |e }}</td>
                 {# <td>{{ user.roles ? user.roles|json_encode : '' }}</td> #}
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
                 <td>

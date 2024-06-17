@@ -14,67 +14,80 @@
 		<div class="row">
 			<div class="col-md-6">
 				<h2>Informations personnelles</h2>
-				<p>{{app.user.firstName }}</p>
-				<p>{{ app.user.lastName }}</p>
+				<p>{{app.user.firstName |e }}</p>
+				<p>{{ app.user.lastName |e }}</p>
 				{# <p>{{app.user.birthday ? user.birthday|date('Y-m-d') : '' }}</p>  #}
 
 
-				<p>{{ app.user.email }}</p>
-				<p>{{ app.user.password }}</p>
-				<p>{{ app.user.phone }}</p>
+				<p>{{ app.user.email |e }}</p>
+				{# <p>{{ app.user.password |e }}</p> #}
+				<p>Mot de passe: <span class="badge badge-secondary">{{ app.user.password |e }}</span></p>
+				{# <p>{{ app.user.phone |e }}</p> #}
+				<p>télephone : <span class="badge badge-primary">{{ app.user.phone |e }}</span></p>
 				<h2>Adresse</h2>
 
 				{% for adress in user.adress %}
-					{% for field in adressFields %}
-						<tr>
-							<th>{{ field }}</th>
-							<td>{{ attribute(adress, field) }}</td>
-						</tr>
-					{% endfor %}
 
-					<a href="{{ path('app_adress_new') }}">Ajouter une  addresse</a>
+					{# <tr>
+																							<th>{{ field }}</th>
+																							<td>{{ attribute(adress, field) }}</td>
+																						</tr> #}
+					<div
+						class="card mb-3">
+						<!-- mb-3 ajoute une marge en bas pour séparer les cartes -->
+						<div class="card-header">
+							Adresse
+						</div>
+						<div class="card-body">
+							{% for field in adressFields %}
+								<p class="card-text">
+									<strong>{{ field|capitalize }}:</strong>
+									{{ attribute(adress, field) }}</p>
+							{% endfor %}
+						</div>
+					</div>
 				{% endfor %}
 
-				<h2>Adresse de livraison</h2>
+
+			
+			{% if app.user %}
+				<a href="{{ path('app_adress_new') }}">Ajouter une adresse</a>
+			{% endif %}
+
+			<h2>Adresse de livraison</h2>
 
 
-					{# <a href="{{ adressDeliveryFormUrl }}">Modifier l'adresse de livraison</a> #}
-				{# {% for adressDelivery in order.adress %}
-					{% for field in adressFields %}
-						<tr>
-							<th>{{ field }}</th>
-							<td>{{ attribute(adressDelivery, field) }}</td>
-						</tr>
-					{% endfor %}
+			{# <a href="{{ adressDeliveryFormUrl }}">Modifier l'adresse de livraison</a> #}
+			{# {% for adressDelivery in order.adress %}
+																{% for field in adressFields %}
+																	<tr>
+																		<th>{{ field }}</th>
+																		<td>{{ attribute(adressDelivery, field) }}</td>
+																	</tr>
+																{% endfor %}
+											
+																<a href="{{ path('app_adress_new') }}">Ajouter une adresse</a>
+															{% endfor %} #}
 
-					<a href="{{ path('app_adress_new') }}">Ajouter une adresse</a>
-				{% endfor %} #}
-
-				{% if app.user %}
-					<a href="{{ path('app_adress_new') }}">Ajouter une adresse</a>
-				{% endif %}
-
-
-			</div>
-
-			<div class="col-md-6">
-				<h2>Commandes</h2>
-				<p>Vous n'avez pas encore passé de commande</p>
-
-				<h2>
-					historique de vos Commandes</h2>
-				<p>Aucune</p>
-			</div>
 
 		</div>
+
+		<div class="col-md-6">
+			<h2>Commandes</h2>
+			<p>Vous n'avez pas encore passé de commande</p>
+
+			<h2>
+				historique de vos Commandes</h2>
+			<p>Aucune</p>
+		</div>
+
 	</div>
+</div>
 
 
-	<a href="{{ path('app_user_index') }}">back to list</a>
+<a href="{{ path('app_user_index') }}">back to list</a>
 
 
-	{% block footer %}
-		{% include 'frag/footer.html.twig' %}
-	{% endblock %}
-
-{% endblock %}
+{% block footer %}
+	{% include 'frag/footer.html.twig' %}
+{% endblock %}{% endblock %}

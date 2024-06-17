@@ -22,11 +22,17 @@
 		body main .sect3 .d-flex .card{max-width:1420px}
 		body main .sect3 .d-flex .card .row .col-md-8 .card-body{margin-top:90px}
 
-		/* .carousel-item img {
+		 .carousel-item img {
     object-fit: cover;
-    object-position: center;
+    object-position: center ;
     width: 100%; /* Assurez-vous que l'image prend toute la largeur */
-    height: 324px; /* Hauteur fixe pour correspondre à vos spécifications }*/
+    height: 324px;} /* Hauteur fixe pour correspondre à vos spécifications }*/
+
+	.carousel-inner .carousel-item:nth-child(3) img {
+    object-position: 50% 90% ;} /* Ajustez selon vos besoins */
+	.carousel-inner .carousel-item:nth-child(1) img {
+    object-position: 50% 75% ;} /* Ajustez selon vos besoins */
+
  
 	</style>
 
@@ -37,16 +43,16 @@
 		<div id="carouselExample" class="carousel slide">
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					 <img src="https://picsum.photos/1920/324" class="d-block w-100" alt="..."> 
-					{# <img src="{{asset('media/poids-violet.jpg')}}"  alt="..."> #}
+					 {# <img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">  #}
+					 <img src="{{asset('media/images/slider/fit-5024936_640.jpg')}}"  alt="..."> 
 				</div>
 				<div class="carousel-item">
-					 <img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">
-					{# <img src="{{asset('media/yoga-tapis.elongation.jpg')}}"  alt="..."> #}
+					 {# <img src="https://picsum.photos/1920/324" class="d-block w-100" alt="..."> #}
+					 <img src="{{asset('media/images/slider/kettlebell-3293475_640.jpg')}}"  alt="..."> 
 				</div>
 				<div class="carousel-item">
-					 <img src="https://picsum.photos/1920/324" class="d-block w-100" alt="...">
-					{# <img src="{{asset('media/poids-violet.jpg')}}" alt="..."> #}
+					 {# <img src="https://picsum.photos/1920/324" class="d-block w-100" alt="..."> #}
+					 <img src="{{asset('media/images/slider/lifestyle-7331253_640.jpg')}}" alt="..."> 
 				</div>
 			</div>
 			<button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
@@ -69,14 +75,14 @@
 
 				{% for product in products %}
 					<div class="card me-5  mb-5 mt-5">
-						<img src="{{asset(product.articleThumbnails)}}" class="card-img-top img-fluid w-75 p-4 mx-auto" alt="image de {{ product.articleName }}">
+						<img src="{{asset(product.articleThumbnails)}}" class="card-img-top img-fluid w-75 p-4 mx-auto" alt="image de {{ product.articleName  }}">
 						<div class="card-body">
-							<h5 class="card-title">{{ product.articleName  }}</h5>
-							<p class="card-text">{{ product.articleDescription  }}</p>
+							<h5 class="card-title">{{ product.articleName |e  }}</h5>
+							<p class="card-text">{{ product.articleDescription |e  }}</p>
 
-							<h6 class="card-subtitle mb-2 text-muted">{{ product.sellPriceHT  }}</h6>
+							<h6 class="card-subtitle mb-2 text-muted">{{ product.sellPriceHT |e }}</h6>
 							<a href="{{path('app_cart_add',{'id':product.id})}}" class="btn btn-Blue">ajouter au panier</a>
-							<a href="{{path('app_paiement_index')}}" class="btn btn-primary">acheter maintenant</a>
+							<a href="{{path('app_order_index')}}" class="btn btn-primary">acheter maintenant</a>
 						</div>
 					</div>
 				{% endfor %}

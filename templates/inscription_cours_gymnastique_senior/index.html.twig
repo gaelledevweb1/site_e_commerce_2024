@@ -8,9 +8,9 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                {# <th>Id</th>
                 <th>CreatedAT</th>
-                <th>UpdateAt</th>
+                <th>UpdateAt</th> #}
                 <th>Birthday</th>
                 <th>actions</th>
             </tr>
@@ -18,9 +18,9 @@
         <tbody>
         {% for inscription in inscriptions %}
             <tr>
-                <td>{{ inscription.id }}</td>
-                <td>{{ inscription.createdAT ? inscription.createdAT|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ inscription.updateAt ? inscription.updateAt|date('Y-m-d H:i:s') : '' }}</td>
+                {# <td>{{ inscription.id }}</td> #}
+                {# <td>{{ inscription.createdAT ? inscription.createdAT|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ inscription.updateAt ? inscription.updateAt|date('Y-m-d H:i:s') : '' }}</td> #}
                 <td>{{ inscription.birthday ? inscription.birthday|date('Y-m-d') : '' }}</td>
                 <td>
                     <a href="{{ path('app_inscription_cours_gymnastique_senior_show', {'id': inscription.id}) }}">show</a>

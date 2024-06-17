@@ -6,6 +6,14 @@
 
 {% block content %}
 
+	<style>
+		.CardProduct{
+			height: 30rem;
+		}
+		.imgProduct{
+			object-fit: cover;
+		}
+	</style>
 
 	<h1>Category Maternité</h1>
 
@@ -33,19 +41,19 @@
 
 
 				<div class="col mx-5">
-					<div class="card  shadow-sm mb-5 " style="height: 30rem;  ">
-						 <div class="ctnImg ctnImgProduct ">
-							<img class="bd-placeholder-img card-img-top " width="100%" height="225" style = 'object-fit: cover;' src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}">
+					<div class="card  shadow-sm mb-5 CardProduct "   >
+						 <div class="ctnImg ctnImgProduct imgProduct ">
+							<img class="bd-placeholder-img card-img-top " width="100%" height="225"  src="{{asset(product.articleThumbnails)}}" alt="image de {{ product.articleName }}">
 
 
 						</div> 
 						<div class="card-body product-card-body" style="overflow: auto;">
 							<h5 class="card-title
-																																																																																			">{{ product.articleName  }}
+																																																																																			">{{ product.articleName |e  }}
 							</h5>
-							<p class="card-text">{{ product.sellPriceHT  }}
+							<p class="card-text">{{ product.sellPriceHT |e }}
 								€</p>
-							<div class="card-text">{{ product.articleDescription  }}</div>
+							<div class="card-text">{{ product.articleDescription |e }}</div>
 							<div class="dropdown">
 								<button class="btn btn-warning dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
 									show more
@@ -54,12 +62,12 @@
 									<li>
 										<a class="dropdown-item" href="app_products_show">
 											détail:
-											{{ product.details  }}</a>
+											{{ product.details |e }}</a>
 									</li>
 									<li>
 										<a class="dropdown-item" href="app_products_show">
 											référence produit:
-											{{ product.articleRef  }}</a>
+											{{ product.articleRef |e  }}</a>
 									</li>
 
 								</ul>

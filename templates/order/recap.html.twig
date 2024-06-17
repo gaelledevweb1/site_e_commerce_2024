@@ -66,9 +66,9 @@
 					<div class="d-flex justify-content-between align-items-center mb-3 border-bottom pb-3">
 						<img src="{{ asset(item.product.articleThumbnails) }}" alt="{{ item.product.articleName }}" class="mr-3" style="width: 100px;">
 						<div class="flex-grow-1">
-							<h5>{{ item.product.articleName }}</h5>
+							<h5>{{ item.product.articleName |e  }}</h5>
 							<p>Quantity:
-								{{item.quantity}}</p>
+								{{item.quantity |e }}</p>
 							<p>Price:
 								{{ (item.product.sellPriceHT * item.quantity ) |number_format( 2, ',' , '.')}}
 								€</p>

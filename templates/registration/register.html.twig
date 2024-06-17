@@ -14,7 +14,7 @@
 
 		{% for message in app.flashes('error') %}
 			<div class="alert alert-danger">
-				{{ message }}
+				{{ message  |e }}
 			</div>
 		{% endfor %}
 
@@ -32,7 +32,7 @@
 			{{form_row(registrationForm.firstName, {'attr': {'class': 'form-control'}})}}
 		</div>
 		<div class="mb-3">
-			{{form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}})}}
+			{{form_row(registrationForm.lastName  |e , {'attr': {'class': 'form-control'}})}}
 		</div>
 		<div class="mb-3">
 			{{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
